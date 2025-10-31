@@ -74,6 +74,75 @@ lockPref("app.distributor", "");
 lockPref("app.distributor.channel", "");
 lockPref("mozilla.partner.id", "");
 
+
+/*** 002 MOZILLA CRAP™ ***/
+
+// Clear unnecessary/undesired Mozilla URLs
+lockPref("app.feedback.baseURL", "");
+lockPref("datareporting.healthreport.infoURL", "");
+lockPref("extensions.recommendations.privacyPolicyUrl", "");
+lockPref("toolkit.datacollection.infoURL", "");
+
+// Disable add-on/feature recommendations
+lockPref("browser.discovery.enabled", false);
+lockPref("browser.translations.panelShown", true); // [HIDDEN]
+lockPref("extensions.getAddons.browseAddons", ""); // [HIDDEN]
+lockPref("extensions.getAddons.discovery.api_url", "data;");
+lockPref("extensions.getAddons.showPane", false); // [HIDDEN]
+lockPref("extensions.htmlaboutaddons.recommendations.enabled", false);
+lockPref("extensions.recommendations.hideNotice", true); // [HIDDEN]
+lockPref("extensions.recommendations.themeRecommendationUrl", "");
+lockPref("extensions.ui.lastCategory", "addons://list/extension"); // [HIDDEN]
+lockPref("extensions.webservice.discoverURL", ""); // [HIDDEN - non-Thunderbird]
+
+// Disable Fakespot
+lockPref("toolkit.shopping.ohttpConfigURL", "");
+lockPref("toolkit.shopping.ohttpRelayURL", "");
+
+// Disable fetching Firefox Relay's "allowlist" (list of sites known to support Relay)
+lockPref("signon.firefoxRelay.allowListRemoteSettingsCollection", ""); // [HIDDEN]
+
+// Disable fetching Password Manager rules remotely by default
+lockPref("signon.recipes.remoteRecipes.enabled", false);
+
+// Disable Firefox Messaging System targeting information background updates
+lockPref("app.update.background.messaging.targeting.snapshot.intervalSec", -1);
+
+// Disable Firefox Relay by default
+lockPref("signon.firefoxRelay.feature", "disabled");
+
+// Disable "Privacy-Preserving Attribution"
+lockPref("dom.origin-trials.private-attribution.state", 2);
+
+// Disable Mozilla nags/promotions
+lockPref("browser.promo.cookiebanners.enabled", false);
+lockPref("browser.promo.focus.enabled", false);
+lockPref("browser.promo.pin.enabled", false);
+lockPref("browser.send_to_device_locales", "");
+lockPref("browser.vpn_promo.enabled", false);
+lockPref("privacy.trackingprotection.allow_list.hasUserInteractedWithETPSettings", true);
+
+// Disable Remote Permissions
+lockPref("permissions.manager.remote.enabled", false);
+
+// Opt out of add-on metadata updates
+lockPref("extensions.getAddons.cache.enabled", false);
+
+// Remove special privileges from Mozilla domains
+lockPref("browser.tabs.remote.separatePrivilegedMozillaWebContentProcess", false);
+lockPref("browser.tabs.remote.separatedMozillaDomains", "");
+lockPref("dom.ipc.processCount.privilegedmozilla", 0);
+lockPref("extensions.webextensions.restrictedDomains", "");
+lockPref("permissions.manager.defaultsUrl", "");
+lockPref("svg.context-properties.content.allowed-domains", "");
+
+// Skip Mozilla's `Privacy Notice` and `Terms of Use`
+lockPref("datareporting.policy.dataSubmissionPolicyAcceptedVersion", 999);
+lockPref("datareporting.policy.dataSubmissionPolicyNotifiedTime", "32503679999000");
+lockPref("termsofuse.acceptedDate", "32503679999000");
+lockPref("termsofuse.acceptedVersion", 999);
+lockPref("termsofuse.bypassNotification", true);
+
 // Fine
 
 lockPref("rischio-bird", "OK");
