@@ -1,1 +1,0 @@
-# rischio-bird
