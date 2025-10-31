@@ -1,1 +1,7 @@
+{
+  "policies": {
+    "DisableTelemetry": true
+  }
+}
 
+    
