@@ -1,1 +1,0 @@
-lockPref("rischio.bird", "OK");
