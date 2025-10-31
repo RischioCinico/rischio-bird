@@ -1,0 +1,1 @@
+lockPref("rischio-bird", "OK");
