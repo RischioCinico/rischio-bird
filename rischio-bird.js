@@ -15,10 +15,10 @@ lockPref("browser.cache.disk.enable", false);
 lockPref("browser.sessionhistory.max_total_viewers", 0);
 
 // Disabilita la cronologia di ricerca e dei moduli
-defaultPref("browser.formfill.enable", false);
+lockPref("browser.formfill.enable", false);
 
 // Aumenta l'intervallo di salvataggio automatico della sessione per ridurre le scritture su disco
-defaultPref("browser.sessionstore.interval", 600000);
+lockPref("browser.sessionstore.interval", 6000000);
 
 /* -----------------------------------------------------------------------------------
    FILE SCARICATI
@@ -37,16 +37,16 @@ lockPref("browser.helperApps.deleteTempFileOnExit", true);
    ----------------------------------------------------------------------------------- */
 
 // Isola le risorse iniettate dalle estensioni
-defaultPref("privacy.antitracking.isolateContentScriptResources", true);
+lockPref("privacy.antitracking.isolateContentScriptResources", true);
 
 // Impedisci ai terzi di impostare cookie se non sono già stati un sito principale (first party)
-defaultPref("privacy.dynamic_firstparty.limitForeign", true);
+lockPref("privacy.dynamic_firstparty.limitForeign", true);
 
 // Limita i referrer che tracciano
-defaultPref("network.http.referer.defaultPolicy.trackers", 1);
+lockPref("network.http.referer.defaultPolicy.trackers", 1);
 
 // Rimuovi i percorsi e le query dai referrer tra siti diversi
-defaultPref("network.http.referer.XOriginTrimmingPolicy", 2);
+lockPref("network.http.referer.XOriginTrimmingPolicy", 2);
 
 // Abbassa la priorità di rete per i tracker, velocizzando il caricamento della pagina
 lockPref("privacy.trackingprotection.lower_network_priority", true);
