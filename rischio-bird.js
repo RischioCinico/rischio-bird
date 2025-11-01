@@ -1,3 +1,39 @@
+/* -----------------------------------------------------------------------------------
+   PAGINA INIZIALE
+   ----------------------------------------------------------------------------------- */
+
+lockPref("browser.newtabpage.enabled", false);
+
+/* -----------------------------------------------------------------------------------
+   TRACCE SU DISCO
+   ----------------------------------------------------------------------------------- */
+
+// Disabilita cache su disco
+lockPref("browser.cache.disk.enable", false);
+
+// Disabilita la cache Indietro/Avanti (bfcache)
+lockPref("browser.sessionhistory.max_total_viewers", 0);
+
+// Disabilita la cronologia di ricerca e dei moduli
+defaultPref("browser.formfill.enable", false);
+
+// Aumenta l'intervallo di salvataggio automatico della sessione per ridurre le scritture su disco
+defaultPref("browser.sessionstore.interval", 600000);
+
+/* -----------------------------------------------------------------------------------
+   FILE SCARICATI
+   ----------------------------------------------------------------------------------- */
+
+// Massimizza il controllo dell'utente sui download
+lockPref("browser.download.useDownloadDir", false);
+lockPref("browser.download.always_ask_before_handling_new_types", true);
+
+// Gestisce i file temporanei per evitare tracce
+lockPref("browser.download.start_downloads_in_tmp_dir", true);
+lockPref("browser.helperApps.deleteTempFileOnExit", true);
+
+
+
 
 /*** 001 DATA COLLECTION ***/
 
@@ -142,6 +178,45 @@ lockPref("datareporting.policy.dataSubmissionPolicyNotifiedTime", "3250367999900
 lockPref("termsofuse.acceptedDate", "32503679999000");
 lockPref("termsofuse.acceptedVersion", 999);
 lockPref("termsofuse.bypassNotification", true);
+
+// Enable TCP/dFPI
+lockPref("network.cookie.cookieBehavior", 5);
+lockPref("network.cookie.cookieBehavior.optInPartitioning", true);
+
+// Ignore less restricted referer policies (than the default)
+lockPref("network.http.referer.disallowCrossSiteRelaxingDefault.top_navigation", true);
+
+// Lower the network priority of known trackers (if not blocked for whatever reason...)
+lockPref("privacy.trackingprotection.lower_network_priority", true);
+
+
+/*** 004 FINGERPRINTING PROTECTION ***/
+
+// Disable VP9 Benchmark
+lockPref("media.benchmark.vp9.threshold", 0);
+
+// Do not use the theme's toolbar color scheme for in-content pages by default
+lockPref("browser.theme.unified-color-scheme", false);
+
+// Prevent using system accent colors
+lockPref("widget.non-native-theme.use-theme-accent", false);
+
+// Prevent using system colors
+lockPref("browser.display.use_system_colors", false);
+lockPref("ui.use_standins_for_native_colors", true);
+
+// Prompt to spoof locale to en-US
+lockPref("privacy.spoof_english", 0);
+
+// Reset the fingerprinting randomization key daily (in addition to per-session/when the browser restarts)
+lockPref("privacy.resistFingerprinting.randomization.daily_reset.enabled", true);
+lockPref("privacy.resistFingerprinting.randomization.daily_reset.private.enabled", true);
+
+// Round window sizes
+lockPref("browser.startup.blankWindow", false);
+lockPref("privacy.window.maxInnerHeight", 900);
+lockPref("privacy.window.maxInnerWidth", 1600);
+
 
 // Fine
 
