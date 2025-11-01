@@ -32,6 +32,29 @@ lockPref("browser.download.always_ask_before_handling_new_types", true);
 lockPref("browser.download.start_downloads_in_tmp_dir", true);
 lockPref("browser.helperApps.deleteTempFileOnExit", true);
 
+/* -----------------------------------------------------------------------------------
+   TRACKING PROTECTION
+   ----------------------------------------------------------------------------------- */
+
+// Isola le risorse iniettate dalle estensioni
+defaultPref("privacy.antitracking.isolateContentScriptResources", true);
+
+// Impedisci ai terzi di impostare cookie se non sono già stati un sito principale (first party)
+defaultPref("privacy.dynamic_firstparty.limitForeign", true);
+
+// Limita i referrer che tracciano
+defaultPref("network.http.referer.defaultPolicy.trackers", 1);
+
+// Rimuovi i percorsi e le query dai referrer tra siti diversi
+defaultPref("network.http.referer.XOriginTrimmingPolicy", 2);
+
+// Abbassa la priorità di rete per i tracker, velocizzando il caricamento della pagina
+lockPref("privacy.trackingprotection.lower_network_priority", true);
+
+/* -----------------------------------------------------------------------------------
+   FINGERPRINTING
+   ----------------------------------------------------------------------------------- */
+
 
 
 
@@ -185,9 +208,6 @@ lockPref("network.cookie.cookieBehavior.optInPartitioning", true);
 
 // Ignore less restricted referer policies (than the default)
 lockPref("network.http.referer.disallowCrossSiteRelaxingDefault.top_navigation", true);
-
-// Lower the network priority of known trackers (if not blocked for whatever reason...)
-lockPref("privacy.trackingprotection.lower_network_priority", true);
 
 
 /*** 004 FINGERPRINTING PROTECTION ***/
