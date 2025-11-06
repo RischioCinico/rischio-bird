@@ -1021,6 +1021,65 @@ lockPref("geo.provider.geoclue.always_high_accuracy", false);
 // Set BeaconDB as the default network geolocation provider
 lockPref("geo.provider.network.url", "https://api.beacondb.net/v1/geolocate");
 
+/* -----------------------------------------------------------------------------------
+   019 PDF.js
+   ----------------------------------------------------------------------------------- */
+
+// Disable Automatic Alt Text by default
+lockPref("pdfjs.enableAltTextModelDownload", false);
+
+// Disable automatic hyperlinks
+lockPref("pdfjs.enableAutoLinking", false);
+
+// Disable JavaScript
+lockPref("pdfjs.enableScripting", false);
+
+// Disable XFA
+lockPref("pdfjs.enableXfa", false);
+
+// Enable the ability to add signatures
+lockPref("pdfjs.enableSignatureEditor", true);
+
+// Enable Alt Text
+lockPref("pdfjs.enableAltText", true);
+lockPref("pdfjs.enableAltTextForEnglish", true);
+lockPref("pdfjs.enableGuessAltText", true);
+lockPref("pdfjs.enableNewAltTextWhenAddingImage", true);
+lockPref("pdfjs.enableUpdatedAddImage", true);
+
+// Enforce using the internal font renderer
+lockPref("pdfjs.disableFontFace", true);
+
+// Ensure users can select and interact with text
+lockPref("pdfjs.textLayerMode", 1);
+
+// Force PDFs to be downloaded/viewed locally, and prompt before opening the PDF Viewer
+lockPref("browser.download.open_pdf_attachments_inline", false);
+lockPref("pdfjs.disableRange", true);
+lockPref("pdfjs.disableStream", true);
+
+// Never allow documents to prevent copying text
+lockPref("pdfjs.enablePermissions", false);
+
+// Open external links in new tabs/windows
+lockPref("pdfjs.externalLinkTarget", 2);
+
+// Prevent attempting to load/convert unknown binary files
+lockPref("pdfjs.handleOctetStream", false);
+
+// Show sidebar by default when viewing PDFs
+lockPref("pdfjs.sidebarViewOnLoad", 2);
+
+// Update URL when changing pages
+lockPref("pdfjs.historyUpdateUrl", true);
+
+/* -----------------------------------------------------------------------------------
+   020 SAFE BROWSING
+   ----------------------------------------------------------------------------------- */
+
+
+
+
 
 /* -----------------------------------------------------------------------------------
    FINE
