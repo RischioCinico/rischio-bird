@@ -1666,6 +1666,95 @@ lockPref("network.ssl_tokens_cache_capacity", 10240);
 lockPref("gfx.webrender.low-quality-pinch-zoom", true);
 
 /* -----------------------------------------------------------------------------------
+   027 Personal Touch
+   ----------------------------------------------------------------------------------- */
+
+// Allow downloading and switching locales
+lockPref("app.update.langpack.enabled", true);
+lockPref("intl.multilingual.downloadEnabled", true);
+lockPref("intl.multilingual.enabled", true);
+
+// Allow local machine learning by default
+lockPref("browser.ml.enable", true);
+lockPref("extensions.ml.enabled", true);
+
+// Allow Picture-in-Picture on all websites, even if they try to block it...
+lockPref("media.videocontrols.picture-in-picture.respect-disablePictureInPicture", false);
+
+// Allow zoom by default...
+lockPref("apz.allow_zooming", true);
+
+// Allow zoom on all websites, even if the website tries to block it...
+lockPref("browser.ui.zoom.force-user-scalable", true);
+
+// Allow zooming out beyond the initial scale of websites by default
+lockPref("apz.allow_zooming_out", true);
+
+// Allow the use of custom CSS by default
+lockPref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
+// Disable annoying Web Speech API error pop-ups, especially relevant on Linux
+lockPref("media.webspeech.synth.dont_notify_on_error", true);
+
+// Disable fullscreen delay
+lockPref("full-screen-api.transition-duration.enter", "0 0");
+lockPref("full-screen-api.transition-duration.leave", "0 0");
+
+// Enable autoscrolling by default
+lockPref("apz.autoscroll.enabled", true);
+lockPref("general.autoScroll", true);
+
+// Enable developer options for `about:profiling`
+lockPref("devtools.performance.aboutprofiling.has-developer-options", true);
+
+// Enable display of in-process subframes at `about:processes` by default
+lockPref("toolkit.aboutProcesses.showAllSubframes", true);
+
+// Enable display of thread information at `about:processes` by default
+lockPref("toolkit.aboutProcesses.showThreads", true);
+
+// Enable IPv6
+lockPref("network.dns.disableIPv6", false);
+
+// Enable overscrolling by default
+lockPref("apz.overscroll.enabled", true);
+
+// Enable smooth scrolling by default
+lockPref("general.smoothScroll", true);
+
+// Enable Spellcheck for both multi-line and single-line boxes
+lockPref("layout.spellcheckDefault", 2);
+
+// Ensure users can always control Nimbus recipes
+lockPref("nimbus.debug", true);
+lockPref("nimbus.validation.enabled", false);
+
+// Expose hidden UI preferences in the about:config
+lockPref("ui.hideCursorWhileTyping", 1);
+lockPref("ui.prefersReducedTransparency", 0);
+lockPref("ui.scrollToClick", 1);
+lockPref("ui.useAccessibilityTheme", 0);
+
+// Hide the Title Bar by default
+lockPref("browser.tabs.inTitlebar", 1);
+
+// Prevent the alt key from toggling menu bar by default
+lockPref("ui.key.menuAccessKeyFocuses", false);
+
+// Prevent including the space next to words when double-clicking/selecting text
+lockPref("layout.word_select.eat_space_to_next_word", false);
+
+// Set the default log level for Background Tasks
+lockPref("toolkit.backgroundtasks.loglevel", "error");
+
+// Set the default log level for Remote Settings
+lockPref("services.settings.loglevel", "warn");
+
+// Set default URL to load when navigating to `moz://a`
+lockPref("toolkit.mozprotocol.url", "about:mozilla");
+
+
+/* -----------------------------------------------------------------------------------
    FINE
    ----------------------------------------------------------------------------------- */
 
