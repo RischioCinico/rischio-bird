@@ -1077,8 +1077,70 @@ lockPref("pdfjs.historyUpdateUrl", true);
    020 SAFE BROWSING
    ----------------------------------------------------------------------------------- */
 
+// By default, when you report a Safe Browsing false positive, it sends the URL to both Mozilla & Google (NOT PROXIED), as well as your locale to Mozilla
+lockPref("browser.safebrowsing.provider.google.reportMalwareMistakeURL", "https://safebrowsing.google.com/safebrowsing/report_error/?tpl=mozilla&url=");
+lockPref("browser.safebrowsing.provider.google.reportPhishMistakeURL", "https://safebrowsing.google.com/safebrowsing/report_error/?tpl=mozilla&url=");
+lockPref("browser.safebrowsing.provider.google4.reportMalwareMistakeURL", "https://safebrowsing.google.com/safebrowsing/report_error/?tpl=mozilla&url=");
+lockPref("browser.safebrowsing.provider.google4.reportPhishMistakeURL", "https://safebrowsing.google.com/safebrowsing/report_error/?tpl=mozilla&url=");
+lockPref("browser.safebrowsing.provider.google5.reportMalwareMistakeURL", "https://safebrowsing.google.com/safebrowsing/report_error/?tpl=mozilla&url=");
+lockPref("browser.safebrowsing.provider.google5.reportPhishMistakeURL", "https://safebrowsing.google.com/safebrowsing/report_error/?tpl=mozilla&url=");
 
+// Similar behavior also appears to happen when you report a URL to Safe Browsing
+lockPref("browser.safebrowsing.reportPhishURL", "https://safebrowsing.google.com/safebrowsing/report_phish/?tpl=mozilla&url=");
 
+// Disable the legacy (v2.2) Safe Browsing API
+lockPref("browser.safebrowsing.provider.google.advisoryName", "Google Safe Browsing (Legacy)");
+lockPref("browser.safebrowsing.provider.google.lists", "disabled");
+lockPref("browser.safebrowsing.provider.google.lists.default", "goog-badbinurl-shavar,goog-downloadwhite-digest256,goog-phish-shavar,googpub-phish-shavar,goog-malware-shavar,goog-unwanted-shavar");
+
+// Enable an additional plug-in blocklist from Mozilla
+lockPref("urlclassifier.blockedTable", "moztest-block-simple,mozplugin-block-digest256");
+
+// Enable the Potentially Harmful Application list (when Safe Browsing is enabled)
+lockPref("urlclassifier.malwareTable", "goog-malware-proto,goog-unwanted-proto,moztest-harmful-simple,moztest-malware-simple,moztest-unwanted-simple,goog-harmful-proto");
+
+// Enable Safe Browsing by default
+lockPref("browser.safebrowsing.blockedURIs.enabled", true);
+lockPref("browser.safebrowsing.downloads.enabled", true);
+lockPref("browser.safebrowsing.id", "navclient-auto-ffox");
+lockPref("browser.safebrowsing.malware.enabled", true);
+lockPref("browser.safebrowsing.phishing.enabled", true);
+lockPref("browser.safebrowsing.provider.google5.advisoryURL", "https://developers.google.com/safe-browsing/v4/advisory");
+lockPref("browser.safebrowsing.provider.google5.enabled", true);
+lockPref("browser.safebrowsing.provider.google5.lists", "goog-phish-proto,googpub-phish-proto,goog-malware-proto,goog-unwanted-proto,goog-harmful-proto");
+lockPref("browser.safebrowsing.provider.mozilla.gethashURL", "https://shavar.services.mozilla.com/gethash?client=navclient-auto-ffox&appver=%MAJOR_VERSION%&pver=2.2");
+lockPref("browser.safebrowsing.update.enabled", true);
+lockPref("urlclassifier.downloadAllowTable", "goog-downloadwhite-proto");
+lockPref("urlclassifier.downloadBlockTable", "goog-badbinurl-proto");
+lockPref("urlclassifier.phishTable", "goog-phish-proto,moztest-phish-simple");
+
+// Ensure users can override Safe Browsing warnings by default
+lockPref("browser.safebrowsing.allowOverride", true);
+
+// Prevent sending metadata of downloaded files to Safe Browsing providers
+lockPref("browser.safebrowsing.downloads.remote.enabled", false);
+
+// Prevent sharing data/telemetry with Safe Browsing providers
+lockPref("browser.safebrowsing.provider.google.dataSharing.enabled", false);
+lockPref("browser.safebrowsing.provider.google.dataSharingURL", "");
+lockPref("browser.safebrowsing.provider.google4.dataSharing.enabled", false);
+lockPref("browser.safebrowsing.provider.google4.dataSharingURL", "");
+lockPref("browser.safebrowsing.provider.google5.dataSharing.enabled", false);
+lockPref("browser.safebrowsing.provider.google5.dataSharingURL", "");
+lockPref("browser.safebrowsing.provider.mozilla.dataSharing.enabled", false);
+lockPref("browser.safebrowsing.provider.mozilla.dataSharingURL", "");
+lockPref("browser.safebrowsing.provider.test.dataSharing.enabled", false);
+lockPref("browser.safebrowsing.provider.test.dataSharingURL", "");
+
+// Unbreak Google's download protection and legacy Safe Browsing provider
+lockPref("browser.safebrowsing.downloads.remote.url", "https://sb-ssl.google.com/safebrowsing/clientreport/download?key=%GOOGLE_SAFEBROWSING_API_KEY%");
+lockPref("browser.safebrowsing.provider.google.gethashURL", "https://safebrowsing.google.com/safebrowsing/gethash?client=navclient-auto-ffox&appver=%MAJOR_VERSION%&pver=2.2");
+lockPref("browser.safebrowsing.provider.google.updateURL", "https://safebrowsing.google.com/safebrowsing/downloads?client=navclient-auto-ffox&appver=%MAJOR_VERSION%&pver=2.2&key=%GOOGLE_SAFEBROWSING_API_KEY%");
+
+// Unclear whether these are actually used or not, but looks like Firefox has some kind of functionality to view a "report" from Safe Browsing about the safety, history, and general status of a site
+lockPref("browser.safebrowsing.provider.google.reportURL", "https://transparencyreport.google.com/safe-browsing/search?url=");
+lockPref("browser.safebrowsing.provider.google4.reportURL", "https://transparencyreport.google.com/safe-browsing/search?url=");
+lockPref("browser.safebrowsing.provider.google5.reportURL", "https://transparencyreport.google.com/safe-browsing/search?url=");
 
 
 /* -----------------------------------------------------------------------------------
