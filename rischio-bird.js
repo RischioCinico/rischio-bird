@@ -396,11 +396,6 @@ lockPref("privacy.socialtracking.block_cookies.enabled", true);
 lockPref("privacy.bounceTrackingProtection.mode", 1);
 lockPref("privacy.bounceTrackingProtection.requireStatefulBounces", false);
 
-// Enable Query Parameter Stripping
-lockPref("privacy.query_stripping.enabled", true);
-lockPref("privacy.query_stripping.enabled.pbmode", true);
-lockPref("privacy.query_stripping.redirect", true);
-
 // Enable SmartBlock & UA overrides/injections
 lockPref("extensions.webcompat.enable_shims", true);
 lockPref("extensions.webcompat.perform_injections", true);
@@ -1497,14 +1492,6 @@ lockPref("privacy.restrict3rdpartystorage.heuristic.window_open", false);
 // Disable TLS session identifiers
 lockPref("security.ssl.disable_session_identifiers", true);
 
-// Enable Cookie Banner Reduction
-lockPref("cookiebanners.bannerClicking.enabled", false);
-lockPref("cookiebanners.cookieInjector.enabled", false);
-lockPref("cookiebanners.service.mode", 0);
-lockPref("cookiebanners.service.mode.privateBrowsing", 0);
-lockPref("cookiebanners.service.enableGlobalRules", false);
-lockPref("cookiebanners.service.enableGlobalRules.subFrames", false);
-
 // Enable Cookies Having Independent Partitioned State (CHIPS)
 lockPref("network.cookie.CHIPS.enabled", true);
 lockPref("network.cookie.chips.partitionLimitDryRun", false);
@@ -1518,9 +1505,6 @@ lockPref("privacy.globalprivacycontrol.pbmode.enabled", true);
 // Exclude third party trackers from storage access heuristics (if enabled)
 lockPref("dom.storage_access.auto_grants.exclude_third_party_trackers", true);
 lockPref("privacy.restrict3rdpartystorage.heuristic.exclude_third_party_trackers", true);
-
-// Improve built-in query stripping to be on par with LibreWolf and Brave
-lockPref("privacy.query_stripping.strip_list", "__hsfp __hssc __hstc __s _bhlid _branch_match_id _branch_referrer _gl _hsenc _kx _openstat at_recipient_id at_recipient_list bbeml bsft_clkid bsft_uid dclid et_rid fb_action_ids fb_comment_id fbclid gbraid gclid guce_referrer guce_referrer_sig hsCtaTracking igshid irclickid mc_eid mkt_tok ml_subscriber ml_subscriber_hash msclkid mtm_cid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id pk_cid rb_clickid s_cid sc_customer sc_eh sc_uid srsltid ss_email_id twclid unicorn_click_id vero_conv vero_id vgo_ee wbraid wickedid yclid ymclid ysclid");
 
 // Isolate resources (ex. referrers & cookies) injected by extensions
 lockPref("privacy.antitracking.isolateContentScriptResources", true);
@@ -1537,9 +1521,6 @@ lockPref("privacy.dynamic_firstparty.limitForeign", true);
 // Restrict tracking referers
 lockPref("network.http.referer.defaultPolicy.trackers", 1);
 lockPref("network.http.referer.defaultPolicy.trackers.pbmode", 1);
-
-// Strip tracking parameters from URLs when shared by default
-lockPref("privacy.query_stripping.strip_on_share.enabled", true);
 
 // Trim cross-origin referers (Like Safari)
 lockPref("network.http.referer.XOriginTrimmingPolicy", 2);
