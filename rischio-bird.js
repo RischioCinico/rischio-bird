@@ -1142,6 +1142,160 @@ lockPref("browser.safebrowsing.provider.google.reportURL", "https://transparency
 lockPref("browser.safebrowsing.provider.google4.reportURL", "https://transparencyreport.google.com/safe-browsing/search?url=");
 lockPref("browser.safebrowsing.provider.google5.reportURL", "https://transparencyreport.google.com/safe-browsing/search?url=");
 
+/* -----------------------------------------------------------------------------------
+   021 MISC. PRIVACY + SECURITY
+   ----------------------------------------------------------------------------------- */
+
+// Disable Accessibility Services
+lockPref("accessibility.force_disabled", 1);
+lockPref("devtools.accessibility.enabled", false);
+
+// Disable automatic updates for OpenSearch engines
+lockPref("browser.search.update", false);
+
+// Disable Battery API (Navigator.getBattery)
+lockPref("dom.battery.enabled", false);
+
+// Disable Beacon API (Navigator.sendBeacon)
+lockPref("beacon.enabled", false);
+
+// Disable Clipboard API
+lockPref("dom.events.asyncClipboard.clipboardItem", false);
+lockPref("dom.events.asyncClipboard.readText", false);
+lockPref("dom.events.testing.asyncClipboard", false);
+
+// Disable Content Analysis SDK
+lockPref("browser.contentanalysis.default_result", 0);
+lockPref("browser.contentanalysis.enabled", false);
+lockPref("browser.contentanalysis.interception_point.clipboard.enabled", false);
+lockPref("browser.contentanalysis.interception_point.drag_and_drop.enabled", false);
+lockPref("browser.contentanalysis.interception_point.file_upload.enabled", false);
+lockPref("browser.contentanalysis.interception_point.print.enabled", false);
+lockPref("browser.contentanalysis.max_connections", 0);
+lockPref("browser.contentanalysis.show_blocked_result", true);
+lockPref("browser.contentanalysis.silent_notifications", false);
+
+// Disable Federated Credential Management (FedCM) API
+lockPref("dom.security.credentialmanagement.identity.enabled", false);
+lockPref("dom.security.credentialmanagement.identity.heavyweight.enabled", false);
+lockPref("dom.security.credentialmanagement.identity.lightweight.enabled", false);
+
+// Disable Reporting API
+lockPref("dom.reporting.crash.enabled", false);
+lockPref("dom.reporting.enabled", false);
+lockPref("dom.reporting.featurePolicy.enabled", false);
+lockPref("dom.reporting.header.enabled", false);
+lockPref("dom.reporting.testing.enabled", false);
+
+// Disable Web Share API
+lockPref("dom.webshare.enabled", false);
+lockPref("dom.webshare.requireinteraction", true);
+
+// Disable WebGPU
+lockPref("dom.webgpu.enabled", false);
+
+// Disable WebMIDI
+lockPref("dom.sitepermsaddon-provider.enabled", false);
+lockPref("dom.webmidi.gated", true);
+
+// Enable Messaging Layer Security (MLS)
+lockPref("dom.origin-trials.mls.state", 1);
+
+// Enable Private Network Access Restrictions
+lockPref("network.lna.block_trackers", true);
+lockPref("network.lna.enabled", true);
+lockPref("permissions.default.local-network", 2);
+lockPref("permissions.default.localhost", 2);
+
+// Prevent exposing XPCOM Components.interfaces to websites
+lockPref("dom.use_components_shim", false);
+
+/* -----------------------------------------------------------------------------------
+   022 MISC. PRIVACY
+   ----------------------------------------------------------------------------------- */
+
+// Block ports currently known to be abused by Android apps for tracking/fingerprinting[
+lockPref("network.security.ports.banned", "29009, 29010, 30102, 30103, 12387, 12388, 12580, 12581, 12582, 12583, 12584, 12585, 12586, 12587, 12588, 12589, 12590, 12591");
+
+// Disable CSP reporting
+lockPref("security.csp.reporting.enabled", false);
+
+// Disable Hyperlink Auditing (Click Tracking)
+lockPref("browser.send_pings", false);
+lockPref("browser.send_pings.max_per_link", 1);
+lockPref("browser.send_pings.require_same_host", true);
+
+// Disable Network Error Logging
+lockPref("network.http.network_error_logging.enabled", false);
+
+// Disable online speech recognition
+lockPref("media.webspeech.service.endpoint", "data;");
+
+// Disable referers when leaving .onion domains
+lockPref("network.http.referer.hideOnionSource", true);
+
+// Disable storage access heuristics
+lockPref("dom.storage_access.auto_grants", false);
+lockPref("privacy.restrict3rdpartystorage.heuristic.navigation", false);
+lockPref("privacy.restrict3rdpartystorage.heuristic.opened_window_after_interaction", false);
+lockPref("privacy.restrict3rdpartystorage.heuristic.recently_visited", false);
+lockPref("privacy.restrict3rdpartystorage.heuristic.redirect", false);
+lockPref("privacy.restrict3rdpartystorage.heuristic.window_open", false);
+
+// Disable TLS session identifiers
+lockPref("security.ssl.disable_session_identifiers", true);
+
+// Enable Cookie Banner Reduction
+lockPref("cookiebanners.bannerClicking.enabled", true);
+lockPref("cookiebanners.cookieInjector.enabled", true);
+lockPref("cookiebanners.service.mode", 1);
+lockPref("cookiebanners.service.mode.privateBrowsing", 1);
+lockPref("cookiebanners.service.enableGlobalRules", true);
+lockPref("cookiebanners.service.enableGlobalRules.subFrames", true);
+
+// Enable Cookies Having Independent Partitioned State (CHIPS)
+lockPref("network.cookie.CHIPS.enabled", true);
+lockPref("network.cookie.chips.partitionLimitDryRun", false);
+
+// Enable Do Not Track & Global Privacy Control
+lockPref("privacy.donottrackheader.enabled", true);
+lockPref("privacy.globalprivacycontrol.enabled", true);
+lockPref("privacy.globalprivacycontrol.functionality.enabled", true);
+lockPref("privacy.globalprivacycontrol.pbmode.enabled", true);
+
+// Exclude third party trackers from storage access heuristics (if enabled)
+lockPref("dom.storage_access.auto_grants.exclude_third_party_trackers", true);
+lockPref("privacy.restrict3rdpartystorage.heuristic.exclude_third_party_trackers", true);
+
+// Improve built-in query stripping to be on par with LibreWolf and Brave
+lockPref("privacy.query_stripping.strip_list", "__hsfp __hssc __hstc __s _bhlid _branch_match_id _branch_referrer _gl _hsenc _kx _openstat at_recipient_id at_recipient_list bbeml bsft_clkid bsft_uid dclid et_rid fb_action_ids fb_comment_id fbclid gbraid gclid guce_referrer guce_referrer_sig hsCtaTracking igshid irclickid mc_eid mkt_tok ml_subscriber ml_subscriber_hash msclkid mtm_cid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id pk_cid rb_clickid s_cid sc_customer sc_eh sc_uid srsltid ss_email_id twclid unicorn_click_id vero_conv vero_id vgo_ee wbraid wickedid yclid ymclid ysclid");
+
+// Isolate resources (ex. referrers & cookies) injected by extensions
+lockPref("privacy.antitracking.isolateContentScriptResources", true);
+
+// Limit maximum cookie lifetime to 6 months/180 days (Like Brave)
+lockPref("network.cookie.maxageCap", 15552000);
+
+// Prevent sharing identifying information if a remote AutoConfig is being used
+lockPref("autoadmin.append_emailaddr", false);
+
+// Prevent third parties from setting cookies unless the third party already has cookies as a first party (Like Safari)
+lockPref("privacy.dynamic_firstparty.limitForeign", true);
+
+// Restrict tracking referers
+lockPref("network.http.referer.defaultPolicy.trackers", 1);
+lockPref("network.http.referer.defaultPolicy.trackers.pbmode", 1);
+
+// Strip tracking parameters from URLs when shared by default
+lockPref("privacy.query_stripping.strip_on_share.enabled", true);
+
+// Trim cross-origin referers (Like Safari)
+lockPref("network.http.referer.XOriginTrimmingPolicy", 2);
+
+/* -----------------------------------------------------------------------------------
+   023 MISC. SECURITY
+   ----------------------------------------------------------------------------------- */
+
 
 /* -----------------------------------------------------------------------------------
    FINE
