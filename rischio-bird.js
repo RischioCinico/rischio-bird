@@ -3,6 +3,9 @@
    001 DATA COLLECTION
    ----------------------------------------------------------------------------------- */
 
+// Disable Ecosystem Telemetry
+lockPref("toolkit.telemetry.ecosystemtelemetry.enabled", false);
+
 lockPref("toolkit.aboutLogging.uploadProfileToCloud", false);
 lockPref("toolkit.aboutlogging.uploadProfileUrl", "");
 
@@ -125,11 +128,53 @@ lockPref("mozilla.partner.id", "");
    002 MOZILLA CRAP
    ----------------------------------------------------------------------------------- */
 
+// Disable Donation Prompts
+lockPref("app.donation.eoy.url", "");
+lockPref("app.donation.eoy.version.viewed", 99);
+
+// Disable the Email Provisioner
+lockPref("mail.provider.enabled", false);
+lockPref("mail.provider.suppress_dialog_on_startup", true);
+
+// Disable Filelink
+lockPref("mail.cloud_files.enabled", false);
+
+// Disable 'In-App Notifications'
+lockPref("mail.inappnotifications.blog_enabled", false);
+lockPref("mail.inappnotifications.donation_enabled", false);
+lockPref("mail.inappnotifications.enabled", false);
+lockPref("mail.inappnotifications.message_enabled", false);
+
+// Disable onboarding
+lockPref("browser.EULA.override", true);
+lockPref("browser.rights.override", true);
+lockPref("mail.rights.override", true);
+lockPref("mailnews.start_page_override.mstone", "ignore");
+
+// Disable start page by default and switch the URL to `about:config`
+lockPref("mailnews.start_page.enabled", false);
+lockPref("mailnews.start_page.override_url", "");
+lockPref("mailnews.start_page.url", "about:config");
+
+// Disable surveys
+lockPref("app.survey.version.viewed", 99);
+
+// Prevent checking if Thunderbird is the default mail client
+lockPref("mail.shell.checkDefaultClient", false);
+
+// Prevent checking if Thunderbird is the default PDF viewer
+lockPref("pdfjs.firstRun", false);
+
+// Remove Mozilla partner/search parameter
+lockPref("browser.search.param.ms-pc", "");
+
 // Clear unnecessary/undesired Mozilla URLs
 lockPref("app.feedback.baseURL", "");
 lockPref("datareporting.healthreport.infoURL", "");
 lockPref("extensions.recommendations.privacyPolicyUrl", "");
 lockPref("toolkit.datacollection.infoURL", "");
+lockPref("mail.pgpmime.addon_url", "");
+lockPref("toolkit.crashreporter.infoURL", "");
 
 // Disable add-on/feature recommendations
 lockPref("browser.discovery.enabled", false);
@@ -143,6 +188,8 @@ lockPref("extensions.recommendations.hideNotice", true);
 lockPref("extensions.recommendations.themeRecommendationUrl", "");
 lockPref("extensions.ui.lastCategory", "addons://list/extension");
 lockPref("extensions.webservice.discoverURL", "");
+lockPref("extensions.getAddons.recommended.url", "");
+lockPref("extensions.alternativeAddonSearch.url", "");
 
 // Disable DoH Rollout/heuristics/steering
 lockPref("doh-rollout._testing", true);
@@ -235,6 +282,20 @@ lockPref("signon.firefoxRelay.learn_more_url", "https://support.mozilla.org/kb/r
 lockPref("signon.firefoxRelay.manage_url", "https://relay.firefox.com/accounts/profile/");
 lockPref("signon.firefoxRelay.privacy_policy_url", "https://www.mozilla.org/privacy/subscription-services/");
 lockPref("signon.firefoxRelay.terms_of_service_url", "https://www.mozilla.org/about/legal/terms/subscription-services/");
+lockPref("app.releaseNotesURL", "https://www.thunderbird.net/releases");
+lockPref("app.releaseNotesURL.aboutDialog", "https://www.thunderbird.net/releases");
+lockPref("app.releaseNotesURL.prompt", "https://www.thunderbird.net/releases");
+lockPref("app.vendorURL", "https://www.thunderbird.net/");
+lockPref("browser.dictionaries.download.url", "https://addons.thunderbird.net/language-tools/");
+lockPref("extensions.getAddons.compatOverides.url", "");
+lockPref("extensions.getAddons.link.url", "https://addons.thunderbird.net/");
+lockPref("extensions.getAddons.search.browseURL", "https://addons.thunderbird.net/search/?q=%TERMS%");
+lockPref("extensions.getAddons.search.url", "https://services.addons.thunderbird.net/api/%API_VERSION%/search/%TERMS%/all/%MAX_RESULTS%/");
+lockPref("extensions.update.background.url", "https://versioncheck-bg.addons.thunderbird.net/update/VersionCheck.php?reqVersion=%REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&status=%ITEM_STATUS%&appID=%APP_ID%&appVersion=%APP_VERSION%&currentAppVersion=%CURRENT_APP_VERSION%&updateType=%UPDATE_TYPE%");
+lockPref("extensions.update.url", "https://versioncheck.addons.thunderbird.net/update/VersionCheck.php?reqVersion=%REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&status=%ITEM_STATUS%&appID=%APP_ID%&appVersion=%APP_VERSION%&currentAppVersion=%CURRENT_APP_VERSION%&updateType=%UPDATE_TYPE%");
+lockPref("mail.cloud_files.learn_more_url", "https://support.mozilla.org/kb/filelink-large-attachments");
+lockPref("mail.ignore_thread.learn_more_url", "https://support.mozilla.org/kb/ignore-threads");
+lockPref("spellchecker.dictionaries.download.url", "https://addons.thunderbird.net/language-tools/");
 
 // Skip Mozilla's `Privacy Notice` and `Terms of Use`
 lockPref("datareporting.policy.dataSubmissionPolicyAcceptedVersion", 999);
@@ -246,6 +307,50 @@ lockPref("termsofuse.bypassNotification", true);
 /* -----------------------------------------------------------------------------------
    003 TRACKING PROTECTION
    ----------------------------------------------------------------------------------- */
+
+// Disable sending read receipts
+lockPref("mail.mdn.report.enabled", false);
+lockPref("mail.mdn.report.not_in_to_cc", 0);
+lockPref("mail.mdn.report.outside_domain", 0);
+lockPref("mail.mdn.report.other", 0);
+lockPref("mail.server.default.mdn_not_in_to_cc", 0);
+lockPref("mail.server.default.mdn_other", 0);
+lockPref("mail.server.default.mdn_outside_domain", 0);
+lockPref("mail.server.default.mdn_report_enabled", false);
+lockPref("purple.conversations.im.send_read", false);
+
+// Disable sending user agent with emails
+lockPref("mailnews.headers.sendUserAgent", false);
+lockPref("mailnews.headers.useMinimalUserAgent", true);
+
+// Prevent leaking locale and date/time in email replies
+lockPref("mailnews.reply_header_authorwroteondate", "#1 wrote on #2 #3:");
+lockPref("mailnews.reply_header_authorwrotesingle", "#1 wrote:");
+lockPref("mailnews.reply_header_ondateauthorwrote", "On #2 #3, #1 wrote:");
+lockPref("mailnews.reply_header_type", 1);
+
+// Prevent leaking locale and time with emails through the date header
+lockPref("mail.sanitize_date_header", true);
+
+// Prevent sending usernames to your email provider as part of Autoconfiguration
+lockPref("mailnews.auto_config.fetchFromISP.sendEmailAddress", false);
+
+// Prevent leaking info in email alerts/notifications
+lockPref("mail.biff.alert.show_preview", false);
+lockPref("mail.biff.alert.show_sender", false);
+lockPref("mail.biff.alert.show_subject", false);
+
+// Prevent leaking spellcheck dictionary info with emails
+lockPref("mail.suppress_content_language", true);
+
+// Prevent leaking local IP addresses with emails via EHLO/HELO
+lockPref("mail.smtpserver.default.hello_argument", "[127.0.0.1]");
+
+// Ensure no domains can bypass privacy controls (like mailnews.message_display.disable_remote_image) by default
+lockPref("mail.trusteddomains", "");
+
+// Prevent messages from loading remote content
+lockPref("mailnews.message_display.disable_remote_image", true);
 
 // Disable exceptions for minor issues by default
 lockPref("privacy.trackingprotection.allow_list.convenience.enabled", false);
@@ -340,6 +445,18 @@ lockPref("privacy.trackingprotection.lower_network_priority", true);
    004 FINGERPRINTING PROTECTION
    ----------------------------------------------------------------------------------- */
 
+// Ensure we always report "video-dynamic-range" as "standard"
+lockPref("layout.css.video-dynamic-range.allows-high", false);
+
+// Freeze user agent to protect against fingerprinting
+lockPref("general.useragent.override", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Thunderbird/140.0");
+
+// Harden FPP
+lockPref("privacy.fingerprintingProtection.overrides", "+AllTargets,-CSSPrefersColorScheme,-FrameRate,-HttpUserAgent,-NavigatorUserAgent");
+
+// Set FPP granular overrides
+lockPref("privacy.fingerprintingProtection.granularOverrides", '[{"firstPartyDomain":"thunderbird.net","overrides":"+CSSPrefersColorScheme"}]');
+
 // Disable the ability to switch locales without requiring a restart
 lockPref("intl.multilingual.liveReload", false);
 lockPref("intl.multilingual.liveReloadBidirectional", false);
@@ -403,12 +520,28 @@ lockPref("privacy.resistFingerprinting.target_video_res", 1080);
 // Set zoom levels on a per-site basis
 lockPref("browser.zoom.siteSpecific", true);
 
+// Enable dynamic rounding of content dimensions
+lockPref("privacy.resistFingerprinting.letterboxing", true);
+
 /* -----------------------------------------------------------------------------------
    005 DISK AVOIDANCE
    ----------------------------------------------------------------------------------- */
 
-// Allow permission manager to write to disk
-lockPref("permissions.memory_only", false); 
+// Disable browsing history
+lockPref("places.history.enabled", false);
+
+// Disable disk caching
+lockPref("mail.imap.use_disk_cache2", false);
+
+// Disable favicons
+lockPref("browser.chrome.favicons", false);
+lockPref("browser.chrome.site_icons", false);
+
+// Prevent permission manager to write to disk
+lockPref("permissions.memory_only", true); 
+
+// Prevent storing cookies persistently
+lockPref("network.cookie.noPersistentStorage", true);
 
 // Allow users to automatically delete files downloaded in Private Browsing
 lockPref("browser.download.enableDeletePrivate", true);
@@ -461,6 +594,14 @@ lockPref("browser.helperApps.deleteTempFileOnExit", true);
    006 DOWNLOADS
    ----------------------------------------------------------------------------------- */
 
+// Alert users when downloads are initiated (and completed)
+lockPref("browser.download.manager.focusWhenStarting", true);
+lockPref("browser.download.manager.showAlertOnComplete", true);
+lockPref("browser.download.manager.showWhenStarting", true);
+
+// Show a progress dialog for downloads
+lockPref("browser.download.manager.behavior", 1);
+
 // Block insecure downloads
 lockPref("dom.block_download_insecure", true);
 
@@ -481,6 +622,23 @@ lockPref("browser.download.useDownloadDir", false);
    007 HTTP(S)
    ----------------------------------------------------------------------------------- */
 
+// Prompt before going online on Thunderbird's launch
+lockPref("offline.startup_state", 1);
+
+// Block Private Network Access requests unconditionally
+lockPref("network.lna.blocking", true);
+
+// Disable link previews
+lockPref("mail.compose.add_link_preview", false);
+
+// Disable network connectivity status monitoring
+lockPref("offline.autoDetect", false);
+
+// Use secure connections for Autoconfiguration
+lockPref("mailnews.auto_config.fetchFromISP.sslOnly", true);
+lockPref("mailnews.auto_config.guess.requireGoodCert", true);
+lockPref("mailnews.auto_config.guess.sslOnly", true);
+
 // Allow users to bypass invalid certificate errors by default
 lockPref("security.certerror.hideAddException", false); 
 
@@ -491,6 +649,11 @@ lockPref("security.remote_settings.intermediates.enabled", true);
 lockPref("security.insecure_connection_text.enabled", true);
 lockPref("security.insecure_connection_text.pbmode.enabled", true);
 lockPref("security.ssl.treat_unsafe_negotiation_as_broken", true);
+
+// Warn on insecure connections
+lockPref("security.warn_entering_weak", true);
+lockPref("security.warn_leaving_secure", true);
+lockPref("security.warn_viewing_mixed", true);
 
 // Always warn when submitting a form from HTTP to HTTPS, even on local IP addresses
 lockPref("security.insecure_field_warning.ignore_local_ip_address", false);
@@ -541,6 +704,10 @@ lockPref("security.tls.enable_delegated_credentials", true);
 // Enable MITM Detection
 lockPref("security.certerrors.mitm.priming.enabled", true);
 lockPref("security.certerrors.mitm.priming.endpoint", "https://mitmdetection.services.mozilla.com/");
+
+// Enable + hard-fail OCSP revocation checks
+lockPref("security.OCSP.enabled", 1);
+lockPref("security.OCSP.require", true);
 
 // Enable OCSP stapling
 lockPref("security.ssl.enable_ocsp_must_staple", true);
@@ -739,6 +906,9 @@ lockPref("network.proxy.socks5_remote_dns", true);
    012 WEBRTC 
    ----------------------------------------------------------------------------------- */
 
+// Disable WebRTC
+lockPref("media.peerconnection.enabled", false);
+
 // Allow user to silence notifications when screen sharing
 lockPref("privacy.webrtc.allowSilencingNotifications", true); 
 lockPref("privacy.webrtc.hideGlobalIndicator", false); 
@@ -757,6 +927,15 @@ lockPref("media.peerconnection.ice.proxy_only_if_behind_proxy", true);
 
 // Warn users when attempting to switch tabs in a window being shared over WebRTC
 lockPref("privacy.webrtc.sharedTabWarning", true);
+
+// Always exclude local IP addresses, even in trusted scenarios
+lockPref("media.peerconnection.ice.no_host", true);
+
+// Force a single candidate for ICE generation
+lockPref("media.peerconnection.ice.default_address_only", true);
+
+// Only use TURN servers/relays
+lockPref("media.peerconnection.ice.relay_only", true);
 
 /* -----------------------------------------------------------------------------------
    013 MEDIA
@@ -804,6 +983,9 @@ lockPref("media.gmp-manager.checkContentSignature", true);
    014 ATTACK SURFACE REDUCTION
    ----------------------------------------------------------------------------------- */
 
+// Disable WebAssembly (WASM)
+lockPref("javascript.options.wasm", false);
+
 // Disable ASM.JS
 lockPref("javascript.options.asmjs", false);
 
@@ -836,6 +1018,36 @@ lockPref("permissions.default.xr", 2);
 
 // If JIT (Ion/WarpMonkey) is disabled, also disable it for extensions
 lockPref("javascript.options.jit_trustedprincipals", false); 
+
+// Disable Android Debugging
+lockPref("devtools.remote.adb.extensionID", "");
+lockPref("devtools.remote.adb.extensionURL", "");
+
+// Disable DRM/EME
+lockPref("media.eme.encrypted-media-encryption-scheme.enabled", false);
+lockPref("media.eme.hdcp-policy-check.enabled", false);
+
+// Disable FFmpeg
+lockPref("media.ffmpeg.enabled", false);
+lockPref("media.ffmpeg.encoder.enabled", false);
+lockPref("media.ffmpeg.vaapi.enabled", false);
+lockPref("media.rdd-ffmpeg.enabled", false);
+lockPref("media.utility-ffmpeg.enabled", false);
+
+// Disable Firefox Translations
+lockPref("browser.translations.automaticallyPopup", false);
+lockPref("browser.translations.enable", false);
+lockPref("browser.translations.select.enable", false);
+lockPref("browser.translations.simulateUnsupportedEngine", true);
+
+// Disable Narrator (broken!)
+lockPref("narrate.enabled", false);
+
+// Disable Reader Mode (Broken!)
+lockPref("reader.parse-on-load.enabled", false);
+
+// Disable SVG
+lockPref("svg.disabled", true);
 
 /* -----------------------------------------------------------------------------------
    015 PASSWORDS & AUTHENTICATION
@@ -903,6 +1115,13 @@ lockPref("dom.payments.request.user_interaction_required", true);
 // Prevent cross-origin sub-resources from opening HTTP authentication dialogs to protect against phishing
 lockPref("network.auth.subresource-img-cross-origin-http-auth-allow", false);
 
+// Re-enable Password Manager by default
+lockPref("signon.rememberSignons", true);
+
+// Allow cross-origin sub-resources to open HTTP authentication dialogs
+lockPref("network.auth.non-web-content-triggered-resources-http-auth-allow", true);
+lockPref("network.auth.subresource-http-auth-allow", 2);
+
 /* -----------------------------------------------------------------------------------
    016 EXTENSIONS
    ----------------------------------------------------------------------------------- */
@@ -925,13 +1144,12 @@ lockPref("extensions.startupScanScopes", 0);
 
 // Disable the AMO Abuse Report API (`navigator.mozAddonManager.reportAbuse`)
 lockPref("extensions.addonAbuseReport.url", "");
-
-// Disable installation of add-ons by default [DESKTOP]
-lockPref("xpinstall.enabled", false);
+lockPref("extensions.abuseReport.enabled", false);
 
 // Disable mozAddonManager
 lockPref("extensions.webapi.testing", false);
 lockPref("extensions.webapi.testing.http", false);
+lockPref("extensions.webapi.enabled", true);
 lockPref("privacy.resistFingerprinting.block_mozAddonManager", true);
 
 // Enable Add-on Distribution Control (Install Origins)
@@ -981,9 +1199,6 @@ lockPref("extensions.openPopupWithoutUserGesture.enabled", false);
 // Prevent extensions from using the Gecko Profiler
 lockPref("extensions.geckoProfiler.acceptedExtensionIds", ""); 
 
-// Prevent unprivileged extensions from accessing experimental APIs by default
-lockPref("extensions.experiments.enabled", false);
-
 // Prevent hiding extensions 
 lockPref("devtools.aboutdebugging.showHiddenAddons", true);
 
@@ -992,6 +1207,17 @@ lockPref("extensions.content_web_accessible.enabled", true);
 
 // Require secure origins to install add-ons
 lockPref("extensions.install.requireSecureOrigin", true);
+
+// Allow unprivileged extensions to use experimental APIs
+lockPref("extensions.experiments.enabled", true);
+
+// Unbreak installation of add-ons from ATN (`addons.thunderbird.net`) if mozAddonManager is disabled
+lockPref("extensions.InstallTrigger.enabled", true);
+lockPref("extensions.InstallTriggerImpl.enabled", true)
+
+// Update AMO API
+lockPref("extensions.getAddons.get.url", "https://services.addons.thunderbird.net/api/v4/addons/search/?guid=%IDS%&lang=%LOCALE%");
+lockPref("extensions.getAddons.langpacks.url", "https://services.addons.thunderbird.net/api/v4/addons/language-tools/?app=thunderbird&type=language&appversion=%VERSION%");
 
 /* -----------------------------------------------------------------------------------
    018 GEOLOCATION
@@ -1018,8 +1244,16 @@ lockPref("geo.provider.network.debug.requestCache.enabled", true);
 // Prevent unconditionally providing high location accuracy 
 lockPref("geo.provider.geoclue.always_high_accuracy", false);
 
-// Set BeaconDB as the default network geolocation provider
-lockPref("geo.provider.network.url", "https://api.beacondb.net/v1/geolocate");
+// Disable Geolocation
+lockPref("geo.prompt.open_system_prefs", false);
+lockPref("geo.provider.network.scan", false);
+lockPref("geo.provider.network.url", "");
+lockPref("geo.provider.use_geoclue", false);
+lockPref("network.wifi.scanning_period", 0);
+lockPref("widget.use-xdg-desktop-portal.location", 0);
+
+// Disable OS file indexing/search integration for email by default
+lockPref("searchintegration.enable", false);
 
 /* -----------------------------------------------------------------------------------
    019 PDF.js
@@ -1076,6 +1310,9 @@ lockPref("pdfjs.historyUpdateUrl", true);
 /* -----------------------------------------------------------------------------------
    020 SAFE BROWSING
    ----------------------------------------------------------------------------------- */
+
+// (Attempt to) Unbreak Tracking Protection list downloads
+lockPref("browser..provider.mozilla.updateURL", "https://shavar.services.mozilla.com/downloads?client=navclient-auto-ffox&appver=%VERSION%&pver=2.2");
 
 // By default, when you report a Safe Browsing false positive, it sends the URL to both Mozilla & Google (NOT PROXIED), as well as your locale to Mozilla
 lockPref("browser.safebrowsing.provider.google.reportMalwareMistakeURL", "https://safebrowsing.google.com/safebrowsing/report_error/?tpl=mozilla&url=");
@@ -1146,6 +1383,9 @@ lockPref("browser.safebrowsing.provider.google5.reportURL", "https://transparenc
    021 MISC. PRIVACY + SECURITY
    ----------------------------------------------------------------------------------- */
 
+// Disable WebGL
+lockPref("webgl.disabled", true);
+
 // Disable Accessibility Services
 lockPref("accessibility.force_disabled", 1);
 lockPref("devtools.accessibility.enabled", false);
@@ -1213,6 +1453,18 @@ lockPref("dom.use_components_shim", false);
 /* -----------------------------------------------------------------------------------
    022 MISC. PRIVACY
    ----------------------------------------------------------------------------------- */
+
+// Warn users if they have not addressed a BCC (Blind Carbon Copy) warning
+lockPref("mail.compose.warn_public_recipients.aggressive", true);
+
+// Prevent calendar from extracting data from emails by default
+lockPref("calendar.extract.service.enabled", false);
+
+// Remove default Google Groups link
+lockPref("mailnews.messageid_browser.url", "");
+
+// Disable automatic collection of email addresses for Thunderbird's Address Book
+lockPref("mail.collect_email_address_outgoing", false);
 
 // Block ports currently known to be abused by Android apps for tracking/fingerprinting[
 lockPref("network.security.ports.banned", "29009, 29010, 30102, 30103, 12387, 12388, 12580, 12581, 12582, 12583, 12584, 12585, 12586, 12587, 12588, 12589, 12590, 12591");
@@ -1292,9 +1544,39 @@ lockPref("privacy.query_stripping.strip_on_share.enabled", true);
 // Trim cross-origin referers (Like Safari)
 lockPref("network.http.referer.XOriginTrimmingPolicy", 2);
 
+// Only send cross-origin referers if hosts match
+lockPref("network.http.referer.XOriginPolicy", 2);
+
 /* -----------------------------------------------------------------------------------
    023 MISC. SECURITY
    ----------------------------------------------------------------------------------- */
+
+// Always warn users before launching other apps
+lockPref("mail.external_protocol_requires_permission", true);
+
+// Enable built-in phishing protection
+lockPref("mail.phishing.detection.disallow_form_actions", true);
+lockPref("mail.phishing.detection.enabled", true);
+lockPref("mail.phishing.detection.ipaddresses", true);
+lockPref("mail.phishing.detection.mismatched_hosts", true);
+
+// Prevent 3rd party software from intercepting & analyzing emails
+lockPref("mailnews.downloadToTempFile", false);
+
+// Limit classes that can process incoming data
+lockPref("mailnews.display.disallow_mime_handlers", 3);
+lockPref("rss.display.disallow_mime_handlers", 3);
+
+// Sanitize HTML content
+lockPref("mail.html_sanitize.drop_conditional_css", true);
+lockPref("mailnews.display.html_as", 3);
+lockPref("rss.display.html_as", 3);
+
+// Enable mozilla::pkix certificate verification
+lockPref("security.use_mozillapkix_verification", true);
+
+// Disable insecure NTLMv1
+lockPref("network.negotiate-auth.allow-insecure-ntlm-v1", false);
 
 // Always prompt users for a certificate when websites request one, rather than automatically selecting one...
 lockPref("security.default_personal_cert", "Ask Every Time");
@@ -1433,6 +1715,39 @@ lockPref("security.turn_off_all_security_so_that_viruses_can_take_over_this_comp
    024 MISC.
    ----------------------------------------------------------------------------------- */
 
+// Allow using Thunderbird without a configured email account
+lockPref("app.use_without_mail_account", true);
+
+// Disable `mailto:` warning...
+lockPref("network.protocol-handler.warn-external.mailto", false);
+
+// Disable support for web applications manifests
+lockPref("dom.manifest.enabled", false);
+
+// Native support for Microsoft Exchange Web Services
+lockPref("experimental.mail.ews.enabled", false);
+lockPref("mailnews.auto_config.addons_url", "data;");
+
+// Prefer viewing emails in plaintext by default
+lockPref("mailnews.display.prefer_plaintext", true);
+
+// Prevent status bar spoofing
+lockPref("dom.disable_window_status_change", true);
+
+// Re-enable SharedArrayBuffer using window.postMessage
+lockPref("dom.postMessage.sharedArrayBuffer.withCOOP_COEP", true);
+
+// Send emails in plaintext by default
+lockPref("mail.default_send_format", 1);
+lockPref("mail.html_compose", false);
+lockPref("mail.identity.default.compose_html", false);
+
+// Use a blank new tab page
+lockPref("browser.newtabpage.enabled", false);
+
+// Enable stricter media autoplay blocking
+lockPref("media.autoplay.blocking_policy", 2);
+
 // Block pop-ups by default
 lockPref("dom.disable_open_during_load", true);
 
@@ -1485,6 +1800,22 @@ lockPref("extensions.cookie.rejectWhenInvalid", true);
 
 // Show an error page/details instead of a blank page for HTTP responses with certain error codes (ex. 4xx, 5xx, & Content-Length: 0)
 lockPref("browser.http.blank_page_with_error_response.enabled", false);
+
+/* -----------------------------------------------------------------------------------
+   RSS
+   ----------------------------------------------------------------------------------- */
+
+// Load summary of RSS feeds instead of the full webpage by default
+lockPref("rss.show.summary", 1);
+
+// Open RSS webpages in your web browser instead of Thunderbird
+lockPref("rss.show.content-base", 3);
+
+// Prefer viewing RSS feeds in plaintext by default
+lockPref("rss.display.prefer_plaintext", true);
+
+// Prevent selection of RSS messages from automatically loading the web page
+lockPref("rss.message.loadWebPageOnSelect", 0);
 
 /* -----------------------------------------------------------------------------------
    025 DEBUGGING
@@ -1584,6 +1915,7 @@ lockPref("browser.cache.jsbc_compression_level", 3);
 lockPref("ui.panelAnimations", 0);
 lockPref("ui.prefersReducedMotion", 1);
 lockPref("ui.swipeAnimationEnabled", 0);
+lockPref("browser.preferences.animateFadeIn", false);
 
 // Disable CSS error reporting by default
 lockPref("layout.css.report_errors", false);
@@ -1669,6 +2001,36 @@ lockPref("gfx.webrender.low-quality-pinch-zoom", true);
    027 Personal Touch
    ----------------------------------------------------------------------------------- */
 
+// Show progress when saving/sending a message
+lockPref("mailnews.show_send_progress", true);
+
+// Use underscores instead of spaces in file names when saving messages by default
+lockPref("mail.save_msg_filename_underscores_for_space", true);
+
+// Wrap lines by default
+lockPref("mail.wrap_long_lines", true);
+
+// Prevent automatically converting emoticons to emojis
+lockPref("mail.display_glyph", false);
+
+// Enable the global indexer (Gloda) by default
+lockPref("mailnews.database.global.indexer.enabled", true);
+
+// Enable the new Account Hub by default
+lockPref("mail.accounthub.addressbook.enabled", true);
+lockPref("mail.accounthub.enabled", true);
+
+// Enable inline spellcheck when composing messages + check before sending by default
+lockPref("mail.spellcheck.inline", true);
+lockPref("mail.SpellCheckBeforeSend", true);
+
+// Disable extra logging for policies by default
+lockPref("browser.policies.loglevel", "Error");
+
+// Enable dark theme for the message pane
+lockPref("mail.dark-reader.enabled", true);
+lockPref("mail.dark-reader.show-toggle", true);
+
 // Allow downloading and switching locales
 lockPref("app.update.langpack.enabled", true);
 lockPref("intl.multilingual.downloadEnabled", true);
@@ -1735,9 +2097,6 @@ lockPref("ui.prefersReducedTransparency", 0);
 lockPref("ui.scrollToClick", 1);
 lockPref("ui.useAccessibilityTheme", 0);
 
-// Hide the Title Bar by default
-lockPref("browser.tabs.inTitlebar", 1);
-
 // Prevent the alt key from toggling menu bar by default
 lockPref("ui.key.menuAccessKeyFocuses", false);
 
@@ -1753,6 +2112,104 @@ lockPref("services.settings.loglevel", "warn");
 // Set default URL to load when navigating to `moz://a`
 lockPref("toolkit.mozprotocol.url", "about:mozilla");
 
+/* -----------------------------------------------------------------------------------
+   CHAT
+   ----------------------------------------------------------------------------------- */
+
+defaultPref("mail.chat.enabled", false);
+
+// Disable reporting chat idle status
+lockPref("messenger.status.reportIdle", false);
+
+// Disable reporting chat status as 'away' when idle
+lockPref("messenger.status.awayWhenIdle", false);
+
+// Disable sending chat typing notifications
+lockPref("purple.conversations.im.send_typing", false);
+
+// Disable logging chat history
+lockPref("purple.logging.log_chats", false);
+lockPref("purple.logging.log_ims", false);
+
+// Disable logging E2EE messages (OTR)
+lockPref("chat.otr.default.allowMsgLog", false);
+
+// Prevent leaking info in chat notifications
+lockPref("mail.chat.notification_info", 2);
+
+// Enable Off-the-record messaging (OTR)
+lockPref("chat.otr.enable", true);
+
+// Disable legacy XMPP gateways for Facebook, Google, Twitter, and Yahoo
+lockPref("chat.prpls.prpl-facebook.disable", true);
+lockPref("chat.prpls.prpl-gtalk.disable", true);
+lockPref("chat.prpls.prpl-twitter.disable", true);
+lockPref("chat.prpls.prpl-yahoo.disable", true);
+
+// Enable the 'Bubbles' chat theme by default [CHAT]
+lockPref("messenger.options.messagesStyle.theme", "bubbles");
+
+// Remind users to verify unverified contacts (OTR)
+lockPref("chat.otr.default.verifyNudge", true);
+
+// Require E2EE for chat conversations by default (OTR)
+lockPref("chat.otr.default.requireEncryption", true);
+
+/* -----------------------------------------------------------------------------------
+   UI
+   ----------------------------------------------------------------------------------- */
+
+// Show email information + headers
+lockPref("mail.show_headers", 2);
+lockPref("mailnews.display.date_senders_timezone", true);
+lockPref("mailnews.headers.showArchivedAt", true);
+lockPref("mailnews.headers.showListArchive", true);
+lockPref("mailnews.headers.showListHelp", true);
+lockPref("mailnews.headers.showListOwner", true);
+lockPref("mailnews.headers.showListPost", true);
+lockPref("mailnews.headers.showListSubscribe", true);
+lockPref("mailnews.headers.showListUnsubscribe", true);
+lockPref("mailnews.headers.showMessageId", true);
+lockPref("mailnews.headers.showOrganization", true);
+lockPref("mailnews.headers.showReferences", true);
+lockPref("mailnews.headers.showSender", true);
+lockPref("mailnews.headers.showUserAgent", true);
+
+// Show full email addresses
+lockPref("mail.addressDisplayFormat", 0);
+lockPref("mail.showCondensedAddresses", false);
+
+/* -----------------------------------------------------------------------------------
+   E2EE
+   ----------------------------------------------------------------------------------- */
+
+// Automatically encrypt when possible
+lockPref("mail.e2ee.auto_enable", true);
+
+// Enable advanced E2EE settings
+lockPref("temp.openpgp.advancedUser", true);
+
+// Never automatically disable E2EE...
+lockPref("mail.e2ee.auto_disable", false);
+
+// Notify when E2EE is disabled
+lockPref("mail.e2ee.notify_on_auto_disable", true);
+
+// Notify when E2EE is possible
+lockPref("mail.openpgp.remind_encryption_possible", true);
+lockPref("mail.smime.remind_encryption_possible", true);
+
+// Prevent accepting insecure S/MIME signatures
+lockPref("mail.smime.accept_insecure_sha1_message_signatures", false);
+
+// Sign messages by default
+lockPref("mail.identity.default.sign_mail", true);
+
+// Use GnuPG if built-in RNP fails
+lockPref("mail.openpgp.allow_external_gnupg", true);
+
+// Warn users when using a deprecated version of GnuPG
+lockPref("temp.openpgp.warnDeprecatedGnuPG", true);
 
 /* -----------------------------------------------------------------------------------
    FINE
