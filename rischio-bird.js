@@ -407,6 +407,318 @@ lockPref("browser.zoom.siteSpecific", true);
    005 DISK AVOIDANCE
    ----------------------------------------------------------------------------------- */
 
+// Allow permission manager to write to disk
+lockPref("permissions.memory_only", false); 
+
+// Allow users to automatically delete files downloaded in Private Browsing
+lockPref("browser.download.enableDeletePrivate", true);
+
+// Disable back/forward cache (bfcache)
+lockPref("browser.sessionhistory.max_total_viewers", 0);
+lockPref("fission.bfcacheInParent", false);
+
+// Disable collection/generation of background thumbnails
+lockPref("browser.pagethumbnails.capturing_disabled", true);
+
+// Disable collection/generation of wireframes
+lockPref("browser.history.collectWireframes", false);
+
+// Disable coloring visited links
+lockPref("layout.css.visited_links_enabled", false);
+
+// Disable disk cache
+lockPref("browser.cache.disk.enable", false);
+lockPref("browser.cache.disk_cache_ssl", true);
+
+// Disable favicons in shortcuts 
+lockPref("browser.shell.shortcutFavicons", false); 
+
+lockPref("browser.contentblocking.database.enabled", false);
+
+// Disable Search & Form History
+lockPref("browser.formfill.enable", false);
+
+// Disable WebRTC history
+lockPref("media.aboutwebrtc.hist.enabled", false);
+
+// Disable window state restoration
+lockPref("browser.restoreWindowState.disabled", true);
+
+// Increase the interval between between Session Store save operations
+lockPref("browser.sessionstore.interval", 600000); // 10 minutes
+
+// Prevent storing unnecessary extra session data
+lockPref("browser.sessionstore.privacy_level", 2);
+
+// Prevent writing media cache (ex. for video streaming) to disk in private windows
+lockPref("browser.privatebrowsing.forceMediaMemoryCache", true);
+
+// Remove cached files from browser windows opened with external applications
+lockPref("browser.download.start_downloads_in_tmp_dir", true);
+lockPref("browser.helperApps.deleteTempFileOnExit", true);
+
+/* -----------------------------------------------------------------------------------
+   006 DOWNLOADS
+   ----------------------------------------------------------------------------------- */
+
+// Block insecure downloads
+lockPref("dom.block_download_insecure", true);
+
+// Disable extra download logging by default
+lockPref("browser.download.loglevel", "Error");
+
+// Notify when downloading files
+lockPref("browser.download.alwaysOpenPanel", true);
+
+// Prevent adding downloads to "recent documents"...
+lockPref("browser.download.manager.addToRecentDocs", false);
+
+// Prompt before downloading files
+lockPref("browser.download.always_ask_before_handling_new_types", true);
+lockPref("browser.download.useDownloadDir", false);
+
+/* -----------------------------------------------------------------------------------
+   007 HTTP(S)
+   ----------------------------------------------------------------------------------- */
+
+// Allow users to bypass invalid certificate errors by default
+lockPref("security.certerror.hideAddException", false); 
+
+// Always preload intermediates
+lockPref("security.remote_settings.intermediates.enabled", true);
+
+// Always warn on insecure webpages
+lockPref("security.insecure_connection_text.enabled", true);
+lockPref("security.insecure_connection_text.pbmode.enabled", true);
+lockPref("security.ssl.treat_unsafe_negotiation_as_broken", true);
+
+// Always warn when submitting a form from HTTP to HTTPS, even on local IP addresses
+lockPref("security.insecure_field_warning.ignore_local_ip_address", false);
+lockPref("security.warn_submit_secure_to_insecure", true);
+
+// Disable the automatic import of OS client authentication certificates
+lockPref("security.osclientcerts.autoload", false);
+
+// Disable downgrades to insecure TLS 1.0/1.1
+lockPref("security.tls.insecure_fallback_hosts", "");
+lockPref("security.tls.version.enable-deprecated", false);
+
+// Disable insecure ciphers (Like Chromium & Tor Browser)
+lockPref("security.ssl3.dhe_rsa_aes_128_sha", false);
+lockPref("security.ssl3.dhe_rsa_aes_256_sha", false);
+lockPref("security.ssl3.ecdhe_ecdsa_aes_128_sha", false);
+lockPref("security.ssl3.ecdhe_ecdsa_aes_256_sha", false);
+
+// Disable Parental Controls
+lockPref("network.parental_controls_cached_state", false);
+
+// Disable sending background HTTP requests to websites that do not respond quickly to check if they support HTTPS
+lockPref("dom.security.https_only_mode_send_http_background_request", false);
+
+// Disable third-party/OS-level root certificates
+lockPref("security.certerrors.mitm.auto_enable_enterprise_roots", false); 
+lockPref("security.enterprise_roots.enabled", false);
+
+// Ensure HTTP/3 isn't disabled when/if third-party/OS-level root certificates are found
+lockPref("network.http.http3.disable_when_third_party_roots_found", false);
+
+// Disable TLS 1.3 0-RTT
+lockPref("network.http.http3.enable_0rtt", false);
+lockPref("security.tls.enable_0rtt_data", false);
+
+// Enable (+ enforce) Certificate Transparency
+lockPref("security.pki.certificate_transparency.disable_for_hosts", "");
+lockPref("security.pki.certificate_transparency.disable_for_spki_hashes", "");
+lockPref("security.pki.certificate_transparency.mode", 2);
+
+// Enable CRLite revocation checks & prioritize over OCSP
+lockPref("security.pki.crlite_mode", 2);
+lockPref("security.remote_settings.crlite_filters.enabled", true);
+
+// Enable Delegated Credentials
+lockPref("security.tls.enable_delegated_credentials", true);
+
+// Enable MITM Detection
+lockPref("security.certerrors.mitm.priming.enabled", true);
+lockPref("security.certerrors.mitm.priming.endpoint", "https://mitmdetection.services.mozilla.com/");
+
+// Enable OCSP stapling
+lockPref("security.ssl.enable_ocsp_must_staple", true);
+lockPref("security.ssl.enable_ocsp_stapling", true);
+
+// Enable Post Quantum Key Agreement (Kyber)
+lockPref("media.webrtc.enable_pq_dtls", true);
+lockPref("network.http.http3.enable_kyber", true);
+lockPref("security.tls.client_hello.send_p256_keyshare", true);
+lockPref("security.tls.enable_kyber", true);
+
+// Enable prompts for unsafe HTTP redirects
+lockPref("network.http.prompt-temp-redirect", true);
+
+// Enforce Strict Certificate Pinning
+lockPref("security.cert_pinning.enforcement_level", 2);
+
+// Enforce TLS 1.3 downgrade protection
+lockPref("security.tls.hello_downgrade_check", true);
+
+// Enforce using HTTPS as much as possible
+lockPref("dom.securecontext.allowlist", "");
+lockPref("dom.security.https_first", true);
+lockPref("dom.security.https_first_for_custom_ports", true);
+lockPref("dom.security.https_first_for_local_addresses", true);
+lockPref("dom.security.https_first_for_unknown_suffixes", true);
+lockPref("dom.security.https_first_pbm", true);
+lockPref("dom.security.https_first_schemeless", true);
+lockPref("dom.security.https_only_mode", true);
+lockPref("dom.security.https_only_mode.upgrade_local", true);
+lockPref("dom.security.https_only_mode_pbm", true);
+lockPref("security.mixed_content.block_active_content", true);
+lockPref("security.mixed_content.block_display_content", false);
+lockPref("security.mixed_content.block_object_subrequest", true);
+lockPref("security.mixed_content.upgrade_display_content", true);
+lockPref("security.mixed_content.upgrade_display_content.audio", true);
+lockPref("security.mixed_content.upgrade_display_content.image", true);
+lockPref("security.mixed_content.upgrade_display_content.video", true);
+
+// Ensure we use the HSTS preload list
+lockPref("network.stricttransportsecurity.preloadlist", true);
+
+// If HTTPS-Only Mode is disabled in favor of HTTPS-First, prevent automatically exempting domains (to ensure we always try HTTPS first...)
+lockPref("dom.security.https_first_add_exception_on_failure", false);
+
+// Only allow certificate error exceptions per-session
+lockPref("security.certerrors.permanentOverride", false);
+
+// Only load secure websockets from HTTPS pages
+lockPref("network.websocket.allowInsecureFromHTTPS", false);
+
+// Require safe renegotiations
+lockPref("security.ssl.require_safe_negotiation", true);
+
+// Show detailed information on insecure warning pages
+lockPref("browser.xul.error_pages.expert_bad_cert", true);
+
+// Show suggestions when an HTTPS page can not be found 
+lockPref("dom.security.https_only_mode_error_page_user_suggestions", true);
+
+/* -----------------------------------------------------------------------------------
+   008 IMPLICIT CONNECTIONS
+   ----------------------------------------------------------------------------------- */
+
+// Disable Early Hints (Like Cromite)
+lockPref("network.early-hints.enabled", false);
+lockPref("network.early-hints.over-http-v1-1.enabled", false);
+lockPref("network.early-hints.preconnect.enabled", false);
+lockPref("network.early-hints.preconnect.max_connections", 0);
+
+// Disable Network Prefetching
+lockPref("dom.prefetch_dns_for_anchor_http_document", false);
+lockPref("dom.prefetch_dns_for_anchor_https_document", false);
+lockPref("network.dns.disablePrefetch", true);
+lockPref("network.dns.disablePrefetchFromHTTPS", true);
+lockPref("network.dns.prefetch_via_proxy", false);
+lockPref("network.http.speculative-parallel-limit", 0);
+lockPref("network.predictor.enable-hover-on-ssl", false);
+lockPref("network.predictor.enable-prefetch", false);
+lockPref("network.predictor.enabled", false);
+lockPref("network.prefetch-next", false);
+
+// Disable Preconnect
+lockPref("network.preconnect", false);
+
+// Prevent middle mouse clicks from pasting clipboard contents by default
+lockPref("middlemouse.paste", false);
+
+// Prevent middle mouse clicks on new tab button opening URLs or searches from clipboard
+lockPref("browser.tabs.searchclipboardfor.middleclick", false);
+lockPref("middlemouse.contentLoadURL", false);
+
+/* -----------------------------------------------------------------------------------
+   009 SEARCH & URL BAR
+   ----------------------------------------------------------------------------------- */
+
+// Hide using a different search engine in normal vs. private Windows
+lockPref("browser.search.separatePrivateDefault.ui.enabled", false);
+
+// Always show Punycode
+lockPref("network.IDN_show_punycode", true);
+
+// Disable search suggestions by default
+lockPref("browser.search.suggest.enabled", false);
+lockPref("browser.search.suggest.enabled.private", false);
+
+// Use the same search engine in normal and private browsing windows by default
+lockPref("browser.search.separatePrivateDefault", false);
+
+/* -----------------------------------------------------------------------------------
+   010 DNS
+   ----------------------------------------------------------------------------------- */
+
+// Disable DoH Connectivity Checks
+lockPref("network.connectivity-service.DNS_HTTPS.domain", "");
+lockPref("network.trr.confirmationNS", "skip");
+lockPref("network.trr.skip-check-for-blocked-host", true);
+
+// Disable EDNS Client Subnet (ECS) to prevent leaking general location data to authoritative DNS servers...
+lockPref("network.trr.disable-ECS", true);
+
+// Disable falling back to system DNS by default
+lockPref("network.trr.retry_on_recoverable_errors", true);
+lockPref("network.trr.strict_native_fallback", true);
+
+// Disable nsNotifyAddrListener
+lockPref("network.notify.changed", false);
+lockPref("network.notify.checkForNRPT", false);
+lockPref("network.notify.checkForProxies", false);
+lockPref("network.notify.dnsSuffixList", false);
+lockPref("network.notify.initial_call", false);
+lockPref("network.notify.IPv6", false);
+lockPref("network.notify.resolvers", false);
+
+// Enable DNS Rebinding Protection
+lockPref("network.trr.allow-rfc1918", false);
+
+// Enable DoH without fallback & Set to Quad9 by default
+lockPref("network.trr.default_provider_uri", "https://dns.quad9.net/dns-query");
+lockPref("network.trr.mode", 3);
+
+// Enable EncryptedClientHello
+lockPref("network.dns.echconfig.enabled", true);
+lockPref("network.dns.http3_echconfig.enabled", true);
+
+// Enable native DNS HTTPS Lookups
+lockPref("network.dns.native_https_query", true);
+
+// Ensure we clear cache upon changing DoH prefs
+lockPref("network.trr.clear-cache-on-pref-change", true);
+
+// Fix IPv6 connectivity when DoH is enabled
+lockPref("network.dns.preferIPv6", true);
+
+// Prevent bypassing DoH for /etc/HOSTS entries by default
+lockPref("network.trr.exclude-etc-hosts", false);
+
+// Prevent sending headers for DoH requests
+lockPref("network.trr.send_accept-language_headers", false);
+lockPref("network.trr.send_empty_accept-encoding_headers", true);
+lockPref("network.trr.send_user-agent_headers", false);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Controllo versione
 lockPref("rischio.bird", "OK");
