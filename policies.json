@@ -1,1 +1,9 @@
-
+{
+  "policies": {
+    "DisableTelemetry": true
+  },
+  "InAppNotification": {
+    "DonationEnabled": false,
+    "SurveyEnabled": false
+  }
+}
