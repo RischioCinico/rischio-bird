@@ -243,28 +243,169 @@ lockPref("termsofuse.acceptedDate", "32503679999000");
 lockPref("termsofuse.acceptedVersion", 999);
 lockPref("termsofuse.bypassNotification", true);
 
+/* -----------------------------------------------------------------------------------
+   003 TRACKING PROTECTION
+   ----------------------------------------------------------------------------------- */
 
+// Disable exceptions for minor issues by default
+lockPref("privacy.trackingprotection.allow_list.convenience.enabled", false);
 
+// Enable ETP Strict
+lockPref("browser.contentblocking.category", "strict"); 
 
+// Block known consent managers (CMPs)
+lockPref("privacy.trackingprotection.consentmanager.annotate_channels", true);
+lockPref("privacy.trackingprotection.consentmanager.skip.enabled", false);
+lockPref("privacy.trackingprotection.consentmanager.skip.pbmode.enabled", false);
 
+// Block known cryptominers
+lockPref("privacy.trackingprotection.cryptomining.enabled", true);
 
+// Block known email trackers
+lockPref("privacy.trackingprotection.emailtracking.enabled", true);
+lockPref("privacy.trackingprotection.emailtracking.pbmode.enabled", true);
 
+// Block known fingerprinters
+lockPref("privacy.trackingprotection.antifraud.annotate_channels", true);
+lockPref("privacy.trackingprotection.antifraud.skip.enabled", false);
+lockPref("privacy.trackingprotection.antifraud.skip.pbmode.enabled", false);
+lockPref("privacy.trackingprotection.fingerprinting.enabled", true);
 
+// Block known social trackers
+lockPref("privacy.trackingprotection.socialtracking.enabled", true);
 
+// Block known trackers
+lockPref("privacy.trackingprotection.annotate_channels", true);
+lockPref("privacy.trackingprotection.enabled", true);
+lockPref("privacy.trackingprotection.pbmode.enabled", true);
 
+// Block known trackers using the `strict` (Level 2) list
+lockPref("privacy.annotate_channels.strict_list.enabled", true);
+lockPref("privacy.annotate_channels.strict_list.pbmode.enabled", true);
 
+// Block known tracking cookies
+lockPref("network.cookie.cookieBehavior.trackerCookieBlocking", true);
+lockPref("privacy.socialtracking.block_cookies.enabled", true);
 
+// Enable Bounce Tracking Protection
+lockPref("privacy.bounceTrackingProtection.mode", 1);
+lockPref("privacy.bounceTrackingProtection.requireStatefulBounces", false);
 
+// Enable Query Parameter Stripping
+lockPref("privacy.query_stripping.enabled", true);
+lockPref("privacy.query_stripping.enabled.pbmode", true);
+lockPref("privacy.query_stripping.redirect", true);
 
+// Enable SmartBlock & UA overrides/injections
+lockPref("extensions.webcompat.enable_shims", true);
+lockPref("extensions.webcompat.perform_injections", true);
+lockPref("extensions.webcompat.perform_ua_overrides", true);
+lockPref("extensions.webcompat.smartblockEmbeds.enabled", true);
 
+// Enable State Partitioning
+lockPref("network.fetch.cache_partition_cross_origin", true);
+lockPref("privacy.partition.always_partition_third_party_non_cookie_storage", true);
+lockPref("privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage", false);
+lockPref("privacy.partition.bloburl_per_partition_key", true);
+lockPref("privacy.partition.network_state", true);
+lockPref("privacy.partition.network_state.ocsp_cache", true);
+lockPref("privacy.partition.network_state.ocsp_cache.pbmode", true);
+lockPref("privacy.partition.serviceWorkers", true);
 
+// Enable Suspected Fingerprinters Protection (FPP)
+lockPref("privacy.fingerprintingProtection", true);
+lockPref("privacy.fingerprintingProtection.pbmode", true);
+lockPref("privacy.reduceTimerPrecision", true);
 
+// Enable TCP/dFPI
+lockPref("network.cookie.cookieBehavior", 5);
+lockPref("network.cookie.cookieBehavior.optInPartitioning", true);
+lockPref("network.cookie.cookieBehavior.optInPartitioning.pbmode", true);
+lockPref("network.cookie.cookieBehavior.pbmode", 5);
 
+// Ignore less restricted referer policies (than the default)
+lockPref("network.http.referer.disallowCrossSiteRelaxingDefault", true);
+lockPref("network.http.referer.disallowCrossSiteRelaxingDefault.pbmode", true);
+lockPref("network.http.referer.disallowCrossSiteRelaxingDefault.pbmode.top_navigation", true);
+lockPref("network.http.referer.disallowCrossSiteRelaxingDefault.top_navigation", true);
 
+// Exceptions required to avoid major breakage by default
+lockPref("privacy.trackingprotection.allow_list.baseline.enabled", false);
+lockPref("privacy.trackingprotection.allow_list.hasMigratedCategoryPrefs", false);
 
+// Lower the network priority of known trackers (if not blocked for whatever reason...)
+lockPref("privacy.trackingprotection.lower_network_priority", true);
 
+/* -----------------------------------------------------------------------------------
+   004 FINGERPRINTING PROTECTION
+   ----------------------------------------------------------------------------------- */
 
+// Disable the ability to switch locales without requiring a restart
+lockPref("intl.multilingual.liveReload", false);
+lockPref("intl.multilingual.liveReloadBidirectional", false);
 
+// Disable failIfMajorPerformanceCaveat in WebGL contexts
+lockPref("webgl.disable-fail-if-major-performance-caveat", true);
+
+// Disable VP9 Benchmark
+lockPref("media.benchmark.vp9.threshold", 0);
+
+// Do not use the theme's toolbar color scheme for in-content pages by default
+lockPref("browser.theme.unified-color-scheme", false);
+
+// Enable canvas randomization for the browser chrome
+lockPref("privacy.resistFingerprinting.randomization.canvas.disable_for_chrome", false);
+
+// Enable fdlibm for Math.sin, Math.cos, and Math.tan
+lockPref("javascript.options.use_fdlibm_for_sin_cos_tan", true);
+
+// If FPP/RFP is disabled, limit font visibility to base system fonts + fonts from
+lockPref("layout.css.font-visibility", 2);
+
+// Prevent enumeration of media devices
+lockPref("media.devices.enumerate.legacy.enabled", false);
+
+// Prevent exposing WebGL Renderer Info
+lockPref("webgl.enable-renderer-query", false);
+lockPref("webgl.override-unmasked-renderer", "Mozilla");
+lockPref("webgl.override-unmasked-vendor", "Mozilla");
+lockPref("webgl.sanitize-unmasked-renderer", false);
+
+// Prevent pre-allocating content processes
+lockPref("dom.ipc.processPrelaunch.enabled", false);
+lockPref("dom.ipc.processPrelaunch.fission.number", 0);
+
+// Prevent using system accent colors
+lockPref("widget.non-native-theme.use-theme-accent", false);
+
+// Prevent using system colors
+lockPref("browser.display.use_system_colors", false);
+lockPref("ui.use_standins_for_native_colors", true);
+
+// Prompt to spoof locale to en-US
+lockPref("privacy.spoof_english", 0);
+
+// Reset the fingerprinting randomization key daily (in addition to per-session/when the browser restarts)
+lockPref("privacy.resistFingerprinting.randomization.daily_reset.enabled", true);
+lockPref("privacy.resistFingerprinting.randomization.daily_reset.private.enabled", true);
+
+// Round window sizes
+lockPref("browser.startup.blankWindow", false);
+lockPref("privacy.window.maxInnerHeight", 900);
+lockPref("privacy.window.maxInnerWidth", 1600);
+
+// Set a fixed temporary storage limit
+lockPref("dom.quotaManager.temporaryStorage.fixedLimit", 52428800);
+
+// Set target video resolution to 1080p
+lockPref("privacy.resistFingerprinting.target_video_res", 1080);
+
+// Set zoom levels on a per-site basis
+lockPref("browser.zoom.siteSpecific", true);
+
+/* -----------------------------------------------------------------------------------
+   005 DISK AVOIDANCE
+   ----------------------------------------------------------------------------------- */
 
 
 // Controllo versione
