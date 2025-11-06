@@ -1,0 +1,11 @@
+<services>
+  <service name="obs_scm">
+    <param name="scm">git</param>
+    <param name="url">http://github.com/RischioCinico/rischio-bird</param>
+    <param name="filename">rischio-bird</param>
+    <param name="revision">main</param>
+    <param name="extract">impostazioni.js</param>
+    <param name="extract">rischio-bird.js</param>
+    <param name="extract">policies.json</param>
+  </service>
+</services>
