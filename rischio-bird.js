@@ -703,22 +703,144 @@ lockPref("network.trr.send_accept-language_headers", false);
 lockPref("network.trr.send_empty_accept-encoding_headers", true);
 lockPref("network.trr.send_user-agent_headers", false);
 
+/* -----------------------------------------------------------------------------------
+   011 PROXIES
+   ----------------------------------------------------------------------------------- */
+
+// Prevent from automatically using the system's proxy configuration by default
+lockPref("network.proxy.type", 0);
+
+// Always start proxy extensions (if installed) as soon as possible, instead of waiting for the first browser window to open
+lockPref("extensions.webextensions.early_background_wakeup_on_request", true);
+
+// Disable automatic failover from the proxy (if configured) to direct connections when certain system requests fail
+lockPref("network.proxy.failover_direct", false);
+
+// Disable file://net
+lockPref("network.file.path_blacklist", "/net"); 
+
+// Disable GIO
+lockPref("network.gio.supported-protocols", "");
+
+// Disable Uniform Naming Convention (UNC) file paths
+lockPref("network.file.disable_unc_paths", true);
+
+// Disable Wi-Fi Tickler
+lockPref("network.tickle-wifi.enabled", false);
+
+// Prevent bypassing the proxy (if configured) for system connections that include the `bypassProxy` flag
+lockPref("network.proxy.allow_bypass", false);
+
+// Use the proxy (if configured) for remote DNS lookups
+lockPref("network.proxy.socks_remote_dns", true);
+lockPref("network.proxy.socks5_remote_dns", true);
+
+/* -----------------------------------------------------------------------------------
+   012 WEBRTC 
+   ----------------------------------------------------------------------------------- */
+
+// Allow user to silence notifications when screen sharing
+lockPref("privacy.webrtc.allowSilencingNotifications", true); 
+lockPref("privacy.webrtc.hideGlobalIndicator", false); 
+
+// Always sandbox Media Transport
+lockPref("media.peerconnection.mtransport_process", true); 
+
+// Enable global toggles for muting the camera/microphone
+lockPref("privacy.webrtc.globalMuteToggles", true);
+
+// Enable mDNS Host Obfuscation to prevent leaking local IP addresses
+lockPref("media.peerconnection.ice.obfuscate_host_addresses", true);
+
+// Prevent WebRTC from bypassing the proxy (if configured)
+lockPref("media.peerconnection.ice.proxy_only_if_behind_proxy", true);
+
+// Warn users when attempting to switch tabs in a window being shared over WebRTC
+lockPref("privacy.webrtc.sharedTabWarning", true);
+
+/* -----------------------------------------------------------------------------------
+   013 MEDIA
+   ----------------------------------------------------------------------------------- */
+
+// Block media autoplay by default
+lockPref("media.autoplay.default", 5);
+lockPref("media.geckoview.autoplay.request.testing", 2);
+
+// Disable Encrypted Media Extensions (EME) (DRM)
+lockPref("media.eme.enabled", false);
+lockPref("media.eme.require-app-approval", true);
+
+// Disable Gecko Media Plugins (GMP)
+lockPref("media.gmp-manager.updateEnabled", false);
+
+// Disable GMP local sources
+lockPref("media.gmp-manager.allowLocalSources", false);
+
+// Disable GMP logging by default (to expose via the `about:config`)
+lockPref("media.gmp.log.dump", false);
+lockPref("media.gmp.log.level", 70);
+
+// Disable OpenH264 (in favor of hardware decoding)
+lockPref("media.ffmpeg.allow-openh264", false);
+lockPref("media.gmp-gmpopenh264.enabled", false);
+lockPref("media.gmp-gmpopenh264.visible", false);
+lockPref("media.webrtc.hw.h264.enabled", true);
+
+// Enable click to play UI for certain CSS skins by default
+lockPref("userContent.player.click_to_play", true); 
+
+// If GMP is enabled (via `media.gmp-manager.updateEnabled`), ensure that installed plug-ins are visible/exposed in `about:addons`
+lockPref("media.gmp-provider.enabled", true);
+
+// Sandbox GMP  
+lockPref("media.gmp.insecure.allow", false); 
+
+// Validate signature when updating GMP (if enabled)
+lockPref("media.gmp-manager.cert.checkAttributes", true);
+lockPref("media.gmp-manager.cert.requireBuiltIn", true);
+lockPref("media.gmp-manager.checkContentSignature", true);
+
+/* -----------------------------------------------------------------------------------
+   014 ATTACK SURFACE REDUCTION 
+   ----------------------------------------------------------------------------------- */
+
+// Disable ASM.JS
+lockPref("javascript.options.asmjs", false);
+
+// Disable Graphite & SVG OpenType fonts
+lockPref("gfx.font_rendering.graphite.enabled", false);
+lockPref("gfx.font_rendering.opentype_svg.enabled", false);
+
+// Disable JavaScript Just-in-time Compilation (JIT)
+lockPref("javascript.options.baselinejit", false);
+lockPref("javascript.options.ion", false);
+lockPref("javascript.options.jithints", false);
+lockPref("javascript.options.main_process_disable_jit", true);
+lockPref("javascript.options.native_regexp", false);
+lockPref("javascript.options.wasm_optimizingjit", false);
+
+// Disable JPEG-XL
+lockPref("image.jxl.enabled", false);
+
+// Disable MathML
+lockPref("mathml.disabled", true);
+
+// Disable shared memory allocation from the parent process to content processes
+lockPref("javascript.options.self_hosted.use_shared_memory", false);
+
+// Disable SharedArrayBuffer using window.postMessage
+lockPref("dom.postMessage.sharedArrayBuffer.bypassCOOP_COEP.insecure.enabled", false);
+
+// Disable WebVR/WebXR
+lockPref("permissions.default.xr", 2);
+
+// If JIT (Ion/WarpMonkey) is disabled, also disable it for extensions
+lockPref("javascript.options.jit_trustedprincipals", false); 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* -----------------------------------------------------------------------------------
+   FINE 
+   ----------------------------------------------------------------------------------- */
 
 // Controllo versione
 lockPref("rischio.bird", "OK");
