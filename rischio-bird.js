@@ -954,7 +954,7 @@ lockPref("extensions.webextensions.userScripts.enabled", true);
 lockPref("extensions.webcompat.useScriptingAPI", true);
 
 // Harden CSP policy
-lockPref("extensions.webextensions.base-content-security-policy", "script-src 'self' 'unsafe-inline'; upgrade-insecure-requests;"); `unsafe-inline` is required for Web Compatibility interventions (`about:compat`)
+lockPref("extensions.webextensions.base-content-security-policy", "script-src 'self' 'unsafe-inline'; upgrade-insecure-requests;");
 lockPref("extensions.webextensions.base-content-security-policy.v3", "script-src 'self'; upgrade-insecure-requests;");
 lockPref("extensions.webextensions.default-content-security-policy", "script-src 'self'; upgrade-insecure-requests;");
 lockPref("extensions.webextensions.default-content-security-policy.v3", "script-src 'self'; upgrade-insecure-requests;");
