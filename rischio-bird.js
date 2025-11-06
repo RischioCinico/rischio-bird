@@ -617,9 +617,6 @@ lockPref("browser.download.useDownloadDir", false);
    007 HTTP(S)
    ----------------------------------------------------------------------------------- */
 
-// Prompt before going online on Thunderbird's launch
-lockPref("offline.startup_state", 1);
-
 // Block Private Network Access requests unconditionally
 lockPref("network.lna.blocking", true);
 
