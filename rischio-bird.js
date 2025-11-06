@@ -1498,12 +1498,12 @@ lockPref("privacy.restrict3rdpartystorage.heuristic.window_open", false);
 lockPref("security.ssl.disable_session_identifiers", true);
 
 // Enable Cookie Banner Reduction
-lockPref("cookiebanners.bannerClicking.enabled", true);
-lockPref("cookiebanners.cookieInjector.enabled", true);
-lockPref("cookiebanners.service.mode", 1);
-lockPref("cookiebanners.service.mode.privateBrowsing", 1);
-lockPref("cookiebanners.service.enableGlobalRules", true);
-lockPref("cookiebanners.service.enableGlobalRules.subFrames", true);
+lockPref("cookiebanners.bannerClicking.enabled", false);
+lockPref("cookiebanners.cookieInjector.enabled", false);
+lockPref("cookiebanners.service.mode", 0);
+lockPref("cookiebanners.service.mode.privateBrowsing", 0);
+lockPref("cookiebanners.service.enableGlobalRules", false);
+lockPref("cookiebanners.service.enableGlobalRules.subFrames", false);
 
 // Enable Cookies Having Independent Partitioned State (CHIPS)
 lockPref("network.cookie.CHIPS.enabled", true);
