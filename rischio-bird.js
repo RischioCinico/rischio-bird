@@ -801,7 +801,7 @@ lockPref("media.gmp-manager.cert.requireBuiltIn", true);
 lockPref("media.gmp-manager.checkContentSignature", true);
 
 /* -----------------------------------------------------------------------------------
-   014 ATTACK SURFACE REDUCTION 
+   014 ATTACK SURFACE REDUCTION
    ----------------------------------------------------------------------------------- */
 
 // Disable ASM.JS
@@ -837,9 +837,193 @@ lockPref("permissions.default.xr", 2);
 // If JIT (Ion/WarpMonkey) is disabled, also disable it for extensions
 lockPref("javascript.options.jit_trustedprincipals", false); 
 
+/* -----------------------------------------------------------------------------------
+   015 PASSWORDS & AUTHENTICATION
+   ----------------------------------------------------------------------------------- */
+
+// Allow filling passwords on all websites, even if they try to block it...
+lockPref("signon.storeWhenAutocompleteOff", true);
+
+// Always display a `reveal password` button in `password` `<input>` types 
+lockPref("layout.forms.reveal-password-button.enabled", true);
+
+// Crash on insecure password input
+lockPref("intl.allow-insecure-text-input", false);
+
+// Disable Autofill
+lockPref("signon.autofillForms", false);
+lockPref("signon.autofillForms.http", false);
+
+// Disable Basic authentication over HTTP
+lockPref("network.http.basic_http_auth.enabled", false);
+
+// Disable formless capture of log-in credentials
+lockPref("signon.formlessCapture.enabled", false);
+lockPref("signon.privateBrowsingCapture.enabled", false);
+
+// Disable Microsoft SSO
+lockPref("network.http.microsoft-entra-sso.container-enabled.0", false);
+lockPref("network.http.microsoft-entra-sso.enabled", false);
+lockPref("network.http.windows-sso.container-enabled.0", false);
+lockPref("network.http.windows-sso.enabled", false);
+lockPref("network.microsoft-sso-authority-list", "");
+
+// Disable NTLM
+lockPref("network.auth.force-generic-ntlm", false);
+lockPref("network.auth.force-generic-ntlm-v1", false);
+lockPref("network.automatic-ntlm-auth.allow-non-fqdn", false);
+lockPref("network.automatic-ntlm-auth.allow-proxies", false);
+lockPref("network.automatic-ntlm-auth.trusted-uris", "");
+
+// Disable NTLM/SPNEGO SSO in Private Browsing
+lockPref("network.auth.private-browsing-sso", false);
+
+// Disable Password Manager by default - Insecure & unencrypted
+lockPref("extensions.formautofill.addresses.enabled", false);
+lockPref("extensions.formautofill.creditCards.enabled", false);
+
+// Disable password truncation
+lockPref("editor.truncate_user_pastes", false);
+
+// Disable SPNEGO
+lockPref("network.negotiate-auth.allow-non-fqdn", false);
+lockPref("network.negotiate-auth.allow-proxies", false);
+lockPref("network.negotiate-auth.delegation-uris", "");
+lockPref("network.negotiate-auth.trusted-uris", "");
+
+// Enable anti-spoof confirmation prompts
+lockPref("network.auth.confirmAuth.enabled", true);
+
+// Enable strong password generation (if the Password Manager is enabled) by default
+lockPref("signon.generation.enabled", true);
+
+// If the PaymentRequest API is enabled, ensure we always require user interaction...
+lockPref("dom.payments.request.user_interaction_required", true);
+
+// Prevent cross-origin sub-resources from opening HTTP authentication dialogs to protect against phishing
+lockPref("network.auth.subresource-img-cross-origin-http-auth-allow", false);
 
 /* -----------------------------------------------------------------------------------
-   FINE 
+   016 EXTENSIONS
+   ----------------------------------------------------------------------------------- */
+
+// Always allow installing "incompatible" add-ons
+lockPref("extensions.strictCompatibility", false);
+
+// Always run extensions OOP (out of process...)
+lockPref("extensions.webextensions.remote", true);
+
+// Clear default list of sites allowed to install add-ons
+lockPref("xpinstall.whitelist.add", "");
+
+// Disable add-on sideloading
+lockPref("extensions.autoDisableScopes", 15);
+lockPref("extensions.enabledScopes", 5);
+lockPref("extensions.installDistroAddons", false);
+lockPref("extensions.sideloadScopes", 0);
+lockPref("extensions.startupScanScopes", 0); 
+
+// Disable the AMO Abuse Report API (`navigator.mozAddonManager.reportAbuse`)
+lockPref("extensions.addonAbuseReport.url", "");
+
+// Disable installation of add-ons by default [DESKTOP]
+lockPref("xpinstall.enabled", false);
+
+// Disable mozAddonManager
+lockPref("extensions.webapi.testing", false);
+lockPref("extensions.webapi.testing.http", false);
+lockPref("privacy.resistFingerprinting.block_mozAddonManager", true);
+
+// Enable Add-on Distribution Control (Install Origins)
+lockPref("extensions.install_origins.enabled", true);
+
+// Enable optional permission prompts
+lockPref("extensions.webextOptionalPermissionPrompts", true);
+
+// Enable Mozilla's Extension Blocklist
+lockPref("extensions.blocklist.enabled", true);
+
+// Enable Manifest V3
+lockPref("extensions.manifestV3.enabled", true);
+
+// Enable userScripts
+lockPref("extensions.userScripts.mv3.enabled", true);
+lockPref("extensions.webextensions.userScripts.enabled", true);
+
+// Ensure Web Compatibility interventions use the MV3 API instead of the older MV2 one
+lockPref("extensions.webcompat.useScriptingAPI", true);
+
+// Harden CSP policy
+lockPref("extensions.webextensions.base-content-security-policy", "script-src 'self' 'unsafe-inline'; upgrade-insecure-requests;"); `unsafe-inline` is required for Web Compatibility interventions (`about:compat`)
+lockPref("extensions.webextensions.base-content-security-policy.v3", "script-src 'self'; upgrade-insecure-requests;");
+lockPref("extensions.webextensions.default-content-security-policy", "script-src 'self'; upgrade-insecure-requests;");
+lockPref("extensions.webextensions.default-content-security-policy.v3", "script-src 'self'; upgrade-insecure-requests;");
+
+// Never allow installing extensions without first prompting the user
+lockPref("extensions.postDownloadThirdPartyPrompt", false);
+lockPref("xpinstall.whitelist.directRequest", false);
+lockPref("xpinstall.whitelist.fileRequest", false);
+lockPref("xpinstall.whitelist.required", true);
+
+// Only allow installation and updates of extensions using Firefox's built-in certificates by default
+lockPref("extensions.install.requireBuiltInCerts", true);
+lockPref("extensions.update.requireBuiltInCerts", true);
+
+// Prevent automatically granting MV3 extensions optional host permissions by default
+lockPref("extensions.originControls.grantByDefault", false);
+
+// Prevent extensions from opening pop-ups to remote websites
+lockPref("extensions.manifestV2.actionsPopupURLRestricted", true);
+
+// Prevent extensions from opening pop-ups without user interaction
+lockPref("extensions.openPopupWithoutUserGesture.enabled", false);
+
+// Prevent extensions from using the Gecko Profiler
+lockPref("extensions.geckoProfiler.acceptedExtensionIds", ""); 
+
+// Prevent unprivileged extensions from accessing experimental APIs by default
+lockPref("extensions.experiments.enabled", false);
+
+// Prevent hiding extensions 
+lockPref("devtools.aboutdebugging.showHiddenAddons", true);
+
+// Require resources loaded by MV2 extensions to be specified under web_accessible_resources in the extension's manifest
+lockPref("extensions.content_web_accessible.enabled", true);
+
+// Require secure origins to install add-ons
+lockPref("extensions.install.requireSecureOrigin", true);
+
+/* -----------------------------------------------------------------------------------
+   018 GEOLOCATION
+   ----------------------------------------------------------------------------------- */
+
+// Disable logging network geolocation requests by default
+lockPref("geo.provider.network.logging.enabled", false);  
+
+// Disable Mozilla's GeoIP/Region Service
+lockPref("browser.region.local-geocoding", false); 
+lockPref("browser.region.network.scan", false);
+lockPref("browser.region.network.url", "");
+lockPref("browser.region.update.enabled", false);
+lockPref("browser.search.region", "US");
+lockPref("doh-rollout.home-region", "US");
+
+// Do not force the use of the network geolocation provider by default
+lockPref("geo.provider.testing", false); 
+lockPref("geo.provider.use_mls", false); 
+
+// Enable network request cache for the network geolocation provider by default
+lockPref("geo.provider.network.debug.requestCache.enabled", true); 
+
+// Prevent unconditionally providing high location accuracy 
+lockPref("geo.provider.geoclue.always_high_accuracy", false);
+
+// Set BeaconDB as the default network geolocation provider
+lockPref("geo.provider.network.url", "https://api.beacondb.net/v1/geolocate");
+
+
+/* -----------------------------------------------------------------------------------
+   FINE
    ----------------------------------------------------------------------------------- */
 
 // Controllo versione
