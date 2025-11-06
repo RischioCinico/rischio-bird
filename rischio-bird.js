@@ -1296,6 +1296,374 @@ lockPref("network.http.referer.XOriginTrimmingPolicy", 2);
    023 MISC. SECURITY
    ----------------------------------------------------------------------------------- */
 
+// Always prompt users for a certificate when websites request one, rather than automatically selecting one...
+lockPref("security.default_personal_cert", "Ask Every Time");
+
+// Always warn users before launching other apps
+lockPref("network.protocol-handler.warn-external-default", true);
+
+// Apply CSP to internal browser.xhtml
+lockPref("security.browser_xhtml_csp.enabled", true);
+lockPref("security.browser_xhtml_csp.report-only", false);
+
+// Decrease the lifetime of extension processes
+lockPref("dom.ipc.keepProcessesAlive.extension", 0);
+
+// Decrease the lifetime of privileged processes for `about:` pages
+lockPref("dom.ipc.keepProcessesAlive.privilegedabout", 0);
+
+// Decrease the lifetime of web content processes
+lockPref("dom.ipc.keepProcessesAlive.web", 0);
+
+// Disable Navigator Media Objects & getUserMedia Support in insecure contexts
+lockPref("media.devices.insecure.enabled", false);
+lockPref("media.getusermedia.insecure.enabled", false);
+
+// Do not allow additional ports by default
+lockPref("network.security.ports.banned.override", "");
+
+// Enable content process sandboxing
+lockPref("security.sandbox.content.level", 6);
+
+// Enable the Cross-Origin-Embedder Policy Header
+lockPref("browser.tabs.remote.coep.credentialless", true);
+lockPref("browser.tabs.remote.useCrossOriginEmbedderPolicy", true);
+lockPref("dom.origin-trials.coep-credentialless.state", 1);
+
+// Enable the Cross-Origin-Opener Policy Header
+lockPref("browser.tabs.remote.useCrossOriginOpenerPolicy", true);
+
+// Enable Element.setHTML
+lockPref("dom.security.setHTML.enabled", true);
+
+// Enable GPU Sandboxing
+lockPref("security.sandbox.gpu.level", 2);
+
+// Enable the Integrity-Policy header
+lockPref("security.integrity_policy.enabled", true);
+lockPref("security.integrity_policy.stylesheet.enabled", true);
+
+
+// Enable Opaque Response Blocking
+lockPref("browser.opaqueResponseBlocking", true);
+lockPref("browser.opaqueResponseBlocking.javascriptValidator", true);
+
+// Enable Origin-keyed agent clustering by default (Like Chromium)
+lockPref("dom.origin_agent_cluster.default", true);
+lockPref("dom.origin_agent_cluster.enabled", true);
+
+// Enforce Per-site Process Isolation + isolate all websites
+lockPref("browser.sessionstore.disable_platform_collection", false);
+lockPref("fission.autostart", true);
+lockPref("fission.autostart.session", true);
+lockPref("fission.disableSessionHistoryInParent", false);
+lockPref("fission.webContentIsolationStrategy", 1);
+lockPref("gfx.webrender.all", true);
+
+// Enable the Sanitizer API
+lockPref("dom.security.sanitizer.enabled", true);
+
+// Enable socket process sandboxing
+lockPref("security.sandbox.socket.process.level", 1);
+
+// Enable Spectre mitigations for isolated content
+lockPref("javascript.options.spectre.disable_for_isolated_content", false);
+
+// Enable WebAssembly Memory Control
+lockPref("javascript.options.wasm_memory_control", true);
+
+// Enforce strict file:// Origin Policy
+lockPref("security.fileuri.strict_origin_policy", true);
+
+// Enforce various important security-related prefs
+lockPref("dom.block_external_protocol_in_iframes", true);
+lockPref("dom.block_external_protocol_navigation_from_sandbox", true);
+lockPref("security.all_resource_uri_content_accessible", false);
+lockPref("security.allow_eval_in_parent_process", false);
+lockPref("security.allow_eval_with_system_principal", false);
+lockPref("security.allow_parent_unrestricted_js_loads", false);
+lockPref("security.allow_unsafe_parent_loads", false);
+lockPref("security.data_uri.block_toplevel_data_uri_navigations", true);
+
+// Ensure we block old/obsolete libavcodec libraries
+lockPref("media.libavcodec.allow-obsolete", false);
+
+// Never expose shell access
+lockPref("network.protocol-handler.external.shell", false);
+
+// Never skip the assertion that about:pages don't have content security policies (CSP)
+lockPref("dom.security.skip_about_page_has_csp_assert", false);
+
+// Prefer to create new content processes, instead of re-using existing ones
+lockPref("browser.tabs.remote.subframesPreferUsed", false);
+
+// Prevent marking JIT code pages as both writable and executable, only one or the other...
+lockPref("javascript.options.content_process_write_protect_code", true);
+
+// Prevent AutoConfig files (if being used) from gaining privileged browser access...
+lockPref("general.config.sandbox_enabled", true);
+
+// Prevent remoteTypes from triggering process switches they shouldn't be able to...
+lockPref("browser.tabs.remote.enforceRemoteTypeRestrictions", true);
+
+// Protect against CSRF Attacks (Like Chromium)
+lockPref("network.cookie.sameSite.laxByDefault", true);
+lockPref("network.cookie.sameSite.noneRequiresSecure", true);
+lockPref("network.cookie.sameSite.schemeful", true);
+
+// Protect against MIME Exploits
+lockPref("dom.workers.importScripts.enforceStrictMimeType", true);
+lockPref("network.sniff.use_extension", true);
+lockPref("security.block_fileuri_script_with_wrong_mime", true);
+lockPref("security.block_Worker_with_wrong_mime", true);
+
+// Sandbox AudioIPC (cubeb)
+lockPref("media.cubeb.sandbox", true);
+
+// Use a separate content process for `file://` URLs
+lockPref("browser.tabs.remote.separateFileUriProcess", true);
+
+// Warn on unprivileged namespaces
+lockPref("security.sandbox.warn_unprivileged_namespaces", true);
+
+// Yes, this is a real pref...
+lockPref("security.turn_off_all_security_so_that_viruses_can_take_over_this_computer", false);
+
+/* -----------------------------------------------------------------------------------
+   024 MISC.
+   ----------------------------------------------------------------------------------- */
+
+// Block pop-ups by default
+lockPref("dom.disable_open_during_load", true);
+
+// Disable Captive Portal Detection & Connectivity Checks
+lockPref("captivedetect.canonicalURL", "");
+lockPref("network.captive-portal-service.enabled", false);
+lockPref("network.connectivity-service.DNSv4.domain", "");
+lockPref("network.connectivity-service.DNSv6.domain", "");
+lockPref("network.connectivity-service.enabled", false);
+lockPref("network.connectivity-service.IPv4.url", "");
+lockPref("network.connectivity-service.IPv6.url", "");
+lockPref("network.trr.wait-for-portal", false);
+
+// Disable network connectivity status monitoring
+lockPref("network.manage-offline-status", false);
+lockPref("network.offline-mirrors-connectivity", false);
+
+// Disable network requests to 0.0.0.0
+lockPref("network.socket.ip_addr_any.disabled", true);
+
+// Disable WebVTT Testing Events
+lockPref("media.webvtt.testing.events", false);
+
+// Enable Firefox's newer 'Felt privacy' design for Certificate Errors
+lockPref("security.certerrors.felt-privacy-v1", true);
+
+// Enable more detailed property error messages
+lockPref("javascript.options.property_error_message_fix", true);
+
+// Force pop-up windows to open in new tabs instead
+lockPref("browser.link.open_newwindow", 3);
+lockPref("browser.link.open_newwindow.restriction", 0);
+
+// Limit what events can cause pop-ups
+lockPref("dom.popup_allowed_events", "click dblclick");
+
+// Prevent Safe Mode from automatically starting by default
+lockPref("toolkit.startup.max_resumed_crashes", -1);
+
+// Prevent scripts from moving, resizing, and messing with windows
+lockPref("dom.allow_scripts_to_close_windows", false);
+lockPref("dom.disable_window_flip", true);
+lockPref("dom.disable_window_move_resize", true);
+
+// Prevent websites from automatically refreshing
+lockPref("browser.meta_refresh_when_inactive.disabled", true);
+
+// Reject invalid cookies
+lockPref("extensions.cookie.rejectWhenInvalid", true);
+
+// Show an error page/details instead of a blank page for HTTP responses with certain error codes (ex. 4xx, 5xx, & Content-Length: 0)
+lockPref("browser.http.blank_page_with_error_response.enabled", false);
+
+/* -----------------------------------------------------------------------------------
+   025 DEBUGGING
+   ----------------------------------------------------------------------------------- */
+
+// Allow inspecting the browser chrome by default
+lockPref("devtools.chrome.enabled", false);
+
+// Allow inspecting the DOM by default
+lockPref("devtools.dom.enabled", false);
+
+// Allow inspecting/debugging local tabs from `about:debugging` by default
+lockPref("devtools.aboutdebugging.local-tab-debugging", true);
+
+// Always prompt before connecting to Remote Debugging...
+lockPref("devtools.debugger.prompt-connection", true);
+
+// Disable editor onboarding
+lockPref("devtools.webconsole.input.editorOnboarding", false);
+
+// Disable network monitoring by default
+lockPref("devtools.browserconsole.enableNetworkMonitoring", false);
+
+// Disable pausing on debugger statements by default
+lockPref("devtools.debugger.pause-on-debugger-statement", false);
+
+// Disable Remote Debugging by default
+lockPref("devtools.debugger.remote-enabled", false);
+
+// Disable the Remote Debugging Web Socket
+lockPref("devtools.debugger.remote-websocket", false);
+
+// Display Web Console timestamps by default
+lockPref("devtools.webconsole.timestampMessages", true);
+
+// Disable WebDriver BiDi experimental commands and events
+lockPref("remote.experimental.enabled", false);
+
+// Enable the Anti tracking debug panel by default
+lockPref("devtools.anti-tracking.enabled", true);
+
+// Enable the Web Console sidebar toggle
+lockPref("devtools.webconsole.sidebarToggle", true);
+
+// Enforce local debugging only
+lockPref("devtools.debugger.force-local", true);
+lockPref("devtools.inspector.remote", false);
+
+// Enforce system access checks for WebDriver
+lockPref("remote.system-access-check.enabled", true);
+
+// Highlight syntax when viewing the source of webpages (via `view-source:`)
+lockPref("view_source.syntax_highlight", true);
+
+// Pretty print code when debugging by default
+lockPref("devtools.debugger.auto-pretty-print", true);
+
+// Prevent adding global `dump` function to log strings to `stdout`
+lockPref("browser.dom.window.dump.enabled", false);
+
+// Prevent automatically clearing log messages after page reloads/navigation
+lockPref("devtools.netmonitor.persistlog", true);
+lockPref("devtools.webconsole.persistlog", true);
+
+// Prevent console API from writing to `stdout` when used by chrome content
+lockPref("devtools.console.stdout.chrome", false);
+
+// Prevent logging URLs in Reader errors
+lockPref("reader.errors.includeURLs", false);
+
+// Prevent WebDriver from overriding preferences by default
+lockPref("remote.prefs.recommended", false);
+
+// Set Browser/Error Console scope to "Multiprocess" instead of "Parent process only" by default
+lockPref("devtools.browsertoolbox.scope", "everything");
+
+// Show default/browser styles in the Inspector by default
+lockPref("devtools.inspector.showUserAgentStyles", true);
+
+// Unbreak debugging if `localhost` can't be looked up via DNS
+lockPref("devtools.debugger.chrome-debugging-host", "127.0.0.1");
+
+// Wrap lines when debugging by default
+lockPref("devtools.debugger.ui.editor-wrapping", true);
+
+// Wrap lines when viewing the source of webpages (via `view-source:`)
+lockPref("view_source.wrap_long_lines", true);
+
+/* -----------------------------------------------------------------------------------
+   026 PERFORMANCE
+   ----------------------------------------------------------------------------------- */
+
+// Compress cached JavaScript bytecode
+lockPref("browser.cache.jsbc_compression_level", 3);
+
+// Disable certain UI animations by default
+lockPref("ui.panelAnimations", 0);
+lockPref("ui.prefersReducedMotion", 1);
+lockPref("ui.swipeAnimationEnabled", 0);
+
+// Disable CSS error reporting by default
+lockPref("layout.css.report_errors", false);
+
+// Disable extra extension logging by default
+lockPref("extensions.logging.enabled", false);
+
+// Disable pacing requests
+lockPref("network.http.pacing.requests.enabled", false);
+
+// Enable Advanced Vector Extensions (AVX)
+lockPref("javascript.options.wasm_simd_avx", true);
+
+// Enable Branch Hinting
+lockPref("javascript.options.wasm_branch_hinting", true);
+
+// Enable Canvas2D acceleration (if supported)
+lockPref("gfx.canvas.accelerated", true);
+lockPref("gfx.canvas.accelerated.cache-items", 32768);
+lockPref("gfx.canvas.accelerated.cache-size", 4096);
+
+// Enable CSS Masonry Layout
+lockPref("layout.css.grid-template-masonry-value.enabled", true);
+
+// Enable the "fetchpriority" attribute
+lockPref("network.fetchpriority.enabled", true);
+
+// Enable JS GC Parallel Marking
+lockPref("javascript.options.mem.gc_parallel_marking", true);
+
+// Enable SIMD
+lockPref("javascript.options.wasm_relaxed_simd", true);
+
+// Enable the WebRender native compositor (if supported)
+lockPref("gfx.webrender.compositor", true);
+
+// Increase buffering for video playback
+lockPref("media.cache_readahead_limit", 600);
+lockPref("media.cache_readahead_limit.cellular", 600);
+lockPref("media.cache_resume_threshold", 300);
+lockPref("media.cache_resume_threshold.cellular", 300);
+lockPref("media.throttle-cellular-regardless-of-download-rate", false);
+
+// Increase the chunk size for calls to image decoders
+lockPref("image.mem.decode_bytes_at_a_time", 65536);
+
+// Increase DNS caching
+lockPref("network.dnsCacheExpiration", 3600);
+lockPref("network.dnsCacheExpirationGracePeriod", 120);
+lockPref("network.dnsCacheEntries", 10000);
+
+// Increase the file-backed media cache size for cellular connections
+lockPref("media.cache_size.cellular", 512000);
+
+// Increase the image cache size
+lockPref("image.cache.size", 10485760);
+
+// Increase the memory-backed media cache size
+lockPref("media.memory_cache_max_size", 262144);
+lockPref("media.memory_caches_combined_limit_kb", 1048576);
+
+// Increase memory cache
+lockPref("browser.cache.memory.capacity", 131072);
+lockPref("browser.cache.memory.max_entry_size", 20480);
+
+// Increase the skia font cache size (Similar to Chromium)
+lockPref("gfx.content.skia-font-cache-size", 32);
+
+// Increase the maximum number of HTTP connections
+lockPref("network.http.max-connections", 1800);
+lockPref("network.http.max-persistent-connections-per-proxy", 48);
+lockPref("network.http.max-persistent-connections-per-server", 10);
+lockPref("network.http.max-urgent-start-excessive-connections-per-host", 5);
+lockPref("network.http.request.max-start-delay", 5);
+
+// Increase TLS token caching
+lockPref("network.ssl_tokens_cache_capacity", 10240);
+
+// Use higher performance pinch-zoom
+lockPref("gfx.webrender.low-quality-pinch-zoom", true);
 
 /* -----------------------------------------------------------------------------------
    FINE
