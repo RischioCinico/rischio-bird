@@ -2189,6 +2189,14 @@ lockPref("mail.openpgp.allow_external_gnupg", true);
 // Warn users when using a deprecated version of GnuPG
 lockPref("temp.openpgp.warnDeprecatedGnuPG", true);
 
+
+/* -----------------------------------------------------------------------------------
+   Da valutare
+   ----------------------------------------------------------------------------------- */
+
+lockPref("layers.acceleration.disabled", true);
+
+
 /* -----------------------------------------------------------------------------------
    FINE
    ----------------------------------------------------------------------------------- */
