@@ -1547,8 +1547,8 @@ lockPref("rss.display.disallow_mime_handlers", 3);
 
 // Sanitize HTML content
 lockPref("mail.html_sanitize.drop_conditional_css", true);
-lockPref("mailnews.display.html_as", 3);
-lockPref("rss.display.html_as", 3);
+defaultPref("mailnews.display.html_as", 3);
+defaultPref("rss.display.html_as", 3);
 
 // Enable mozilla::pkix certificate verification
 lockPref("security.use_mozillapkix_verification", true);
@@ -1784,13 +1784,13 @@ lockPref("browser.http.blank_page_with_error_response.enabled", false);
    ----------------------------------------------------------------------------------- */
 
 // Load summary of RSS feeds instead of the full webpage by default
-lockPref("rss.show.summary", 1);
+defaultPref("rss.show.summary", 1);
 
 // Open RSS webpages in your web browser instead of Thunderbird
 lockPref("rss.show.content-base", 3);
 
 // Prefer viewing RSS feeds in plaintext by default
-lockPref("rss.display.prefer_plaintext", true);
+defaultPref("rss.display.prefer_plaintext", true);
 
 // Prevent selection of RSS messages from automatically loading the web page
 lockPref("rss.message.loadWebPageOnSelect", 0);
