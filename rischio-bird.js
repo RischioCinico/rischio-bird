@@ -41,7 +41,7 @@ lockPref("captivedetect.canonicalURL", "");
 lockPref("network.captive-portal-service.enabled", false);
 // 0361: disable Network Connectivity checks
 defaultPref("network.connectivity-service.enabled", false);
-/* 0370: disable UI instrumentation ***/
+// 0370: disable UI instrumentation
 lockPref("mail.instrumentation.postUrl", "");
 lockPref("mail.instrumentation.askUser", false);
 lockPref("mail.instrumentation.userOptedIn", false);
@@ -404,7 +404,7 @@ defaultPref("mail.addressDisplayFormat", 0);
 defaultPref("mail.showCondensedAddresses", false);
 // 9112: Disable "Filelink for Large Attachments" feature
 defaultPref("mail.cloud_files.enabled", false);
-/* 9113: Don't hide cookies and passwords related (advanced?) buttons ***/
+// 9113: Don't hide cookies and passwords related (advanced?) buttons
 defaultPref("pref.privacy.disable_button.view_cookies", false);
 defaultPref("pref.privacy.disable_button.cookie_exceptions", false);
 defaultPref("pref.privacy.disable_button.view_passwords", false);
