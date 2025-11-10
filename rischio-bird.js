@@ -418,15 +418,84 @@ lockPref("mailnews.headers.useMinimalUserAgent", true);
 // 9130: Address book collection
 lockPref("mail.collect_email_address_outgoing", false);
 
+/* -----------------------------------------------------------------------------------
+   [9200] EMAIL COMPOSITION (ENCODING / FORMAT / VIEW)
+   ----------------------------------------------------------------------------------- */
 
-// Disable JPEG-XL
-lockPref("image.jxl.enabled", false);
+// 9205: Avoid information leakage in reply header
+lockPref("mailnews.reply_header_type", 1);
+lockPref("mailnews.reply_header_authorwrotesingle", "#1 wrote:");
+// 9206: Prevent spellchecking dictionary leakage through Content-Language header
+lockPref("mail.suppress_content_language", true);
+// 9207: Sanitize Date header to convert date to UTC and round to closest minute
+lockPref("mail.sanitize_date_header", true);
+// 9210: Check spelling before sending
+defaultPref("mail.SpellCheckBeforeSend", true);
+// 9212: Compose email in plaintext unless expressly overridden
+defaultPref("mail.html_compose", false);
+defaultPref("mail.identity.default.compose_html", false);
+// 9213: Send only plaintext email by default
+defaultPref("mail.default_send_format", 0);
+// 9214: What classes can process incoming data
+defaultPref("mailnews.display.disallow_mime_handlers", 3);
+// 9215: How to display HTML parts of a message body
+defaultPref("mailnews.display.html_as", 3);
+lockPref("mail.html_sanitize.drop_conditional_css", true);
+// 9216: Prefer to view as plaintext or HTML
+defaultPref("mailnews.display.prefer_plaintext", false);
+// 9217: Inline attachments
+defaultPref("mail.inline_attachments", false);
+// 9218: Big attachment warning
+lockPref("mail.compose.big_attachments.notify", true);
+// 9219: Set big attachment size to warn at
+defaultPref("mail.compose.big_attachments.threshold_kb", 9220); // [DEFAULT: 5120]
+defaultPref("mailnews.message_warning_size", 20971520); // [DEFAULT: 20971520]
+// 9220: Set public recipients number from which BCC is advised
+defaultPref("mail.compose.warn_public_recipients.threshold", 15); // [DEFAULT: 15]
+// 9221: Show an alert if the warning above has not been addressed ***/
+defaultPref("mail.compose.warn_public_recipients.aggressive", true);
+// 9222: Disable link previews
+lockPref("mail.compose.add_link_preview", false);
+// 9230: Disable JavaScript
+lockPref("javascript.enabled", false);
+// 9231: Disable media source extensions
+lockPref("media.mediasource.enabled", false);
+// 9232: Disable hardware decoding support ***/
+lockPref("media.hardware-video-decoding.enabled", false);
+// 9233: Default image permissions
+defaultPref("permissions.default.image", 2);
+// 9240: Builtin phishing/scamming detection
+lockPref("mail.phishing.detection.enabled", true);
+lockPref("mail.phishing.detection.disallow_form_actions", true);
+lockPref("mail.phishing.detection.ipaddresses", true);
+lockPref("mail.phishing.detection.mismatched_hosts", true);
+// 9250: Disable remote content loading
+defaultPref("mailnews.message_display.disable_remote_image", true);
 
-// Disable Firefox Translations
-lockPref("browser.translations.automaticallyPopup", false);
-lockPref("browser.translations.enable", false);
-lockPref("browser.translations.select.enable", false);
-lockPref("browser.translations.simulateUnsupportedEngine", true);
+/* -----------------------------------------------------------------------------------
+   [9300] OTHER THUNDERBIRD COMPONENTS (CHAT / CALENDAR / RSS)
+   ----------------------------------------------------------------------------------- */
+
+// 9301: Disable chat functionality
+defaultPref("mail.chat.enabled", false);
+// 9302: Disable logging of group chats
+lockPref("purple.logging.log_chats", false);
+// 9303: Disable logging of 1 to 1 conversations
+lockPref("purple.logging.log_ims", false);
+// 9304: Disable logging of system messages
+lockPref("purple.logging.log_system", false);
+// 9305: Disable typing notifications
+lockPref("purple.conversations.im.send_typing", false);
+// 9306: When chat is enabled, do not connect to accounts automatically
+defaultPref("messenger.startup.action", 0);
+// 9307: When chat is enabled, do not report idle status
+lockPref("messenger.status.reportIdle", false);
+// 9309: Decide how much information will be shown in chat notifications
+defaultPref("mail.chat.notification_info", 2);
+
+/* -----------------------------------------------------------------------------------
+   Boh
+   ----------------------------------------------------------------------------------- */
 
 // Disable Narrator (Broken!)
 lockPref("narrate.enabled", false);
@@ -437,599 +506,6 @@ lockPref("reader.parse-on-load.enabled", false);
 // Disable Accessibility Services
 lockPref("accessibility.force_disabled", 1);
 lockPref("devtools.accessibility.enabled", false);
-
-/* -----------------------------------------------------------------------------------
-   021 MISC. PRIVACY + SECURITY
-   ----------------------------------------------------------------------------------- */
-
-
-
-// Disable automatic updates for OpenSearch engines
-lockPref("browser.search.update", false);
-
-// Disable Battery API (Navigator.getBattery)
-lockPref("dom.battery.enabled", false);
-
-// Disable Beacon API (Navigator.sendBeacon)
-lockPref("beacon.enabled", false);
-
-// Disable Clipboard API
-lockPref("dom.events.asyncClipboard.clipboardItem", false);
-lockPref("dom.events.asyncClipboard.readText", false);
-lockPref("dom.events.testing.asyncClipboard", false);
-
-// Disable Content Analysis SDK
-lockPref("browser.contentanalysis.default_result", 0);
-lockPref("browser.contentanalysis.enabled", false);
-lockPref("browser.contentanalysis.interception_point.clipboard.enabled", false);
-lockPref("browser.contentanalysis.interception_point.drag_and_drop.enabled", false);
-lockPref("browser.contentanalysis.interception_point.file_upload.enabled", false);
-lockPref("browser.contentanalysis.interception_point.print.enabled", false);
-lockPref("browser.contentanalysis.max_connections", 0);
-lockPref("browser.contentanalysis.show_blocked_result", true);
-lockPref("browser.contentanalysis.silent_notifications", false);
-
-// Disable Federated Credential Management (FedCM) API
-lockPref("dom.security.credentialmanagement.identity.enabled", false);
-lockPref("dom.security.credentialmanagement.identity.heavyweight.enabled", false);
-lockPref("dom.security.credentialmanagement.identity.lightweight.enabled", false);
-
-// Disable Reporting API
-lockPref("dom.reporting.crash.enabled", false);
-lockPref("dom.reporting.enabled", false);
-lockPref("dom.reporting.featurePolicy.enabled", false);
-lockPref("dom.reporting.header.enabled", false);
-lockPref("dom.reporting.testing.enabled", false);
-
-// Disable Web Share API
-lockPref("dom.webshare.enabled", false);
-lockPref("dom.webshare.requireinteraction", true);
-
-// Disable WebGPU
-lockPref("dom.webgpu.enabled", false);
-
-// Disable WebMIDI
-lockPref("dom.sitepermsaddon-provider.enabled", false);
-lockPref("dom.webmidi.gated", true);
-
-// Enable Messaging Layer Security (MLS)
-lockPref("dom.origin-trials.mls.state", 1);
-
-// Enable Private Network Access Restrictions
-lockPref("network.lna.block_trackers", true);
-lockPref("network.lna.enabled", true);
-lockPref("permissions.default.local-network", 2);
-lockPref("permissions.default.localhost", 2);
-
-// Prevent exposing XPCOM Components.interfaces to websites
-lockPref("dom.use_components_shim", false);
-
-/* -----------------------------------------------------------------------------------
-   022 MISC. PRIVACY
-   ----------------------------------------------------------------------------------- */
-
-// Warn users if they have not addressed a BCC (Blind Carbon Copy) warning
-lockPref("mail.compose.warn_public_recipients.aggressive", true);
-
-// Prevent calendar from extracting data from emails by default
-lockPref("calendar.extract.service.enabled", false);
-
-// Remove default Google Groups link
-lockPref("mailnews.messageid_browser.url", "");
-
-// Disable automatic collection of email addresses for Thunderbird's Address Book
-lockPref("mail.collect_email_address_outgoing", false);
-
-// Block ports currently known to be abused by Android apps for tracking/fingerprinting[
-lockPref("network.security.ports.banned", "29009, 29010, 30102, 30103, 12387, 12388, 12580, 12581, 12582, 12583, 12584, 12585, 12586, 12587, 12588, 12589, 12590, 12591");
-
-// Disable CSP reporting
-lockPref("security.csp.reporting.enabled", false);
-
-// Disable Hyperlink Auditing (Click Tracking)
-lockPref("browser.send_pings", false);
-lockPref("browser.send_pings.max_per_link", 1);
-lockPref("browser.send_pings.require_same_host", true);
-
-// Disable Network Error Logging
-lockPref("network.http.network_error_logging.enabled", false);
-
-// Disable online speech recognition
-lockPref("media.webspeech.service.endpoint", "data;");
-
-// Disable referers when leaving .onion domains
-lockPref("network.http.referer.hideOnionSource", true);
-
-// Disable storage access heuristics
-lockPref("dom.storage_access.auto_grants", false);
-lockPref("privacy.restrict3rdpartystorage.heuristic.navigation", false);
-lockPref("privacy.restrict3rdpartystorage.heuristic.opened_window_after_interaction", false);
-lockPref("privacy.restrict3rdpartystorage.heuristic.recently_visited", false);
-lockPref("privacy.restrict3rdpartystorage.heuristic.redirect", false);
-lockPref("privacy.restrict3rdpartystorage.heuristic.window_open", false);
-
-// Disable TLS session identifiers
-lockPref("security.ssl.disable_session_identifiers", true);
-
-// Enable Cookies Having Independent Partitioned State (CHIPS)
-lockPref("network.cookie.CHIPS.enabled", true);
-lockPref("network.cookie.chips.partitionLimitDryRun", false);
-
-// Enable Do Not Track & Global Privacy Control
-lockPref("privacy.donottrackheader.enabled", true);
-lockPref("privacy.globalprivacycontrol.enabled", true);
-lockPref("privacy.globalprivacycontrol.functionality.enabled", true);
-lockPref("privacy.globalprivacycontrol.pbmode.enabled", true);
-
-// Exclude third party trackers from storage access heuristics (if enabled)
-lockPref("dom.storage_access.auto_grants.exclude_third_party_trackers", true);
-lockPref("privacy.restrict3rdpartystorage.heuristic.exclude_third_party_trackers", true);
-
-// Isolate resources (ex. referrers & cookies) injected by extensions
-lockPref("privacy.antitracking.isolateContentScriptResources", true);
-
-// Limit maximum cookie lifetime to 6 months/180 days (Like Brave)
-lockPref("network.cookie.maxageCap", 15552000);
-
-// Prevent sharing identifying information if a remote AutoConfig is being used
-lockPref("autoadmin.append_emailaddr", false);
-
-// Prevent third parties from setting cookies unless the third party already has cookies as a first party (Like Safari)
-lockPref("privacy.dynamic_firstparty.limitForeign", true);
-
-// Restrict tracking referers
-lockPref("network.http.referer.defaultPolicy.trackers", 1);
-lockPref("network.http.referer.defaultPolicy.trackers.pbmode", 1);
-
-// Trim cross-origin referers (Like Safari)
-lockPref("network.http.referer.XOriginTrimmingPolicy", 2);
-
-// Only send cross-origin referers if hosts match
-lockPref("network.http.referer.XOriginPolicy", 2);
-
-/* -----------------------------------------------------------------------------------
-   023 MISC. SECURITY
-   ----------------------------------------------------------------------------------- */
-
-// Always warn users before launching other apps
-lockPref("mail.external_protocol_requires_permission", true);
-
-// Enable built-in phishing protection
-lockPref("mail.phishing.detection.disallow_form_actions", true);
-lockPref("mail.phishing.detection.enabled", true);
-lockPref("mail.phishing.detection.ipaddresses", true);
-lockPref("mail.phishing.detection.mismatched_hosts", true);
-
-// Prevent 3rd party software from intercepting & analyzing emails
-lockPref("mailnews.downloadToTempFile", false);
-
-// Limit classes that can process incoming data
-lockPref("mailnews.display.disallow_mime_handlers", 3);
-lockPref("rss.display.disallow_mime_handlers", 3);
-
-// Sanitize HTML content
-lockPref("mail.html_sanitize.drop_conditional_css", true);
-defaultPref("mailnews.display.html_as", 3);
-defaultPref("rss.display.html_as", 3);
-
-// Enable mozilla::pkix certificate verification
-lockPref("security.use_mozillapkix_verification", true);
-
-// Disable insecure NTLMv1
-lockPref("network.negotiate-auth.allow-insecure-ntlm-v1", false);
-
-// Always prompt users for a certificate when websites request one, rather than automatically selecting one...
-lockPref("security.default_personal_cert", "Ask Every Time");
-
-// Always warn users before launching other apps
-lockPref("network.protocol-handler.warn-external-default", true);
-
-// Apply CSP to internal browser.xhtml
-lockPref("security.browser_xhtml_csp.enabled", true);
-lockPref("security.browser_xhtml_csp.report-only", false);
-
-// Decrease the lifetime of extension processes
-lockPref("dom.ipc.keepProcessesAlive.extension", 0);
-
-// Decrease the lifetime of privileged processes for `about:` pages
-lockPref("dom.ipc.keepProcessesAlive.privilegedabout", 0);
-
-// Decrease the lifetime of web content processes
-lockPref("dom.ipc.keepProcessesAlive.web", 0);
-
-// Disable Navigator Media Objects & getUserMedia Support in insecure contexts
-lockPref("media.devices.insecure.enabled", false);
-lockPref("media.getusermedia.insecure.enabled", false);
-
-// Do not allow additional ports by default
-lockPref("network.security.ports.banned.override", "");
-
-// Enable content process sandboxing
-lockPref("security.sandbox.content.level", 6);
-
-// Enable the Cross-Origin-Embedder Policy Header
-lockPref("browser.tabs.remote.coep.credentialless", true);
-lockPref("browser.tabs.remote.useCrossOriginEmbedderPolicy", true);
-lockPref("dom.origin-trials.coep-credentialless.state", 1);
-
-// Enable the Cross-Origin-Opener Policy Header
-lockPref("browser.tabs.remote.useCrossOriginOpenerPolicy", true);
-
-// Enable Element.setHTML
-lockPref("dom.security.setHTML.enabled", true);
-
-// Enable GPU Sandboxing
-lockPref("security.sandbox.gpu.level", 2);
-
-// Enable the Integrity-Policy header
-lockPref("security.integrity_policy.enabled", true);
-lockPref("security.integrity_policy.stylesheet.enabled", true);
-
-
-// Enable Opaque Response Blocking
-lockPref("browser.opaqueResponseBlocking", true);
-lockPref("browser.opaqueResponseBlocking.javascriptValidator", true);
-
-// Enable Origin-keyed agent clustering by default (Like Chromium)
-lockPref("dom.origin_agent_cluster.default", true);
-lockPref("dom.origin_agent_cluster.enabled", true);
-
-// Enforce Per-site Process Isolation + isolate all websites
-lockPref("browser.sessionstore.disable_platform_collection", false);
-lockPref("fission.autostart", true);
-lockPref("fission.autostart.session", true);
-lockPref("fission.disableSessionHistoryInParent", false);
-lockPref("fission.webContentIsolationStrategy", 1);
-lockPref("gfx.webrender.all", true);
-
-// Enable the Sanitizer API
-lockPref("dom.security.sanitizer.enabled", true);
-
-// Enable socket process sandboxing
-lockPref("security.sandbox.socket.process.level", 1);
-
-// Enable Spectre mitigations for isolated content
-lockPref("javascript.options.spectre.disable_for_isolated_content", false);
-
-// Enable WebAssembly Memory Control
-lockPref("javascript.options.wasm_memory_control", true);
-
-// Enforce strict file:// Origin Policy
-lockPref("security.fileuri.strict_origin_policy", true);
-
-// Enforce various important security-related prefs
-lockPref("dom.block_external_protocol_in_iframes", true);
-lockPref("dom.block_external_protocol_navigation_from_sandbox", true);
-lockPref("security.all_resource_uri_content_accessible", false);
-lockPref("security.allow_eval_in_parent_process", false);
-lockPref("security.allow_eval_with_system_principal", false);
-lockPref("security.allow_parent_unrestricted_js_loads", false);
-lockPref("security.allow_unsafe_parent_loads", false);
-lockPref("security.data_uri.block_toplevel_data_uri_navigations", true);
-
-// Ensure we block old/obsolete libavcodec libraries
-lockPref("media.libavcodec.allow-obsolete", false);
-
-// Never expose shell access
-lockPref("network.protocol-handler.external.shell", false);
-
-// Never skip the assertion that about:pages don't have content security policies (CSP)
-lockPref("dom.security.skip_about_page_has_csp_assert", false);
-
-// Prefer to create new content processes, instead of re-using existing ones
-lockPref("browser.tabs.remote.subframesPreferUsed", false);
-
-// Prevent marking JIT code pages as both writable and executable, only one or the other...
-lockPref("javascript.options.content_process_write_protect_code", true);
-
-// Prevent AutoConfig files (if being used) from gaining privileged browser access...
-lockPref("general.config.sandbox_enabled", true);
-
-// Prevent remoteTypes from triggering process switches they shouldn't be able to...
-lockPref("browser.tabs.remote.enforceRemoteTypeRestrictions", true);
-
-// Protect against CSRF Attacks (Like Chromium)
-lockPref("network.cookie.sameSite.laxByDefault", true);
-lockPref("network.cookie.sameSite.noneRequiresSecure", true);
-lockPref("network.cookie.sameSite.schemeful", true);
-
-// Protect against MIME Exploits
-lockPref("dom.workers.importScripts.enforceStrictMimeType", true);
-lockPref("network.sniff.use_extension", true);
-lockPref("security.block_fileuri_script_with_wrong_mime", true);
-lockPref("security.block_Worker_with_wrong_mime", true);
-
-// Sandbox AudioIPC (cubeb)
-lockPref("media.cubeb.sandbox", true);
-
-// Use a separate content process for `file://` URLs
-lockPref("browser.tabs.remote.separateFileUriProcess", true);
-
-// Warn on unprivileged namespaces
-lockPref("security.sandbox.warn_unprivileged_namespaces", true);
-
-// Yes, this is a real pref...
-lockPref("security.turn_off_all_security_so_that_viruses_can_take_over_this_computer", false);
-
-/* -----------------------------------------------------------------------------------
-   024 MISC.
-   ----------------------------------------------------------------------------------- */
-
-
-// Native support for Microsoft Exchange Web Services
-lockPref("experimental.mail.ews.enabled", false);
-lockPref("mailnews.auto_config.addons_url", "data;");
-
-// Prefer viewing emails in plaintext by default
-lockPref("mailnews.display.prefer_plaintext", true);
-
-// Prevent status bar spoofing
-lockPref("dom.disable_window_status_change", true);
-
-// Re-enable SharedArrayBuffer using window.postMessage
-lockPref("dom.postMessage.sharedArrayBuffer.withCOOP_COEP", true);
-
-// Send emails in plaintext by default
-lockPref("mail.default_send_format", 1);
-lockPref("mail.html_compose", false);
-lockPref("mail.identity.default.compose_html", false);
-
-// Enable stricter media autoplay blocking
-lockPref("media.autoplay.blocking_policy", 2);
-
-// Block pop-ups by default
-lockPref("dom.disable_open_during_load", true);
-
-// Disable Captive Portal Detection & Connectivity Checks
-lockPref("captivedetect.canonicalURL", "");
-lockPref("network.captive-portal-service.enabled", false);
-lockPref("network.connectivity-service.DNSv4.domain", "");
-lockPref("network.connectivity-service.DNSv6.domain", "");
-lockPref("network.connectivity-service.enabled", false);
-lockPref("network.connectivity-service.IPv4.url", "");
-lockPref("network.connectivity-service.IPv6.url", "");
-lockPref("network.trr.wait-for-portal", false);
-
-// Disable network connectivity status monitoring
-lockPref("network.manage-offline-status", false);
-lockPref("network.offline-mirrors-connectivity", false);
-
-// Disable network requests to 0.0.0.0
-lockPref("network.socket.ip_addr_any.disabled", true);
-
-// Disable WebVTT Testing Events
-lockPref("media.webvtt.testing.events", false);
-
-// Enable Firefox's newer 'Felt privacy' design for Certificate Errors
-lockPref("security.certerrors.felt-privacy-v1", true);
-
-// Enable more detailed property error messages
-lockPref("javascript.options.property_error_message_fix", true);
-
-// Force pop-up windows to open in new tabs instead
-lockPref("browser.link.open_newwindow", 3);
-lockPref("browser.link.open_newwindow.restriction", 0);
-
-// Limit what events can cause pop-ups
-lockPref("dom.popup_allowed_events", "click dblclick");
-
-// Prevent Safe Mode from automatically starting by default
-lockPref("toolkit.startup.max_resumed_crashes", -1);
-
-// Prevent scripts from moving, resizing, and messing with windows
-lockPref("dom.allow_scripts_to_close_windows", false);
-lockPref("dom.disable_window_flip", true);
-lockPref("dom.disable_window_move_resize", true);
-
-// Prevent websites from automatically refreshing
-lockPref("browser.meta_refresh_when_inactive.disabled", true);
-
-// Reject invalid cookies
-lockPref("extensions.cookie.rejectWhenInvalid", true);
-
-// Show an error page/details instead of a blank page for HTTP responses with certain error codes (ex. 4xx, 5xx, & Content-Length: 0)
-lockPref("browser.http.blank_page_with_error_response.enabled", false);
-
-/* -----------------------------------------------------------------------------------
-   RSS
-   ----------------------------------------------------------------------------------- */
-
-// Load summary of RSS feeds instead of the full webpage by default
-defaultPref("rss.show.summary", 1);
-
-// Open RSS webpages in your web browser instead of Thunderbird
-lockPref("rss.show.content-base", 3);
-
-// Prefer viewing RSS feeds in plaintext by default
-defaultPref("rss.display.prefer_plaintext", true);
-
-// Prevent selection of RSS messages from automatically loading the web page
-lockPref("rss.message.loadWebPageOnSelect", 0);
-
-/* -----------------------------------------------------------------------------------
-   027 Personal Touch
-   ----------------------------------------------------------------------------------- */
-
-// Show progress when saving/sending a message
-lockPref("mailnews.show_send_progress", true);
-
-// Use underscores instead of spaces in file names when saving messages by default
-lockPref("mail.save_msg_filename_underscores_for_space", true);
-
-// Wrap lines by default
-lockPref("mail.wrap_long_lines", true);
-
-// Prevent automatically converting emoticons to emojis
-lockPref("mail.display_glyph", false);
-
-// Enable the global indexer (Gloda) by default
-lockPref("mailnews.database.global.indexer.enabled", true);
-
-// Enable the new Account Hub by default
-lockPref("mail.accounthub.addressbook.enabled", true);
-lockPref("mail.accounthub.enabled", true);
-
-// Enable inline spellcheck when composing messages + check before sending by default
-lockPref("mail.spellcheck.inline", true);
-lockPref("mail.SpellCheckBeforeSend", true);
-
-// Disable extra logging for policies by default
-lockPref("browser.policies.loglevel", "Error");
-
-// Enable dark theme for the message pane
-lockPref("mail.dark-reader.enabled", true);
-lockPref("mail.dark-reader.show-toggle", true);
-
-// Allow downloading and switching locales
-lockPref("app.update.langpack.enabled", true);
-lockPref("intl.multilingual.downloadEnabled", true);
-lockPref("intl.multilingual.enabled", true);
-
-// Allow local machine learning by default
-lockPref("browser.ml.enable", true);
-lockPref("extensions.ml.enabled", true);
-
-// Allow Picture-in-Picture on all websites, even if they try to block it...
-lockPref("media.videocontrols.picture-in-picture.respect-disablePictureInPicture", false);
-
-// Allow zoom by default...
-lockPref("apz.allow_zooming", true);
-
-// Allow zoom on all websites, even if the website tries to block it...
-lockPref("browser.ui.zoom.force-user-scalable", true);
-
-// Allow zooming out beyond the initial scale of websites by default
-lockPref("apz.allow_zooming_out", true);
-
-// Allow the use of custom CSS by default
-lockPref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-
-// Disable annoying Web Speech API error pop-ups, especially relevant on Linux
-lockPref("media.webspeech.synth.dont_notify_on_error", true);
-
-// Disable fullscreen delay
-lockPref("full-screen-api.transition-duration.enter", "0 0");
-lockPref("full-screen-api.transition-duration.leave", "0 0");
-
-// Enable autoscrolling by default
-lockPref("apz.autoscroll.enabled", true);
-lockPref("general.autoScroll", true);
-
-// Enable developer options for `about:profiling`
-lockPref("devtools.performance.aboutprofiling.has-developer-options", true);
-
-// Enable display of in-process subframes at `about:processes` by default
-lockPref("toolkit.aboutProcesses.showAllSubframes", true);
-
-// Enable display of thread information at `about:processes` by default
-lockPref("toolkit.aboutProcesses.showThreads", true);
-
-// Enable IPv6
-lockPref("network.dns.disableIPv6", false);
-
-// Enable overscrolling by default
-lockPref("apz.overscroll.enabled", true);
-
-// Enable smooth scrolling by default
-lockPref("general.smoothScroll", true);
-
-// Enable Spellcheck for both multi-line and single-line boxes
-lockPref("layout.spellcheckDefault", 2);
-
-// Ensure users can always control Nimbus recipes
-lockPref("nimbus.debug", true);
-lockPref("nimbus.validation.enabled", false);
-
-// Expose hidden UI preferences in the about:config
-lockPref("ui.hideCursorWhileTyping", 1);
-lockPref("ui.prefersReducedTransparency", 0);
-lockPref("ui.scrollToClick", 1);
-lockPref("ui.useAccessibilityTheme", 0);
-
-// Prevent the alt key from toggling menu bar by default
-lockPref("ui.key.menuAccessKeyFocuses", false);
-
-// Prevent including the space next to words when double-clicking/selecting text
-lockPref("layout.word_select.eat_space_to_next_word", false);
-
-// Set the default log level for Background Tasks
-lockPref("toolkit.backgroundtasks.loglevel", "error");
-
-// Set the default log level for Remote Settings
-lockPref("services.settings.loglevel", "warn");
-
-// Set default URL to load when navigating to `moz://a`
-lockPref("toolkit.mozprotocol.url", "about:mozilla");
-
-/* -----------------------------------------------------------------------------------
-   CHAT
-   ----------------------------------------------------------------------------------- */
-
-defaultPref("mail.chat.enabled", false);
-
-// Disable reporting chat idle status
-lockPref("messenger.status.reportIdle", false);
-
-// Disable reporting chat status as 'away' when idle
-lockPref("messenger.status.awayWhenIdle", false);
-
-// Disable sending chat typing notifications
-lockPref("purple.conversations.im.send_typing", false);
-
-// Disable logging chat history
-lockPref("purple.logging.log_chats", false);
-lockPref("purple.logging.log_ims", false);
-
-// Disable logging E2EE messages (OTR)
-lockPref("chat.otr.default.allowMsgLog", false);
-
-// Prevent leaking info in chat notifications
-lockPref("mail.chat.notification_info", 2);
-
-// Enable Off-the-record messaging (OTR)
-lockPref("chat.otr.enable", true);
-
-// Disable legacy XMPP gateways for Facebook, Google, Twitter, and Yahoo
-lockPref("chat.prpls.prpl-facebook.disable", true);
-lockPref("chat.prpls.prpl-gtalk.disable", true);
-lockPref("chat.prpls.prpl-twitter.disable", true);
-lockPref("chat.prpls.prpl-yahoo.disable", true);
-
-// Enable the 'Bubbles' chat theme by default [CHAT]
-lockPref("messenger.options.messagesStyle.theme", "bubbles");
-
-// Remind users to verify unverified contacts (OTR)
-lockPref("chat.otr.default.verifyNudge", true);
-
-// Require E2EE for chat conversations by default (OTR)
-lockPref("chat.otr.default.requireEncryption", true);
-
-/* -----------------------------------------------------------------------------------
-   UI
-   ----------------------------------------------------------------------------------- */
-
-// Show email information + headers
-lockPref("mail.show_headers", 2);
-lockPref("mailnews.display.date_senders_timezone", true);
-lockPref("mailnews.headers.showArchivedAt", true);
-lockPref("mailnews.headers.showListArchive", true);
-lockPref("mailnews.headers.showListHelp", true);
-lockPref("mailnews.headers.showListOwner", true);
-lockPref("mailnews.headers.showListPost", true);
-lockPref("mailnews.headers.showListSubscribe", true);
-lockPref("mailnews.headers.showListUnsubscribe", true);
-lockPref("mailnews.headers.showMessageId", true);
-lockPref("mailnews.headers.showOrganization", true);
-lockPref("mailnews.headers.showReferences", true);
-lockPref("mailnews.headers.showSender", true);
-lockPref("mailnews.headers.showUserAgent", true);
-
-// Show full email addresses
-lockPref("mail.addressDisplayFormat", 0);
-lockPref("mail.showCondensedAddresses", false);
-
-
-
 
 /* -----------------------------------------------------------------------------------
    FINE
