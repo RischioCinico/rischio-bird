@@ -1,136 +1,147 @@
-
 /* -----------------------------------------------------------------------------------
-   001 DATA COLLECTION
+   [0100] STARTUP 
    ----------------------------------------------------------------------------------- */
 
-// Disable Ecosystem Telemetry
-lockPref("toolkit.telemetry.ecosystemtelemetry.enabled", false);
+// 0102: set START page
+defaultPref("mailnews.start_page.enabled", false);
+lockPref("mailnews.start_page.url", "about:config");
+// 0104: disabilita newtab (inestistente su TB)
+lockPref("browser.newtabpage.enabled", false);
 
-lockPref("toolkit.aboutLogging.uploadProfileToCloud", false);
-lockPref("toolkit.aboutlogging.uploadProfileUrl", "");
+/* -----------------------------------------------------------------------------------
+   [0200] GEOLOCATION
+   ----------------------------------------------------------------------------------- */
 
-lockPref("toolkit.coverage.enabled", false);
-lockPref("toolkit.coverage.endpoint.base", "");
-lockPref("toolkit.coverage.log-level", 70);
-lockPref("toolkit.coverage.opt-out", true);
-lockPref("toolkit.telemetry.coverage.opt-out", true);
+// 0202: disable using the OS's geolocation service
+defaultPref("geo.provider.use_geoclue", false);
 
-lockPref("breakpad.reportURL", "");
-lockPref("browser.crashReports.crashPull", false);
-lockPref("browser.crashReports.requestedNeverShowAgain", true);
-lockPref("browser.crashReports.unsubmittedCheck.autoSubmit2", false);
-lockPref("browser.crashReports.unsubmittedCheck.enabled", false);
-lockPref("toolkit.crashreporter.include_context_heap", false);
+/* -----------------------------------------------------------------------------------
+   [0300] QUIETER BIRD
+   ----------------------------------------------------------------------------------- */
 
-lockPref("browser.safebrowsing.features.emailtracking.datacollection.update", false);
-lockPref("captchadetection.actor.enabled", false);
-lockPref("captchadetection.hasUnsubmittedData", false);
-lockPref("captchadetection.loglevel", "Off");
-lockPref("datareporting.dau.cachedUsageProfileID", "beefbeef-beef-beef-beef-beeefbeefbee");
-lockPref("datareporting.dau.cachedUsageProfileGroupID", "b0bacafe-b0ba-cafe-b0ba-cafeb0bacafe");
-lockPref("datareporting.healthreport.uploadEnabled", false);
-lockPref("datareporting.policy.dataSubmissionEnabled", false);
-lockPref("datareporting.policy.dataSubmissionPolicyBypassNotification", true);
-lockPref("datareporting.policy.firstRunURL", "");
-lockPref("datareporting.usage.uploadEnabled", false);
-lockPref("dom.security.unexpected_system_load_telemetry_enabled", false);
-lockPref("extensions.dataCollectionPermissions.enabled", false);
-lockPref("extensions.telemetry.EnvironmentAddonBuilder", false);
-lockPref("network.jar.record_failure_reason", false);
-lockPref("network.traffic_analyzer.enabled", false);
-lockPref("network.trr.confirmation_telemetry_enabled", false);
-lockPref("nimbus.telemetry.targetingContextEnabled", false);
-lockPref("privacy.imageInputTelemetry.enableTestMode", false);
-lockPref("privacy.trackingprotection.emailtracking.data_collection.enabled", false);
-lockPref("telemetry.fog.aboutGlean.debugTag", "");
-lockPref("telemetry.fog.artifact_build", false);
-lockPref("telemetry.fog.test.activity_limit", -1);
-lockPref("telemetry.fog.test.inactivity_limit", -1);
-lockPref("telemetry.fog.init_on_shutdown", false);
-lockPref("telemetry.fog.test.localhost_port", 70000);
-lockPref("telemetry.glean.internal.finalInactive", false);
-lockPref("telemetry.glean.internal.maxPingsPerMinute", 0);
-lockPref("telemetry.number_of_site_origin.min_interval", 999999999);
-lockPref("toolkit.content-background-hang-monitor.disabled", true);
-lockPref("toolkit.telemetry.archive.enabled", false);
-lockPref("toolkit.telemetry.bhrPing.enabled", false);
-lockPref("toolkit.telemetry.cachedClientID", "c0ffeec0-ffee-c0ff-eec0-ffeec0ffeec0");
-lockPref("toolkit.telemetry.cachedProfileGroupID", "decafdec-afde-cafd-ecaf-decafdecafde");
-lockPref("toolkit.telemetry.collectInterval", 999999999);
-lockPref("toolkit.telemetry.dap.helper.hpke", "");
-lockPref("toolkit.telemetry.dap.helper.url", "");
-lockPref("toolkit.telemetry.dap.leader.hpke", "");
-lockPref("toolkit.telemetry.dap.leader.url", "");
-lockPref("toolkit.telemetry.dap.logLevel", "Off");
-lockPref("toolkit.telemetry.dap_enabled", false);
-lockPref("toolkit.telemetry.dap_task1_enabled", false);
-lockPref("toolkit.telemetry.dap_task1_taskid", "");
-lockPref("toolkit.telemetry.dap_visit_counting_enabled", false);
-lockPref("toolkit.telemetry.dap_visit_counting_experiment_list", "[]");
-lockPref("toolkit.telemetry.debugSlowSql", false);
-lockPref("toolkit.telemetry.enabled", false);
-lockPref("toolkit.telemetry.eventping.maximumFrequency", 999999999);
-lockPref("toolkit.telemetry.eventping.minimumFrequency", 999999999);
-lockPref("toolkit.telemetry.firstShutdownPing.enabled", false);
-lockPref("toolkit.telemetry.healthping.enabled", false);
-lockPref("toolkit.telemetry.initDelay", 999999999);
-lockPref("toolkit.telemetry.log.dump", false);
-lockPref("toolkit.telemetry.log.level", "Fatal");
-lockPref("toolkit.telemetry.minSubsessionLength", 999999999);
-lockPref("toolkit.telemetry.newProfilePing.delay", 999999999);
-lockPref("toolkit.telemetry.newProfilePing.enabled", false);
-lockPref("toolkit.telemetry.overrideUpdateChannel", "release");
-lockPref("toolkit.telemetry.previousBuildID", "");
-lockPref("toolkit.telemetry.reportingpolicy.firstRun", false);
-lockPref("toolkit.telemetry.scheduler.idleTickInterval", 999999999);
-lockPref("toolkit.telemetry.scheduler.tickInterval", 999999999);
-lockPref("toolkit.telemetry.send.overrideOfficialCheck", false);
-lockPref("toolkit.telemetry.server", "data;");
-lockPref("toolkit.telemetry.server_owner", "");
-lockPref("toolkit.telemetry.shutdownPingSender.backgroundtask.enabled", false);
-lockPref("toolkit.telemetry.shutdownPingSender.enabled", false);
-lockPref("toolkit.telemetry.shutdownPingSender.enabledFirstSession", false);
-lockPref("toolkit.telemetry.testing.disableFuzzingDelay", false);
-lockPref("toolkit.telemetry.testing.overridePreRelease", false);
-lockPref("toolkit.telemetry.testing.overrideProductsCheck", false);
-lockPref("toolkit.telemetry.testing.suppressPingsender", true);
-lockPref("toolkit.telemetry.translations.logLevel", "Off");
-lockPref("toolkit.telemetry.unified", false);
-lockPref("toolkit.telemetry.untrustedModulesPing.frequency", 999999999);
-lockPref("toolkit.telemetry.updatePing.enabled", false);
-lockPref("toolkit.telemetry.user_characteristics_ping.current_version", 0);
-lockPref("toolkit.telemetry.user_characteristics_ping.last_version_sent", 0);
-lockPref("toolkit.telemetry.user_characteristics_ping.logLevel", "Off");
-lockPref("toolkit.telemetry.user_characteristics_ping.opt-out", true);
-lockPref("toolkit.telemetry.user_characteristics_ping.send-once", false);
-lockPref("toolkit.telemetry.user_characteristics_ping.uuid", "");
-lockPref("urlclassifier.features.emailtracking.datacollection.allowlistTables", "");
-lockPref("urlclassifier.features.emailtracking.datacollection.blocklistTables", "");
-
-lockPref("app.normandy.run_interval_seconds", 0);
+// 0320: disable recommendation pane in about:addons (uses Google Analytics)
+lockPref("extensions.getAddons.showPane", false); // [HIDDEN PREF]
+// 0321: disable recommendations in about:addons' Extensions and Themes panes
+lockPref("extensions.htmlaboutaddons.recommendations.enabled", false);
+// 0322: disable personalized Extension Recommendations in about:addons and AMO
+lockPref("browser.discovery.enabled", false);
+// 0340: disable Studies
 lockPref("app.shield.optoutstudies.enabled", false);
-lockPref("messaging-system.rsexperimentloader.collection_id", "");
-lockPref("nimbus.appId", "");
-lockPref("nimbus.profileId", "");
-lockPref("nimbus.profilesdatastoreservice.enabled", false);
-lockPref("nimbus.profilesdatastoreservice.read.enabled", false);
-lockPref("nimbus.profilesdatastoreservice.sync.enabled", false);
+// 0341: disable Normandy/Shield
+lockPref("app.normandy.enabled", false);
+lockPref("app.normandy.api_url", "");
+// 0350: disable Crash Reports
+lockPref("breakpad.reportURL", "");
+lockPref("browser.tabs.crashReporting.sendReport", false);
+lockPref("browser.crashReports.unsubmittedCheck.enabled", false);
+// 0351: enforce no submission of backlogged Crash Reports
+lockPref("browser.crashReports.unsubmittedCheck.autoSubmit2", false);
+// 0360: disable Captive Portal detection
+lockPref("captivedetect.canonicalURL", "");
+lockPref("network.captive-portal-service.enabled", false);
+// 0361: disable Network Connectivity checks
+defaultPref("network.connectivity-service.enabled", false);
+/* 0370: disable UI instrumentation ***/
+lockPref("mail.instrumentation.postUrl", "");
+lockPref("mail.instrumentation.askUser", false);
+lockPref("mail.instrumentation.userOptedIn", false);
+// 0371: disable about:rights notification on fresh profiles
+lockPref("mail.rights.override", true);
+lockPref("mail.rights.version", 1);
+// 0374: prevent donation appeal page opening on fresh profiles
+lockPref("app.donation.eoy.version", 2);
+lockPref("app.donation.eoy.version.viewed", 999);
+lockPref("app.donation.eoy.url", "");
 
-lockPref("about.glean.redesign.enabled", false);
+/* -----------------------------------------------------------------------------------
+   [0400] SAFE BROWSING
+   ----------------------------------------------------------------------------------- */
 
-lockPref("dom.origin-trials.enabled", false);
+// 0403: disable SB checks for downloads (remote)
+lockPref("browser.safebrowsing.downloads.remote.enabled", false);
+lockPref("browser.safebrowsing.downloads.remote.url", "");
 
-lockPref("app.distributor", "");
-lockPref("app.distributor.channel", "");
-lockPref("mozilla.partner.id", "");
+/* -----------------------------------------------------------------------------------
+   [0600] BLOCK IMPLICIT OUTBOUND
+   ----------------------------------------------------------------------------------- */
+
+// 0601: disable link prefetching
+lockPref("network.prefetch-next", false);
+// 0602: disable DNS prefetching
+lockPref("network.dns.disablePrefetch", true);
+lockPref("network.dns.disablePrefetchFromHTTPS", true);
+// 0603: disable predictor / prefetching ***/
+lockPref("network.predictor.enabled", false);
+lockPref("network.predictor.enable-prefetch", false);
+// 0604: disable link-mouseover opening connection to linked server
+lockPref("network.http.speculative-parallel-limit", 0);
+// 0610: enforce no "Hyperlink Auditing" (click tracking)
+lockPref("browser.send_pings", false);
+// 0610: don't refresh nor reload pages when tab/window is not active or in idle state
+lockPref("browser.meta_refresh_when_inactive.disabled", true);
+
+/* -----------------------------------------------------------------------------------
+   [0700] DNS / DoH / PROXY / SOCKS
+   ----------------------------------------------------------------------------------- */
+
+// 0702: set the proxy server to do any DNS lookups when using SOCKS
+lockPref("network.proxy.socks_remote_dns", true);
+// 0703: disable using UNC (Uniform Naming Convention) paths
+lockPref("network.file.disable_unc_paths", true); // [HIDDEN PREF]
+// 0704: disable GIO as a potential proxy bypass vector [FF60+]
+lockPref("network.gio.supported-protocols", ""); // [HIDDEN PREF]
+
+/* -----------------------------------------------------------------------------------
+   [0800] LOCATION BAR / SEARCH BAR / SUGGESTIONS / HISTORY / FORMS
+   ----------------------------------------------------------------------------------- */
+
+// 0801: disable location bar making speculative connections
+lockPref("browser.urlbar.speculativeConnect.enabled", false);
+// 0802: disable location bar contextual suggestions
+lockPref("browser.urlbar.quicksuggest.enabled", false);
+lockPref("browser.urlbar.suggest.quicksuggest.nonsponsored", false);
+lockPref("browser.urlbar.suggest.quicksuggest.sponsored", false);
+// 0803: disable live search suggestions
+lockPref("browser.search.suggest.enabled", false);
+lockPref("browser.urlbar.suggest.searches", false);
+// 0805: disable urlbar trending search suggestions
+lockPref("browser.urlbar.trending.featureGate", false);
+// 0806: disable urlbar suggestions
+lockPref("browser.urlbar.addons.featureGate", false);
+lockPref("browser.urlbar.amp.featureGate", false);
+lockPref("browser.urlbar.fakespot.featureGate", false);
+lockPref("browser.urlbar.mdn.featureGate", false);
+lockPref("browser.urlbar.weather.featureGate", false);
+lockPref("browser.urlbar.wikipedia.featureGate", false);
+lockPref("browser.urlbar.yelp.featureGate", false);
+// 0807: disable urlbar clipboard suggestion
+lockPref("browser.urlbar.clipboard.featureGate", false);
+// 0808: disable recent searches
+lockPref("browser.urlbar.recentsearches.featureGate", false);
+// 0810: disable search and form history
+lockPref("browser.formfill.enable", false);
+// 0815: disable tab-to-search
+lockPref("browser.urlbar.suggest.engines", false);
+// 0820: disable coloring of visited links
+defaultPref("layout.css.visited_links_enabled", false);
+
+/* -----------------------------------------------------------------------------------
+   [0900] PASSWORDS
+   ----------------------------------------------------------------------------------- */
+
+// 0903: disable auto-filling username & password form fields
+lockPref("signon.autofillForms", false);
+// 0904: disable formless login capture for Password Manager
+lockPref("signon.formlessCapture.enabled", false);
+// 0905: limit (or disable) HTTP authentication credentials dialogs triggered by sub-resources
+lockPref("network.auth.subresource-http-auth-allow", 0);
+
+
 
 /* -----------------------------------------------------------------------------------
    002 MOZILLA CRAP
    ----------------------------------------------------------------------------------- */
 
-// Disable Donation Prompts
-lockPref("app.donation.eoy.url", "");
-lockPref("app.donation.eoy.version.viewed", 99);
 
 // Disable the Email Provisioner
 lockPref("mail.provider.enabled", false);
@@ -151,10 +162,6 @@ lockPref("browser.rights.override", true);
 lockPref("mail.rights.override", true);
 lockPref("mailnews.start_page_override.mstone", "ignore");
 
-// Disable start page by default and switch the URL to `about:config`
-lockPref("mailnews.start_page.enabled", false);
-lockPref("mailnews.start_page.override_url", "");
-lockPref("mailnews.start_page.url", "about:config");
 
 // Disable surveys
 lockPref("app.survey.version.viewed", 99);
@@ -162,57 +169,6 @@ lockPref("app.survey.version.viewed", 99);
 // Prevent checking if Thunderbird is the default mail client
 lockPref("mail.shell.checkDefaultClient", false);
 
-// Prevent checking if Thunderbird is the default PDF viewer
-lockPref("pdfjs.firstRun", false);
-
-// Remove Mozilla partner/search parameter
-lockPref("browser.search.param.ms-pc", "");
-
-// Clear unnecessary/undesired Mozilla URLs
-lockPref("app.feedback.baseURL", "");
-lockPref("datareporting.healthreport.infoURL", "");
-lockPref("extensions.recommendations.privacyPolicyUrl", "");
-lockPref("toolkit.datacollection.infoURL", "");
-lockPref("mail.pgpmime.addon_url", "");
-lockPref("toolkit.crashreporter.infoURL", "");
-
-// Disable add-on/feature recommendations
-lockPref("browser.discovery.enabled", false);
-lockPref("browser.translations.mostRecentTargetLanguages", "en-US");
-lockPref("browser.translations.panelShown", true);
-lockPref("extensions.getAddons.browseAddons", "");
-lockPref("extensions.getAddons.discovery.api_url", "data;");
-lockPref("extensions.getAddons.showPane", false);
-lockPref("extensions.htmlaboutaddons.recommendations.enabled", false);
-lockPref("extensions.recommendations.hideNotice", true);
-lockPref("extensions.recommendations.themeRecommendationUrl", "");
-lockPref("extensions.ui.lastCategory", "addons://list/extension");
-lockPref("extensions.webservice.discoverURL", "");
-lockPref("extensions.getAddons.recommended.url", "");
-lockPref("extensions.alternativeAddonSearch.url", "");
-
-// Disable DoH Rollout/heuristics/steering
-lockPref("doh-rollout._testing", true);
-lockPref("doh-rollout.disable-heuristics", true);
-lockPref("doh-rollout.doneFirstRun", true);
-lockPref("doh-rollout.doorhanger-decision", "UIDisabled");
-lockPref("doh-rollout.enabled", false);
-lockPref("doh-rollout.mode", 5);
-lockPref("doh-rollout.provider-steering.enabled", false);
-lockPref("doh-rollout.provider-steering.provider-list", "");
-lockPref("doh-rollout.self-enabled", false);
-lockPref("doh-rollout.skipHeuristicsCheck", true);
-lockPref("doh-rollout.trr-selection.enabled", false);
-lockPref("doh-rollout.trr-selection.provider-list", "");
-lockPref("doh-rollout.uri", "");
-lockPref("network.android_doh.autoselect_enabled", false);
-
-// Disable DoH performance measurements
-lockPref("doh-rollout.trrRace.canonicalDomain", "");
-lockPref("doh-rollout.trrRace.complete", true);
-lockPref("doh-rollout.trrRace.enabled", false);
-lockPref("doh-rollout.trrRace.popularDomains", "");
-lockPref("doh-rollout.trrRace.randomSubdomainCount", 0);
 
 // Disable 'Essential Domains Fallback'
 lockPref("network.essential_domains_fallback", false);
@@ -304,219 +260,7 @@ lockPref("termsofuse.acceptedDate", "32503679999000");
 lockPref("termsofuse.acceptedVersion", 999);
 lockPref("termsofuse.bypassNotification", true);
 
-/* -----------------------------------------------------------------------------------
-   003 TRACKING PROTECTION
-   ----------------------------------------------------------------------------------- */
 
-// Disable sending read receipts
-lockPref("mail.mdn.report.enabled", false);
-lockPref("mail.mdn.report.not_in_to_cc", 0);
-lockPref("mail.mdn.report.outside_domain", 0);
-lockPref("mail.mdn.report.other", 0);
-lockPref("mail.server.default.mdn_not_in_to_cc", 0);
-lockPref("mail.server.default.mdn_other", 0);
-lockPref("mail.server.default.mdn_outside_domain", 0);
-lockPref("mail.server.default.mdn_report_enabled", false);
-lockPref("purple.conversations.im.send_read", false);
-
-// Disable sending user agent with emails
-lockPref("mailnews.headers.sendUserAgent", false);
-lockPref("mailnews.headers.useMinimalUserAgent", true);
-
-// Prevent leaking locale and date/time in email replies
-lockPref("mailnews.reply_header_authorwroteondate", "#1 wrote on #2 #3:");
-lockPref("mailnews.reply_header_authorwrotesingle", "#1 wrote:");
-lockPref("mailnews.reply_header_ondateauthorwrote", "On #2 #3, #1 wrote:");
-lockPref("mailnews.reply_header_type", 1);
-
-// Prevent leaking locale and time with emails through the date header
-lockPref("mail.sanitize_date_header", true);
-
-// Prevent sending usernames to your email provider as part of Autoconfiguration
-lockPref("mailnews.auto_config.fetchFromISP.sendEmailAddress", false);
-
-// Prevent leaking info in email alerts/notifications
-lockPref("mail.biff.alert.show_preview", false);
-lockPref("mail.biff.alert.show_sender", false);
-lockPref("mail.biff.alert.show_subject", false);
-
-// Prevent leaking spellcheck dictionary info with emails
-lockPref("mail.suppress_content_language", true);
-
-// Prevent leaking local IP addresses with emails via EHLO/HELO
-lockPref("mail.smtpserver.default.hello_argument", "[127.0.0.1]");
-
-// Ensure no domains can bypass privacy controls (like mailnews.message_display.disable_remote_image) by default
-lockPref("mail.trusteddomains", "");
-
-// Prevent messages from loading remote content
-lockPref("mailnews.message_display.disable_remote_image", true);
-
-// Disable exceptions for minor issues by default
-lockPref("privacy.trackingprotection.allow_list.convenience.enabled", false);
-
-// Enable ETP Strict
-lockPref("browser.contentblocking.category", "strict"); 
-
-// Block known consent managers (CMPs)
-lockPref("privacy.trackingprotection.consentmanager.annotate_channels", true);
-lockPref("privacy.trackingprotection.consentmanager.skip.enabled", false);
-lockPref("privacy.trackingprotection.consentmanager.skip.pbmode.enabled", false);
-
-// Block known cryptominers
-lockPref("privacy.trackingprotection.cryptomining.enabled", true);
-
-// Block known email trackers
-lockPref("privacy.trackingprotection.emailtracking.enabled", true);
-lockPref("privacy.trackingprotection.emailtracking.pbmode.enabled", true);
-
-// Block known fingerprinters
-lockPref("privacy.trackingprotection.antifraud.annotate_channels", true);
-lockPref("privacy.trackingprotection.antifraud.skip.enabled", false);
-lockPref("privacy.trackingprotection.antifraud.skip.pbmode.enabled", false);
-lockPref("privacy.trackingprotection.fingerprinting.enabled", true);
-
-// Block known social trackers
-lockPref("privacy.trackingprotection.socialtracking.enabled", true);
-
-// Block known trackers
-lockPref("privacy.trackingprotection.annotate_channels", true);
-lockPref("privacy.trackingprotection.enabled", true);
-lockPref("privacy.trackingprotection.pbmode.enabled", true);
-
-// Block known trackers using the `strict` (Level 2) list
-lockPref("privacy.annotate_channels.strict_list.enabled", true);
-lockPref("privacy.annotate_channels.strict_list.pbmode.enabled", true);
-
-// Block known tracking cookies
-lockPref("network.cookie.cookieBehavior.trackerCookieBlocking", true);
-lockPref("privacy.socialtracking.block_cookies.enabled", true);
-
-// Enable Bounce Tracking Protection
-lockPref("privacy.bounceTrackingProtection.mode", 1);
-lockPref("privacy.bounceTrackingProtection.requireStatefulBounces", false);
-
-// Enable SmartBlock & UA overrides/injections
-lockPref("extensions.webcompat.enable_shims", true);
-lockPref("extensions.webcompat.perform_injections", true);
-lockPref("extensions.webcompat.perform_ua_overrides", true);
-lockPref("extensions.webcompat.smartblockEmbeds.enabled", true);
-
-// Enable State Partitioning
-lockPref("network.fetch.cache_partition_cross_origin", true);
-lockPref("privacy.partition.always_partition_third_party_non_cookie_storage", true);
-lockPref("privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage", false);
-lockPref("privacy.partition.bloburl_per_partition_key", true);
-lockPref("privacy.partition.network_state", true);
-lockPref("privacy.partition.network_state.ocsp_cache", true);
-lockPref("privacy.partition.network_state.ocsp_cache.pbmode", true);
-lockPref("privacy.partition.serviceWorkers", true);
-
-// Enable Suspected Fingerprinters Protection (FPP)
-lockPref("privacy.fingerprintingProtection", true);
-lockPref("privacy.fingerprintingProtection.pbmode", true);
-lockPref("privacy.reduceTimerPrecision", true);
-
-// Enable TCP/dFPI
-lockPref("network.cookie.cookieBehavior", 5);
-lockPref("network.cookie.cookieBehavior.optInPartitioning", true);
-lockPref("network.cookie.cookieBehavior.optInPartitioning.pbmode", true);
-lockPref("network.cookie.cookieBehavior.pbmode", 5);
-
-// Ignore less restricted referer policies (than the default)
-lockPref("network.http.referer.disallowCrossSiteRelaxingDefault", true);
-lockPref("network.http.referer.disallowCrossSiteRelaxingDefault.pbmode", true);
-lockPref("network.http.referer.disallowCrossSiteRelaxingDefault.pbmode.top_navigation", true);
-lockPref("network.http.referer.disallowCrossSiteRelaxingDefault.top_navigation", true);
-
-// Exceptions required to avoid major breakage by default
-lockPref("privacy.trackingprotection.allow_list.baseline.enabled", false);
-lockPref("privacy.trackingprotection.allow_list.hasMigratedCategoryPrefs", false);
-
-// Lower the network priority of known trackers (if not blocked for whatever reason...)
-lockPref("privacy.trackingprotection.lower_network_priority", true);
-
-/* -----------------------------------------------------------------------------------
-   004 FINGERPRINTING PROTECTION
-   ----------------------------------------------------------------------------------- */
-
-// Ensure we always report "video-dynamic-range" as "standard"
-lockPref("layout.css.video-dynamic-range.allows-high", false);
-
-// Freeze user agent to protect against fingerprinting
-lockPref("general.useragent.override", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Thunderbird/140.0");
-
-// Harden FPP
-lockPref("privacy.fingerprintingProtection.overrides", "+AllTargets,-CSSPrefersColorScheme,-FrameRate,-HttpUserAgent,-NavigatorUserAgent");
-
-// Set FPP granular overrides
-lockPref("privacy.fingerprintingProtection.granularOverrides", '[{"firstPartyDomain":"thunderbird.net","overrides":"+CSSPrefersColorScheme"}]');
-
-// Disable the ability to switch locales without requiring a restart
-lockPref("intl.multilingual.liveReload", false);
-lockPref("intl.multilingual.liveReloadBidirectional", false);
-
-// Disable failIfMajorPerformanceCaveat in WebGL contexts
-lockPref("webgl.disable-fail-if-major-performance-caveat", true);
-
-// Disable VP9 Benchmark
-lockPref("media.benchmark.vp9.threshold", 0);
-
-// Do not use the theme's toolbar color scheme for in-content pages by default
-lockPref("browser.theme.unified-color-scheme", false);
-
-// Enable canvas randomization for the browser chrome
-lockPref("privacy.resistFingerprinting.randomization.canvas.disable_for_chrome", false);
-
-// Enable fdlibm for Math.sin, Math.cos, and Math.tan
-lockPref("javascript.options.use_fdlibm_for_sin_cos_tan", true);
-
-// If FPP/RFP is disabled, limit font visibility to base system fonts + fonts from
-lockPref("layout.css.font-visibility", 2);
-
-// Prevent enumeration of media devices
-lockPref("media.devices.enumerate.legacy.enabled", false);
-
-// Prevent exposing WebGL Renderer Info
-lockPref("webgl.enable-renderer-query", false);
-lockPref("webgl.override-unmasked-renderer", "Mozilla");
-lockPref("webgl.override-unmasked-vendor", "Mozilla");
-lockPref("webgl.sanitize-unmasked-renderer", false);
-
-// Prevent pre-allocating content processes
-lockPref("dom.ipc.processPrelaunch.enabled", false);
-lockPref("dom.ipc.processPrelaunch.fission.number", 0);
-
-// Prevent using system accent colors
-lockPref("widget.non-native-theme.use-theme-accent", false);
-
-// Prevent using system colors
-lockPref("browser.display.use_system_colors", false);
-lockPref("ui.use_standins_for_native_colors", true);
-
-// Prompt to spoof locale to en-US
-lockPref("privacy.spoof_english", 0);
-
-// Reset the fingerprinting randomization key daily (in addition to per-session/when the browser restarts)
-lockPref("privacy.resistFingerprinting.randomization.daily_reset.enabled", true);
-lockPref("privacy.resistFingerprinting.randomization.daily_reset.private.enabled", true);
-
-// Round window sizes
-lockPref("browser.startup.blankWindow", false);
-lockPref("privacy.window.maxInnerHeight", 900);
-lockPref("privacy.window.maxInnerWidth", 1600);
-
-// Set a fixed temporary storage limit
-lockPref("dom.quotaManager.temporaryStorage.fixedLimit", 52428800);
-
-// Set target video resolution to 1080p
-lockPref("privacy.resistFingerprinting.target_video_res", 1080);
-
-// Set zoom levels on a per-site basis
-lockPref("browser.zoom.siteSpecific", true);
-
-// Enable dynamic rounding of content dimensions
-lockPref("privacy.resistFingerprinting.letterboxing", true);
 
 /* -----------------------------------------------------------------------------------
    005 DISK AVOIDANCE
@@ -1211,41 +955,6 @@ lockPref("extensions.InstallTriggerImpl.enabled", true)
 lockPref("extensions.getAddons.get.url", "https://services.addons.thunderbird.net/api/v4/addons/search/?guid=%IDS%&lang=%LOCALE%");
 lockPref("extensions.getAddons.langpacks.url", "https://services.addons.thunderbird.net/api/v4/addons/language-tools/?app=thunderbird&type=language&appversion=%VERSION%");
 
-/* -----------------------------------------------------------------------------------
-   018 GEOLOCATION
-   ----------------------------------------------------------------------------------- */
-
-// Disable logging network geolocation requests by default
-lockPref("geo.provider.network.logging.enabled", false);  
-
-// Disable Mozilla's GeoIP/Region Service
-lockPref("browser.region.local-geocoding", false); 
-lockPref("browser.region.network.scan", false);
-lockPref("browser.region.network.url", "");
-lockPref("browser.region.update.enabled", false);
-lockPref("browser.search.region", "US");
-lockPref("doh-rollout.home-region", "US");
-
-// Do not force the use of the network geolocation provider by default
-lockPref("geo.provider.testing", false); 
-lockPref("geo.provider.use_mls", false); 
-
-// Enable network request cache for the network geolocation provider by default
-lockPref("geo.provider.network.debug.requestCache.enabled", true); 
-
-// Prevent unconditionally providing high location accuracy 
-lockPref("geo.provider.geoclue.always_high_accuracy", false);
-
-// Disable Geolocation
-lockPref("geo.prompt.open_system_prefs", false);
-lockPref("geo.provider.network.scan", false);
-lockPref("geo.provider.network.url", "");
-lockPref("geo.provider.use_geoclue", false);
-lockPref("network.wifi.scanning_period", 0);
-lockPref("widget.use-xdg-desktop-portal.location", 0);
-
-// Disable OS file indexing/search integration for email by default
-lockPref("searchintegration.enable", false);
 
 /* -----------------------------------------------------------------------------------
    019 PDF.js
@@ -1720,9 +1429,6 @@ lockPref("mail.default_send_format", 1);
 lockPref("mail.html_compose", false);
 lockPref("mail.identity.default.compose_html", false);
 
-// Use a blank new tab page
-lockPref("browser.newtabpage.enabled", false);
-
 // Enable stricter media autoplay blocking
 lockPref("media.autoplay.blocking_policy", 2);
 
@@ -2157,44 +1863,7 @@ lockPref("mailnews.headers.showUserAgent", true);
 lockPref("mail.addressDisplayFormat", 0);
 lockPref("mail.showCondensedAddresses", false);
 
-/* -----------------------------------------------------------------------------------
-   E2EE
-   ----------------------------------------------------------------------------------- */
 
-// Automatically encrypt when possible
-lockPref("mail.e2ee.auto_enable", true);
-
-// Enable advanced E2EE settings
-lockPref("temp.openpgp.advancedUser", true);
-
-// Never automatically disable E2EE...
-lockPref("mail.e2ee.auto_disable", false);
-
-// Notify when E2EE is disabled
-lockPref("mail.e2ee.notify_on_auto_disable", true);
-
-// Notify when E2EE is possible
-lockPref("mail.openpgp.remind_encryption_possible", true);
-lockPref("mail.smime.remind_encryption_possible", true);
-
-// Prevent accepting insecure S/MIME signatures
-lockPref("mail.smime.accept_insecure_sha1_message_signatures", false);
-
-// Sign messages by default
-lockPref("mail.identity.default.sign_mail", true);
-
-// Use GnuPG if built-in RNP fails
-lockPref("mail.openpgp.allow_external_gnupg", true);
-
-// Warn users when using a deprecated version of GnuPG
-lockPref("temp.openpgp.warnDeprecatedGnuPG", true);
-
-
-/* -----------------------------------------------------------------------------------
-   Da valutare
-   ----------------------------------------------------------------------------------- */
-
-lockPref("layers.acceleration.disabled", true);
 
 
 /* -----------------------------------------------------------------------------------
