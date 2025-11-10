@@ -136,639 +136,291 @@ lockPref("signon.formlessCapture.enabled", false);
 // 0905: limit (or disable) HTTP authentication credentials dialogs triggered by sub-resources
 lockPref("network.auth.subresource-http-auth-allow", 0);
 
-
-
 /* -----------------------------------------------------------------------------------
-   002 MOZILLA CRAP
+   [1000] DISK AVOIDANCE
    ----------------------------------------------------------------------------------- */
 
-
-// Disable the Email Provisioner
-lockPref("mail.provider.enabled", false);
-lockPref("mail.provider.suppress_dialog_on_startup", true);
-
-// Disable Filelink
-lockPref("mail.cloud_files.enabled", false);
-
-// Disable 'In-App Notifications'
-lockPref("mail.inappnotifications.blog_enabled", false);
-lockPref("mail.inappnotifications.donation_enabled", false);
-lockPref("mail.inappnotifications.enabled", false);
-lockPref("mail.inappnotifications.message_enabled", false);
-
-// Disable onboarding
-lockPref("browser.EULA.override", true);
-lockPref("browser.rights.override", true);
-lockPref("mail.rights.override", true);
-lockPref("mailnews.start_page_override.mstone", "ignore");
-
-
-// Disable surveys
-lockPref("app.survey.version.viewed", 99);
-
-// Prevent checking if Thunderbird is the default mail client
-lockPref("mail.shell.checkDefaultClient", false);
-
-
-// Disable 'Essential Domains Fallback'
-lockPref("network.essential_domains_fallback", false);
-
-// Disable Fakespot
-lockPref("toolkit.shopping.ohttpConfigURL", "");
-lockPref("toolkit.shopping.ohttpRelayURL", "");
-
-// Disable fetching Firefox Relay's "allowlist" (list of sites known to support Relay)
-lockPref("signon.firefoxRelay.allowListRemoteSettingsCollection", "");
-
-// Disable fetching Password Manager rules remotely by default
-lockPref("signon.recipes.remoteRecipes.enabled", false);
-
-// Disable Firefox Messaging System targeting information background updates
-lockPref("app.update.background.messaging.targeting.snapshot.intervalSec", -1); 
-
-// Disable Firefox Relay by default
-lockPref("signon.firefoxRelay.feature", "disabled");
-
-// Disable "Interest-based Content Relevance Ranking and Personalization"
-lockPref("toolkit.contentRelevancy.enabled", false);
-lockPref("toolkit.contentRelevancy.ingestEnabled", false);
-lockPref("toolkit.contentRelevancy.log", false);
-
-// Disable Mozilla nags/promotions
-lockPref("browser.promo.cookiebanners.enabled", false);
-lockPref("browser.promo.focus.enabled", false);
-lockPref("browser.promo.pin.enabled", false);
-lockPref("browser.send_to_device_locales", "");
-lockPref("browser.vpn_promo.enabled", false);
-lockPref("privacy.trackingprotection.allow_list.hasUserInteractedWithETPSettings", true);
-
-// Disable "Privacy-Preserving Attribution"
-lockPref("dom.origin-trials.private-attribution.state", 2);
-lockPref("dom.private-attribution.submission.enabled", false);
-
-// Disable Remote Permissions
-lockPref("permissions.manager.remote.enabled", false);
-
-// Disable Remote Settings 'Preview' Buckets
-lockPref("services.settings.preview_enabled", false);  
-
-// Disable the Web Compatibility Reporter
-lockPref("extensions.webcompat-reporter.enabled", false);
-
-// Opt out of add-on metadata updates
-lockPref("extensions.getAddons.cache.enabled", false);
-
-// Remove special privileges from Mozilla domains
-lockPref("browser.tabs.remote.separatePrivilegedMozillaWebContentProcess", false);
-lockPref("browser.tabs.remote.separatedMozillaDomains", "");
-lockPref("dom.ipc.processCount.privilegedmozilla", 0);
-lockPref("extensions.webextensions.restrictedDomains", "");
-lockPref("permissions.manager.defaultsUrl", "");
-lockPref("svg.context-properties.content.allowed-domains", "");
-
-// Remove tracking parameters from Mozilla URLs + prevent exposing locale & unnecessary information
-lockPref("browser.backup.template.fallback-download.aurora", "https://www.mozilla.org/firefox/channel/desktop/#developer");
-lockPref("browser.backup.template.fallback-download.beta", "https://www.mozilla.org/firefox/channel/desktop/#beta");
-lockPref("browser.backup.template.fallback-download.esr", "https://www.mozilla.org/firefox/enterprise/#download");
-lockPref("browser.backup.template.fallback-download.nightly", "https://www.mozilla.org/firefox/channel/desktop/#nightly");
-lockPref("browser.backup.template.fallback-download.release", "https://www.mozilla.org/firefox/download/thanks/?s=direct");
-lockPref("extensions.abuseReport.amoFormURL", "https://addons.mozilla.org/feedback/addon/%addonID%/");
-lockPref("extensions.blocklist.addonItemURL", "https://addons.mozilla.org/blocked-addon/%addonID%/%addonVersion%/");
-lockPref("signon.firefoxRelay.learn_more_url", "https://support.mozilla.org/kb/relay-integration#w_frequently-asked-questions");
-lockPref("signon.firefoxRelay.manage_url", "https://relay.firefox.com/accounts/profile/");
-lockPref("signon.firefoxRelay.privacy_policy_url", "https://www.mozilla.org/privacy/subscription-services/");
-lockPref("signon.firefoxRelay.terms_of_service_url", "https://www.mozilla.org/about/legal/terms/subscription-services/");
-lockPref("app.releaseNotesURL", "https://www.thunderbird.net/releases");
-lockPref("app.releaseNotesURL.aboutDialog", "https://www.thunderbird.net/releases");
-lockPref("app.releaseNotesURL.prompt", "https://www.thunderbird.net/releases");
-lockPref("app.vendorURL", "https://www.thunderbird.net/");
-lockPref("browser.dictionaries.download.url", "https://addons.thunderbird.net/language-tools/");
-lockPref("extensions.getAddons.compatOverides.url", "");
-lockPref("extensions.getAddons.link.url", "https://addons.thunderbird.net/");
-lockPref("extensions.getAddons.search.browseURL", "https://addons.thunderbird.net/search/?q=%TERMS%");
-lockPref("extensions.getAddons.search.url", "https://services.addons.thunderbird.net/api/%API_VERSION%/search/%TERMS%/all/%MAX_RESULTS%/");
-lockPref("extensions.update.background.url", "https://versioncheck-bg.addons.thunderbird.net/update/VersionCheck.php?reqVersion=%REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&status=%ITEM_STATUS%&appID=%APP_ID%&appVersion=%APP_VERSION%&currentAppVersion=%CURRENT_APP_VERSION%&updateType=%UPDATE_TYPE%");
-lockPref("extensions.update.url", "https://versioncheck.addons.thunderbird.net/update/VersionCheck.php?reqVersion=%REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&status=%ITEM_STATUS%&appID=%APP_ID%&appVersion=%APP_VERSION%&currentAppVersion=%CURRENT_APP_VERSION%&updateType=%UPDATE_TYPE%");
-lockPref("mail.cloud_files.learn_more_url", "https://support.mozilla.org/kb/filelink-large-attachments");
-lockPref("mail.ignore_thread.learn_more_url", "https://support.mozilla.org/kb/ignore-threads");
-lockPref("spellchecker.dictionaries.download.url", "https://addons.thunderbird.net/language-tools/");
-
-// Skip Mozilla's `Privacy Notice` and `Terms of Use`
-lockPref("datareporting.policy.dataSubmissionPolicyAcceptedVersion", 999);
-lockPref("datareporting.policy.dataSubmissionPolicyNotifiedTime", "32503679999000");
-lockPref("termsofuse.acceptedDate", "32503679999000");
-lockPref("termsofuse.acceptedVersion", 999);
-lockPref("termsofuse.bypassNotification", true);
-
-
-
-/* -----------------------------------------------------------------------------------
-   005 DISK AVOIDANCE
-   ----------------------------------------------------------------------------------- */
-
-// Disable browsing history
-lockPref("places.history.enabled", false);
-
-// Disable disk caching
+// 1001: disable disk cache
+lockPref("browser.cache.disk.enable", false);
+// 1002: set media cache in Private Browsing to in-memory and increase its maximum size
+lockPref("browser.privatebrowsing.forceMediaMemoryCache", true);
+lockPref("media.memory_cache_max_size", 65536);
+// 1003: disable storing extra session data
+lockPref("browser.sessionstore.privacy_level", 2);
+// 1901: disable disk cache for messages not in offline store
 lockPref("mail.imap.use_disk_cache2", false);
 
-// Disable favicons
-lockPref("browser.chrome.favicons", false);
-lockPref("browser.chrome.site_icons", false);
-
-// Prevent permission manager to write to disk
-lockPref("permissions.memory_only", true); 
-
-// Prevent storing cookies persistently
-lockPref("network.cookie.noPersistentStorage", true);
-
-// Allow users to automatically delete files downloaded in Private Browsing
-lockPref("browser.download.enableDeletePrivate", true);
-
-// Disable back/forward cache (bfcache)
-lockPref("browser.sessionhistory.max_total_viewers", 0);
-lockPref("fission.bfcacheInParent", false);
-
-// Disable collection/generation of background thumbnails
-lockPref("browser.pagethumbnails.capturing_disabled", true);
-
-// Disable collection/generation of wireframes
-lockPref("browser.history.collectWireframes", false);
-
-// Disable coloring visited links
-lockPref("layout.css.visited_links_enabled", false);
-
-// Disable disk cache
-lockPref("browser.cache.disk.enable", false);
-lockPref("browser.cache.disk_cache_ssl", true);
-
-// Disable favicons in shortcuts 
-lockPref("browser.shell.shortcutFavicons", false); 
-
-lockPref("browser.contentblocking.database.enabled", false);
-
-// Disable Search & Form History
-lockPref("browser.formfill.enable", false);
-
-// Disable WebRTC history
-lockPref("media.aboutwebrtc.hist.enabled", false);
-
-// Disable window state restoration
-lockPref("browser.restoreWindowState.disabled", true);
-
-// Increase the interval between between Session Store save operations
-lockPref("browser.sessionstore.interval", 600000); // 10 minutes
-
-// Prevent storing unnecessary extra session data
-lockPref("browser.sessionstore.privacy_level", 2);
-
-// Prevent writing media cache (ex. for video streaming) to disk in private windows
-lockPref("browser.privatebrowsing.forceMediaMemoryCache", true);
-
-// Remove cached files from browser windows opened with external applications
-lockPref("browser.download.start_downloads_in_tmp_dir", true);
-lockPref("browser.helperApps.deleteTempFileOnExit", true);
-
 /* -----------------------------------------------------------------------------------
-   006 DOWNLOADS
+   [1200] HTTPS (SSL/TLS / OCSP / CERTS / HPKP)
    ----------------------------------------------------------------------------------- */
 
-// Alert users when downloads are initiated (and completed)
-lockPref("browser.download.manager.focusWhenStarting", true);
-lockPref("browser.download.manager.showAlertOnComplete", true);
-lockPref("browser.download.manager.showWhenStarting", true);
-
-// Show a progress dialog for downloads
-lockPref("browser.download.manager.behavior", 1);
-
-// Block insecure downloads
-lockPref("dom.block_download_insecure", true);
-
-// Disable extra download logging by default
-lockPref("browser.download.loglevel", "Error");
-
-// Notify when downloading files
-lockPref("browser.download.alwaysOpenPanel", true);
-
-// Prevent adding downloads to "recent documents"...
-lockPref("browser.download.manager.addToRecentDocs", false);
-
-// Prompt before downloading files
-lockPref("browser.download.always_ask_before_handling_new_types", true);
-lockPref("browser.download.useDownloadDir", false);
-
-/* -----------------------------------------------------------------------------------
-   007 HTTP(S)
-   ----------------------------------------------------------------------------------- */
-
-// Block Private Network Access requests unconditionally
-lockPref("network.lna.blocking", true);
-
-// Disable link previews
-lockPref("mail.compose.add_link_preview", false);
-
-// Disable network connectivity status monitoring
-lockPref("offline.autoDetect", false);
-
-// Use secure connections for Autoconfiguration
-lockPref("mailnews.auto_config.fetchFromISP.sslOnly", true);
-lockPref("mailnews.auto_config.guess.requireGoodCert", true);
-lockPref("mailnews.auto_config.guess.sslOnly", true);
-
-// Allow users to bypass invalid certificate errors by default
-lockPref("security.certerror.hideAddException", false); 
-
-// Always preload intermediates
-lockPref("security.remote_settings.intermediates.enabled", true);
-
-// Always warn on insecure webpages
-lockPref("security.insecure_connection_text.enabled", true);
-lockPref("security.insecure_connection_text.pbmode.enabled", true);
+// 1201: require safe negotiation
+lockPref("security.ssl.require_safe_negotiation", true);
+// 1206: disable TLS1.3 0-RTT (round-trip time)
+lockPref("security.tls.enable_0rtt_data", false);
+// 1211: enforce OCSP fetching to confirm current validity of certificates
+lockPref("security.OCSP.enabled", 1);
+// 1212: set OCSP fetch failures (non-stapled, see 1211) to hard-fail
+lockPref("security.OCSP.require", true);
+// 1223: enable strict PKP (Public Key Pinning)
+lockPref("security.cert_pinning.enforcement_level", 2);
+// 1224: enable CRLite
+lockPref("security.remote_settings.crlite_filters.enabled", true);
+lockPref("security.pki.crlite_mode", 2);
+// 1241: disable insecure passive content (such as images) on https pages
+lockPref("security.mixed_content.block_display_content", true);
+// 1244: enable HTTPS-Only mode in all windows
+lockPref("dom.security.https_only_mode", true);
+lockPref("dom.security.https_only_mode_pbm", true);
+// 1245: enable HTTPS-Only mode for local resources
+lockPref("dom.security.https_only_mode.upgrade_local", true);
+// 1246: disable HTTP background requests
+lockPref("dom.security.https_only_mode_send_http_background_request", false);
+// 1270: display warning on the padlock for "broken security" (if 1201 is false)
 lockPref("security.ssl.treat_unsafe_negotiation_as_broken", true);
-
-// Warn on insecure connections
+// 1272: display advanced information on Insecure Connection warning pages
+lockPref("browser.xul.error_pages.expert_bad_cert", true);
+// 1280: display warnings when insecure HTTP connections are made
 lockPref("security.warn_entering_weak", true);
 lockPref("security.warn_leaving_secure", true);
 lockPref("security.warn_viewing_mixed", true);
 
-// Always warn when submitting a form from HTTP to HTTPS, even on local IP addresses
-lockPref("security.insecure_field_warning.ignore_local_ip_address", false);
-lockPref("security.warn_submit_secure_to_insecure", true);
-
-// Disable the automatic import of OS client authentication certificates
-lockPref("security.osclientcerts.autoload", false);
-
-// Disable downgrades to insecure TLS 1.0/1.1
-lockPref("security.tls.insecure_fallback_hosts", "");
-lockPref("security.tls.version.enable-deprecated", false);
-
-// Disable insecure ciphers (Like Chromium & Tor Browser)
-lockPref("security.ssl3.dhe_rsa_aes_128_sha", false);
-lockPref("security.ssl3.dhe_rsa_aes_256_sha", false);
-lockPref("security.ssl3.ecdhe_ecdsa_aes_128_sha", false);
-lockPref("security.ssl3.ecdhe_ecdsa_aes_256_sha", false);
-
-// Disable Parental Controls
-lockPref("network.parental_controls_cached_state", false);
-
-// Disable sending background HTTP requests to websites that do not respond quickly to check if they support HTTPS
-lockPref("dom.security.https_only_mode_send_http_background_request", false);
-
-// Disable third-party/OS-level root certificates
-lockPref("security.certerrors.mitm.auto_enable_enterprise_roots", false); 
-lockPref("security.enterprise_roots.enabled", false);
-
-// Ensure HTTP/3 isn't disabled when/if third-party/OS-level root certificates are found
-lockPref("network.http.http3.disable_when_third_party_roots_found", false);
-
-// Disable TLS 1.3 0-RTT
-lockPref("network.http.http3.enable_0rtt", false);
-lockPref("security.tls.enable_0rtt_data", false);
-
-// Enable (+ enforce) Certificate Transparency
-lockPref("security.pki.certificate_transparency.disable_for_hosts", "");
-lockPref("security.pki.certificate_transparency.disable_for_spki_hashes", "");
-lockPref("security.pki.certificate_transparency.mode", 2);
-
-// Enable CRLite revocation checks & prioritize over OCSP
-lockPref("security.pki.crlite_mode", 2);
-lockPref("security.remote_settings.crlite_filters.enabled", true);
-
-// Enable Delegated Credentials
-lockPref("security.tls.enable_delegated_credentials", true);
-
-// Enable MITM Detection
-lockPref("security.certerrors.mitm.priming.enabled", true);
-lockPref("security.certerrors.mitm.priming.endpoint", "https://mitmdetection.services.mozilla.com/");
-
-// Enable + hard-fail OCSP revocation checks
-lockPref("security.OCSP.enabled", 1);
-lockPref("security.OCSP.require", true);
-
-// Enable OCSP stapling
-lockPref("security.ssl.enable_ocsp_must_staple", true);
-lockPref("security.ssl.enable_ocsp_stapling", true);
-
-// Enable Post Quantum Key Agreement (Kyber)
-lockPref("media.webrtc.enable_pq_dtls", true);
-lockPref("network.http.http3.enable_kyber", true);
-lockPref("security.tls.client_hello.send_p256_keyshare", true);
-lockPref("security.tls.enable_kyber", true);
-
-// Enable prompts for unsafe HTTP redirects
-lockPref("network.http.prompt-temp-redirect", true);
-
-// Enforce Strict Certificate Pinning
-lockPref("security.cert_pinning.enforcement_level", 2);
-
-// Enforce TLS 1.3 downgrade protection
-lockPref("security.tls.hello_downgrade_check", true);
-
-// Enforce using HTTPS as much as possible
-lockPref("dom.securecontext.allowlist", "");
-lockPref("dom.security.https_first", true);
-lockPref("dom.security.https_first_for_custom_ports", true);
-lockPref("dom.security.https_first_for_local_addresses", true);
-lockPref("dom.security.https_first_for_unknown_suffixes", true);
-lockPref("dom.security.https_first_pbm", true);
-lockPref("dom.security.https_first_schemeless", true);
-lockPref("dom.security.https_only_mode", true);
-lockPref("dom.security.https_only_mode.upgrade_local", true);
-lockPref("dom.security.https_only_mode_pbm", true);
-lockPref("security.mixed_content.block_active_content", true);
-lockPref("security.mixed_content.block_display_content", false);
-lockPref("security.mixed_content.block_object_subrequest", true);
-lockPref("security.mixed_content.upgrade_display_content", true);
-lockPref("security.mixed_content.upgrade_display_content.audio", true);
-lockPref("security.mixed_content.upgrade_display_content.image", true);
-lockPref("security.mixed_content.upgrade_display_content.video", true);
-
-// Ensure we use the HSTS preload list
-lockPref("network.stricttransportsecurity.preloadlist", true);
-
-// If HTTPS-Only Mode is disabled in favor of HTTPS-First, prevent automatically exempting domains (to ensure we always try HTTPS first...)
-lockPref("dom.security.https_first_add_exception_on_failure", false);
-
-// Only allow certificate error exceptions per-session
-lockPref("security.certerrors.permanentOverride", false);
-
-// Only load secure websockets from HTTPS pages
-lockPref("network.websocket.allowInsecureFromHTTPS", false);
-
-// Require safe renegotiations
-lockPref("security.ssl.require_safe_negotiation", true);
-
-// Show detailed information on insecure warning pages
-lockPref("browser.xul.error_pages.expert_bad_cert", true);
-
-// Show suggestions when an HTTPS page can not be found 
-lockPref("dom.security.https_only_mode_error_page_user_suggestions", true);
-
 /* -----------------------------------------------------------------------------------
-   008 IMPLICIT CONNECTIONS
+   [1600] REFERERS
    ----------------------------------------------------------------------------------- */
 
-// Disable Early Hints (Like Cromite)
-lockPref("network.early-hints.enabled", false);
-lockPref("network.early-hints.over-http-v1-1.enabled", false);
-lockPref("network.early-hints.preconnect.enabled", false);
-lockPref("network.early-hints.preconnect.max_connections", 0);
-
-// Disable Network Prefetching
-lockPref("dom.prefetch_dns_for_anchor_http_document", false);
-lockPref("dom.prefetch_dns_for_anchor_https_document", false);
-lockPref("network.dns.disablePrefetch", true);
-lockPref("network.dns.disablePrefetchFromHTTPS", true);
-lockPref("network.dns.prefetch_via_proxy", false);
-lockPref("network.http.speculative-parallel-limit", 0);
-lockPref("network.predictor.enable-hover-on-ssl", false);
-lockPref("network.predictor.enable-prefetch", false);
-lockPref("network.predictor.enabled", false);
-lockPref("network.prefetch-next", false);
-
-// Disable Preconnect
-lockPref("network.preconnect", false);
-
-// Prevent middle mouse clicks from pasting clipboard contents by default
-lockPref("middlemouse.paste", false);
-
-// Prevent middle mouse clicks on new tab button opening URLs or searches from clipboard
-lockPref("browser.tabs.searchclipboardfor.middleclick", false);
-lockPref("middlemouse.contentLoadURL", false);
+// 1602: control the amount of cross-origin information to send
+defaultPref("network.http.referer.XOriginTrimmingPolicy", 2);
 
 /* -----------------------------------------------------------------------------------
-   009 SEARCH & URL BAR
+   [2000] PLUGINS / MEDIA / WEBRTC
    ----------------------------------------------------------------------------------- */
 
-// Hide using a different search engine in normal vs. private Windows
-lockPref("browser.search.separatePrivateDefault.ui.enabled", false);
+// 2002: force WebRTC inside the proxy
+lockPref("media.peerconnection.ice.proxy_only_if_behind_proxy", true);
+// 2003: force a single network interface for ICE candidates generation
+lockPref("media.peerconnection.ice.default_address_only", true);
+// 2004: force exclusion of private IPs from ICE candidates
+lockPref("media.peerconnection.ice.no_host", true);
+// 2020: disable GMP (Gecko Media Plugins)
+lockPref("media.gmp-provider.enabled", false);
 
-// Always show Punycode
+/* -----------------------------------------------------------------------------------
+   [2400] DOM (DOCUMENT OBJECT MODEL)
+   ----------------------------------------------------------------------------------- */
+
+// 2402: prevent scripts from moving and resizing open windows
+lockPref("dom.disable_window_move_resize", true);
+
+/* -----------------------------------------------------------------------------------
+   [2600] MISCELLANEOUS
+   ----------------------------------------------------------------------------------- */
+
+// 2603: remove temp files opened from non-PB windows with an external application
+lockPref("browser.download.start_downloads_in_tmp_dir", true); // [FF102+]
+// 2606: disable UITour backend so there is no chance that a remote page can use it
+lockPref("browser.uitour.enabled", false);
+lockPref("browser.uitour.url", "");
+// 2616: remove special permissions for certain mozilla domains
+lockPref("permissions.manager.defaultsUrl", "");
+// 2619: use Punycode in Internationalized Domain Names to eliminate possible spoofing
 lockPref("network.IDN_show_punycode", true);
-
-// Disable search suggestions by default
-lockPref("browser.search.suggest.enabled", false);
-lockPref("browser.search.suggest.enabled.private", false);
-
-// Use the same search engine in normal and private browsing windows by default
-lockPref("browser.search.separatePrivateDefault", false);
-
-/* -----------------------------------------------------------------------------------
-   010 DNS
-   ----------------------------------------------------------------------------------- */
-
-// Disable DoH Connectivity Checks
-lockPref("network.connectivity-service.DNS_HTTPS.domain", "");
-lockPref("network.trr.confirmationNS", "skip");
-lockPref("network.trr.skip-check-for-blocked-host", true);
-
-// Disable EDNS Client Subnet (ECS) to prevent leaking general location data to authoritative DNS servers...
-lockPref("network.trr.disable-ECS", true);
-
-// Disable falling back to system DNS by default
-lockPref("network.trr.retry_on_recoverable_errors", true);
-lockPref("network.trr.strict_native_fallback", true);
-
-// Disable nsNotifyAddrListener
-lockPref("network.notify.changed", false);
-lockPref("network.notify.checkForNRPT", false);
-lockPref("network.notify.checkForProxies", false);
-lockPref("network.notify.dnsSuffixList", false);
-lockPref("network.notify.initial_call", false);
-lockPref("network.notify.IPv6", false);
-lockPref("network.notify.resolvers", false);
-
-// Enable DNS Rebinding Protection
-lockPref("network.trr.allow-rfc1918", false);
-
-// Enable DoH without fallback & Set to Quad9 by default
-lockPref("network.trr.default_provider_uri", "https://dns.quad9.net/dns-query");
-lockPref("network.trr.mode", 3);
-
-// Enable EncryptedClientHello
-lockPref("network.dns.echconfig.enabled", true);
-lockPref("network.dns.http3_echconfig.enabled", true);
-
-// Enable native DNS HTTPS Lookups
-lockPref("network.dns.native_https_query", true);
-
-// Ensure we clear cache upon changing DoH prefs
-lockPref("network.trr.clear-cache-on-pref-change", true);
-
-// Fix IPv6 connectivity when DoH is enabled
-lockPref("network.dns.preferIPv6", true);
-
-// Prevent bypassing DoH for /etc/HOSTS entries by default
-lockPref("network.trr.exclude-etc-hosts", false);
-
-// Prevent sending headers for DoH requests
-lockPref("network.trr.send_accept-language_headers", false);
-lockPref("network.trr.send_empty_accept-encoding_headers", true);
-lockPref("network.trr.send_user-agent_headers", false);
+// 2620: enforce PDFJS, disable PDFJS scripting
+lockPref("pdfjs.disabled", false);
+lockPref("pdfjs.enableScripting", false);
+// 2624: disable middle click on new tab button opening URLs or searches using clipboard
+lockPref("browser.tabs.searchclipboardfor.middleclick", false);
+// 2630: disable content analysis by DLP (Data Loss Prevention) agents
+lockPref("browser.contentanalysis.enabled", false);
+lockPref("browser.contentanalysis.default_result", 0);
+// 2635: disable referrer and storage access for resources injected by content scripts
+lockPref("privacy.antitracking.isolateContentScriptResources", true);
+// 2640: disable CSP Level 2 Reporting
+lockPref("security.csp.reporting.enabled", false);
+// 2651: enable user interaction for security by always asking where to download
+lockPref("browser.download.useDownloadDir", false);
+// 2653: disable adding downloads to the system's "recent documents" list
+lockPref("browser.download.manager.addToRecentDocs", false);
+// 2654: enable user interaction for security by always asking how to handle new mimetypes
+lockPref("browser.download.always_ask_before_handling_new_types", true);
+// 2660: limit allowed extension directories
+lockPref("extensions.enabledScopes", 5); // [HIDDEN PREF]
+lockPref("extensions.autoDisableScopes", 15);
 
 /* -----------------------------------------------------------------------------------
-   011 PROXIES
+   [4500] OPTIONAL RFP (resistFingerprinting)
    ----------------------------------------------------------------------------------- */
 
-// Prevent from automatically using the system's proxy configuration by default
-lockPref("network.proxy.type", 0);
-
-// Always start proxy extensions (if installed) as soon as possible, instead of waiting for the first browser window to open
-lockPref("extensions.webextensions.early_background_wakeup_on_request", true);
-
-// Disable automatic failover from the proxy (if configured) to direct connections when certain system requests fail
-lockPref("network.proxy.failover_direct", false);
-
-// Disable file://net
-lockPref("network.file.path_blacklist", "/net"); 
-
-// Disable GIO
-lockPref("network.gio.supported-protocols", "");
-
-// Disable Uniform Naming Convention (UNC) file paths
-lockPref("network.file.disable_unc_paths", true);
-
-// Disable Wi-Fi Tickler
-lockPref("network.tickle-wifi.enabled", false);
-
-// Prevent bypassing the proxy (if configured) for system connections that include the `bypassProxy` flag
-lockPref("network.proxy.allow_bypass", false);
-
-// Use the proxy (if configured) for remote DNS lookups
-lockPref("network.proxy.socks_remote_dns", true);
-lockPref("network.proxy.socks5_remote_dns", true);
+// 4501: enable RFP
+defaultPref("privacy.resistFingerprinting", true); 
+// 4502: set RFP new window size max rounded values
+defaultPref("privacy.window.maxInnerWidth", 1600);
+defaultPref("privacy.window.maxInnerHeight", 900);
+// 4503: disable mozAddonManager Web API
+defaultPref("privacy.resistFingerprinting.block_mozAddonManager", true);
+// 4506: disable RFP spoof english prompt
+defaultPref("privacy.spoof_english", 1);
+// 4511: disable using system accent colors
+lockPref("widget.non-native-theme.use-theme-accent", false);
+// 4520: disable WebGL (Web Graphics Library)
+defaultPref("webgl.disabled", true);
 
 /* -----------------------------------------------------------------------------------
-   012 WEBRTC 
+   [5000] OPTIONAL OPSEC
    ----------------------------------------------------------------------------------- */
 
-// Disable WebRTC
+// 5004: disable permissions manager from reading or writing to disk [FF41+] [RESTART]
+defaultPref("permissions.memory_only", true); // [HIDDEN PREF]
+// 5006: disable favicons in history and bookmarks
+lockPref("browser.chrome.site_icons", false);
+// 5007: exclude "Undo Closed Tabs" in Session Restore
+lockPref("browser.sessionstore.max_tabs_undo", 0);
+// 5010: disable location bar suggestion types
+lockPref("browser.urlbar.suggest.history", false);
+lockPref("browser.urlbar.suggest.bookmark", false);
+lockPref("browser.urlbar.suggest.openpage", false);
+lockPref("browser.urlbar.suggest.topsites", false);
+// 5011: disable location bar dropdown
+lockPref("browser.urlbar.maxRichResults", 0);
+// 5012: disable location bar autofill
+lockPref("browser.urlbar.autoFill", false);
+// 5013: disable browsing and download history
+lockPref("places.history.enabled", false);
+// 5017: disable Form Autofill
+lockPref("extensions.formautofill.addresses.enabled", false);
+lockPref("extensions.formautofill.creditCards.enabled", false);
+// 5018: limit events that can cause a pop-up ***/
+defaultPref("dom.popup_allowed_events", "click dblclick mousedown pointerdown");
+// 5019: disable page thumbnail collection
+lockPref("browser.pagethumbnails.capturing_disabled", true); // [HIDDEN PREF]
+
+/* -----------------------------------------------------------------------------------
+   [5500] OPTIONAL HARDENING
+   ----------------------------------------------------------------------------------- */
+
+// 5501: disable MathML (Mathematical Markup Language)
+defaultPref("mathml.disabled", true);
+// 5502: disable in-content SVG (Scalable Vector Graphics)
+defaultPref("svg.disabled", true);
+// 5503: disable graphite
+defaultPref("gfx.font_rendering.graphite.enabled", false);
+// 5504: disable asm.js [FF22+]
+defaultPref("javascript.options.asmjs", false);
+// 5505: disable Ion and baseline JIT to harden against JS exploits
+defaultPref("javascript.options.ion", false);
+defaultPref("javascript.options.baselinejit", false);
+defaultPref("javascript.options.native_regexp", false);
+defaultPref("javascript.options.jit_trustedprincipals", true);
+// 5506: disable WebAssembly
+defaultPref("javascript.options.wasm", false);
+// 5507: disable rendering of SVG OpenType fonts
+defaultPref("gfx.font_rendering.opentype_svg.enabled", false);
+// 5508: disable all DRM (Digital Rights Management) content (EME: Encryption Media Extension)
+defaultPref("media.eme.enabled", false);
+defaultPref("browser.eme.ui.enabled", false);
+// 5510: control when to send a cross-origin referer
+defaultPref("network.http.referer.XOriginPolicy", 2);
+// 5590: show a prompt when opening a link in external applications
+defaultPref("security.external_protocol_requires_permission", true);
+
+/* -----------------------------------------------------------------------------------
+   [7000] DON'T BOTHER
+   ----------------------------------------------------------------------------------- */
+
+// 7001: disable APIs
+defaultPref("geo.enabled", false);
+defaultPref("full-screen-api.enabled", false);
+// 7007: referers
+defaultPref("network.http.sendRefererHeader", 0);
+defaultPref("network.http.referer.trimmingPolicy", 0);
+// 7008: set the default Referrer Policy
+defaultPref("network.http.referer.defaultPolicy", 0);
+defaultPref("network.http.referer.defaultPolicy.pbmode", 0);
+// 7010: disable HTTP Alternative Services [FF37+]
+defaultPref("network.http.altsvc.enabled", false);
+// 7011: disable website control over browser right-click context menu
+defaultPref("dom.event.contextmenu.enabled", false);
+// 7012: disable icon fonts (glyphs) and local fallback rendering
+defaultPref("gfx.downloadable_fonts.enabled", false);
+defaultPref("gfx.downloadable_fonts.fallback_delay", -1);
+// 7013: disable Clipboard API
+defaultPref("dom.event.clipboardevents.enabled", false);
+// 7020: disable WebRTC (Web Real-Time Communication)
 lockPref("media.peerconnection.enabled", false);
 
-// Allow user to silence notifications when screen sharing
-lockPref("privacy.webrtc.allowSilencingNotifications", true); 
-lockPref("privacy.webrtc.hideGlobalIndicator", false); 
-
-// Always sandbox Media Transport
-lockPref("media.peerconnection.mtransport_process", true); 
-
-// Enable global toggles for muting the camera/microphone
-lockPref("privacy.webrtc.globalMuteToggles", true);
-
-// Enable mDNS Host Obfuscation to prevent leaking local IP addresses
-lockPref("media.peerconnection.ice.obfuscate_host_addresses", true);
-
-// Prevent WebRTC from bypassing the proxy (if configured)
-lockPref("media.peerconnection.ice.proxy_only_if_behind_proxy", true);
-
-// Warn users when attempting to switch tabs in a window being shared over WebRTC
-lockPref("privacy.webrtc.sharedTabWarning", true);
-
-// Always exclude local IP addresses, even in trusted scenarios
-lockPref("media.peerconnection.ice.no_host", true);
-
-// Force a single candidate for ICE generation
-lockPref("media.peerconnection.ice.default_address_only", true);
-
-// Only use TURN servers/relays
-lockPref("media.peerconnection.ice.relay_only", true);
-
 /* -----------------------------------------------------------------------------------
-   013 MEDIA
+   [8500] TELEMETRY
    ----------------------------------------------------------------------------------- */
 
-// Block media autoplay by default
-lockPref("media.autoplay.default", 5);
-lockPref("media.geckoview.autoplay.request.testing", 2);
-
-// Disable Encrypted Media Extensions (EME) (DRM)
-lockPref("media.eme.enabled", false);
-lockPref("media.eme.require-app-approval", true);
-
-// Disable Gecko Media Plugins (GMP)
-lockPref("media.gmp-manager.updateEnabled", false);
-
-// Disable GMP local sources
-lockPref("media.gmp-manager.allowLocalSources", false);
-
-// Disable GMP logging by default (to expose via the `about:config`)
-lockPref("media.gmp.log.dump", false);
-lockPref("media.gmp.log.level", 70);
-
-// Disable OpenH264 (in favor of hardware decoding)
-lockPref("media.ffmpeg.allow-openh264", false);
-lockPref("media.gmp-gmpopenh264.enabled", false);
-lockPref("media.gmp-gmpopenh264.visible", false);
-lockPref("media.webrtc.hw.h264.enabled", true);
-
-// Enable click to play UI for certain CSS skins by default
-lockPref("userContent.player.click_to_play", true); 
-
-// If GMP is enabled (via `media.gmp-manager.updateEnabled`), ensure that installed plug-ins are visible/exposed in `about:addons`
-lockPref("media.gmp-provider.enabled", true);
-
-// Sandbox GMP  
-lockPref("media.gmp.insecure.allow", false); 
-
-// Validate signature when updating GMP (if enabled)
-lockPref("media.gmp-manager.cert.checkAttributes", true);
-lockPref("media.gmp-manager.cert.requireBuiltIn", true);
-lockPref("media.gmp-manager.checkContentSignature", true);
+// 8500: disable new data submission
+lockPref("datareporting.policy.dataSubmissionEnabled", false);
+// 8501: disable Health Reports
+lockPref("datareporting.healthreport.uploadEnabled", false);
+// 0802: disable telemetry
+lockPref("toolkit.telemetry.unified", false);
+lockPref("toolkit.telemetry.enabled", false);
+lockPref("toolkit.telemetry.server", "data:,");
+lockPref("toolkit.telemetry.archive.enabled", false);
+lockPref("toolkit.telemetry.newProfilePing.enabled", false);
+lockPref("toolkit.telemetry.shutdownPingSender.enabled", false);
+lockPref("toolkit.telemetry.updatePing.enabled", false);
+lockPref("toolkit.telemetry.bhrPing.enabled", false);
+lockPref("toolkit.telemetry.firstShutdownPing.enabled", false);
+// 8503: disable Telemetry Coverage
+lockPref("toolkit.coverage.opt-out", true); // [HIDDEN PREF]
+lockPref("toolkit.coverage.endpoint.base", "");
 
 /* -----------------------------------------------------------------------------------
-   014 ATTACK SURFACE REDUCTION
+   [9000] NON-PROJECT RELATED
    ----------------------------------------------------------------------------------- */
 
-// Disable WebAssembly (WASM)
-lockPref("javascript.options.wasm", false);
+// 9001: disable welcome notices
+lockPref("browser.startup.homepage_override.mstone", "ignore"); // [HIDDEN PREF]
+// 9002: disable extensions/features recommendations as you browse
+lockPref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
+lockPref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false);
+// 9090: disable return receipt sending unconditionally
+lockPref("mail.mdn.report.enabled", false);
 
-// Disable ASM.JS
-lockPref("javascript.options.asmjs", false);
+/* -----------------------------------------------------------------------------------
+   [9100] THUNDERBIRD (AUTO CONFIG / UI / HEADERS / ADDRESS BOOK)
+   ----------------------------------------------------------------------------------- */
 
-// Disable Graphite & SVG OpenType fonts
-lockPref("gfx.font_rendering.graphite.enabled", false);
-lockPref("gfx.font_rendering.opentype_svg.enabled", false);
+// 9101: Disable auto-configuration
+defaultPref("mailnews.auto_config.guess.enabled", false);
+defaultPref("mailnews.auto_config.fetchFromISP.enabled", false);
+defaultPref("mailnews.auto_config.fetchFromISP.sendEmailAddress", false);
+defaultPref("mailnews.auto_config.fetchFromISP.sslOnly", true);
+defaultPref("mailnews.auto_config.fetchFromExchange.enabled", false);
+defaultPref("mailnews.auto_config.guess.sslOnly", true);
+defaultPref("mailnews.auto_config.guess.requireGoodCert", true);
+defaultPref("mailnews.auto_config_url", "https://live.thunderbird.net/autoconfig/v1.1/");
+defaultPref("mailnews.auto_config.addons_url","https://live.thunderbird.net/autoconfig/addons.json");
+// 9102: Disable account provisioning
+lockPref("mail.provider.enabled", false);
+// 9110: Control how email addresses are displayed
+defaultPref("mail.addressDisplayFormat", 0);
+// 9111: Show full email instead of just name from address book
+defaultPref("mail.showCondensedAddresses", false);
+// 9112: Disable "Filelink for Large Attachments" feature
+defaultPref("mail.cloud_files.enabled", false);
+/* 9113: Don't hide cookies and passwords related (advanced?) buttons ***/
+defaultPref("pref.privacy.disable_button.view_cookies", false);
+defaultPref("pref.privacy.disable_button.cookie_exceptions", false);
+defaultPref("pref.privacy.disable_button.view_passwords", false);
+// 9120: Show Sender header in message pane
+defaultPref("mailnews.headers.showSender", true);
+// 9121: true=Show User Agent header in message pane
+defaultPref("mailnews.headers.showUserAgent", true);
+// 9126: Prevent any MUA information leakage through User-Agent header in outgoing email messages
+lockPref("mailnews.headers.sendUserAgent", false);
+lockPref("mailnews.headers.useMinimalUserAgent", true);
+// 9130: Address book collection
+lockPref("mail.collect_email_address_outgoing", false);
 
-// Disable JavaScript Just-in-time Compilation (JIT)
-lockPref("javascript.options.baselinejit", false);
-lockPref("javascript.options.ion", false);
-lockPref("javascript.options.jithints", false);
-lockPref("javascript.options.main_process_disable_jit", true);
-lockPref("javascript.options.native_regexp", false);
-lockPref("javascript.options.wasm_optimizingjit", false);
 
 // Disable JPEG-XL
 lockPref("image.jxl.enabled", false);
-
-// Disable MathML
-lockPref("mathml.disabled", true);
-
-// Disable shared memory allocation from the parent process to content processes
-lockPref("javascript.options.self_hosted.use_shared_memory", false);
-
-// Disable SharedArrayBuffer using window.postMessage
-lockPref("dom.postMessage.sharedArrayBuffer.bypassCOOP_COEP.insecure.enabled", false);
-
-// Disable WebVR/WebXR
-lockPref("permissions.default.xr", 2);
-
-// If JIT (Ion/WarpMonkey) is disabled, also disable it for extensions
-lockPref("javascript.options.jit_trustedprincipals", false); 
-
-// Disable Android Debugging
-lockPref("devtools.remote.adb.extensionID", "");
-lockPref("devtools.remote.adb.extensionURL", "");
-
-// Disable DRM/EME
-lockPref("media.eme.encrypted-media-encryption-scheme.enabled", false);
-lockPref("media.eme.hdcp-policy-check.enabled", false);
-
-// Disable FFmpeg
-lockPref("media.ffmpeg.enabled", false);
-lockPref("media.ffmpeg.encoder.enabled", false);
-lockPref("media.ffmpeg.vaapi.enabled", false);
-lockPref("media.rdd-ffmpeg.enabled", false);
-lockPref("media.utility-ffmpeg.enabled", false);
 
 // Disable Firefox Translations
 lockPref("browser.translations.automaticallyPopup", false);
@@ -776,320 +428,21 @@ lockPref("browser.translations.enable", false);
 lockPref("browser.translations.select.enable", false);
 lockPref("browser.translations.simulateUnsupportedEngine", true);
 
-// Disable Narrator (broken!)
+// Disable Narrator (Broken!)
 lockPref("narrate.enabled", false);
 
 // Disable Reader Mode (Broken!)
 lockPref("reader.parse-on-load.enabled", false);
 
-// Disable SVG
-lockPref("svg.disabled", true);
-
-/* -----------------------------------------------------------------------------------
-   015 PASSWORDS & AUTHENTICATION
-   ----------------------------------------------------------------------------------- */
-
-// Allow filling passwords on all websites, even if they try to block it...
-lockPref("signon.storeWhenAutocompleteOff", true);
-
-// Always display a `reveal password` button in `password` `<input>` types 
-lockPref("layout.forms.reveal-password-button.enabled", true);
-
-// Crash on insecure password input
-lockPref("intl.allow-insecure-text-input", false);
-
-// Disable Autofill
-lockPref("signon.autofillForms", false);
-lockPref("signon.autofillForms.http", false);
-
-// Disable Basic authentication over HTTP
-lockPref("network.http.basic_http_auth.enabled", false);
-
-// Disable formless capture of log-in credentials
-lockPref("signon.formlessCapture.enabled", false);
-lockPref("signon.privateBrowsingCapture.enabled", false);
-
-// Disable Microsoft SSO
-lockPref("network.http.microsoft-entra-sso.container-enabled.0", false);
-lockPref("network.http.microsoft-entra-sso.enabled", false);
-lockPref("network.http.windows-sso.container-enabled.0", false);
-lockPref("network.http.windows-sso.enabled", false);
-lockPref("network.microsoft-sso-authority-list", "");
-
-// Disable NTLM
-lockPref("network.auth.force-generic-ntlm", false);
-lockPref("network.auth.force-generic-ntlm-v1", false);
-lockPref("network.automatic-ntlm-auth.allow-non-fqdn", false);
-lockPref("network.automatic-ntlm-auth.allow-proxies", false);
-lockPref("network.automatic-ntlm-auth.trusted-uris", "");
-
-// Disable NTLM/SPNEGO SSO in Private Browsing
-lockPref("network.auth.private-browsing-sso", false);
-
-// Disable Password Manager by default - Insecure & unencrypted
-lockPref("extensions.formautofill.addresses.enabled", false);
-lockPref("extensions.formautofill.creditCards.enabled", false);
-
-// Disable password truncation
-lockPref("editor.truncate_user_pastes", false);
-
-// Disable SPNEGO
-lockPref("network.negotiate-auth.allow-non-fqdn", false);
-lockPref("network.negotiate-auth.allow-proxies", false);
-lockPref("network.negotiate-auth.delegation-uris", "");
-lockPref("network.negotiate-auth.trusted-uris", "");
-
-// Enable anti-spoof confirmation prompts
-lockPref("network.auth.confirmAuth.enabled", true);
-
-// Enable strong password generation (if the Password Manager is enabled) by default
-lockPref("signon.generation.enabled", true);
-
-// If the PaymentRequest API is enabled, ensure we always require user interaction...
-lockPref("dom.payments.request.user_interaction_required", true);
-
-// Prevent cross-origin sub-resources from opening HTTP authentication dialogs to protect against phishing
-lockPref("network.auth.subresource-img-cross-origin-http-auth-allow", false);
-
-// Re-enable Password Manager by default
-lockPref("signon.rememberSignons", true);
-
-// Allow cross-origin sub-resources to open HTTP authentication dialogs
-lockPref("network.auth.non-web-content-triggered-resources-http-auth-allow", true);
-lockPref("network.auth.subresource-http-auth-allow", 2);
-
-/* -----------------------------------------------------------------------------------
-   016 EXTENSIONS
-   ----------------------------------------------------------------------------------- */
-
-// Always allow installing "incompatible" add-ons
-lockPref("extensions.strictCompatibility", false);
-
-// Always run extensions OOP (out of process...)
-lockPref("extensions.webextensions.remote", true);
-
-// Clear default list of sites allowed to install add-ons
-lockPref("xpinstall.whitelist.add", "");
-
-// Disable add-on sideloading
-lockPref("extensions.autoDisableScopes", 15);
-lockPref("extensions.enabledScopes", 5);
-lockPref("extensions.installDistroAddons", false);
-lockPref("extensions.sideloadScopes", 0);
-lockPref("extensions.startupScanScopes", 0); 
-
-// Disable the AMO Abuse Report API (`navigator.mozAddonManager.reportAbuse`)
-lockPref("extensions.addonAbuseReport.url", "");
-lockPref("extensions.abuseReport.enabled", false);
-
-// Disable mozAddonManager
-lockPref("extensions.webapi.testing", false);
-lockPref("extensions.webapi.testing.http", false);
-lockPref("extensions.webapi.enabled", true);
-lockPref("privacy.resistFingerprinting.block_mozAddonManager", true);
-
-// Enable Add-on Distribution Control (Install Origins)
-lockPref("extensions.install_origins.enabled", true);
-
-// Enable optional permission prompts
-lockPref("extensions.webextOptionalPermissionPrompts", true);
-
-// Enable Mozilla's Extension Blocklist
-lockPref("extensions.blocklist.enabled", true);
-
-// Enable Manifest V3
-lockPref("extensions.manifestV3.enabled", true);
-
-// Enable userScripts
-lockPref("extensions.userScripts.mv3.enabled", true);
-lockPref("extensions.webextensions.userScripts.enabled", true);
-
-// Ensure Web Compatibility interventions use the MV3 API instead of the older MV2 one
-lockPref("extensions.webcompat.useScriptingAPI", true);
-
-// Harden CSP policy
-lockPref("extensions.webextensions.base-content-security-policy", "script-src 'self' 'unsafe-inline'; upgrade-insecure-requests;");
-lockPref("extensions.webextensions.base-content-security-policy.v3", "script-src 'self'; upgrade-insecure-requests;");
-lockPref("extensions.webextensions.default-content-security-policy", "script-src 'self'; upgrade-insecure-requests;");
-lockPref("extensions.webextensions.default-content-security-policy.v3", "script-src 'self'; upgrade-insecure-requests;");
-
-// Never allow installing extensions without first prompting the user
-lockPref("extensions.postDownloadThirdPartyPrompt", false);
-lockPref("xpinstall.whitelist.directRequest", false);
-lockPref("xpinstall.whitelist.fileRequest", false);
-lockPref("xpinstall.whitelist.required", true);
-
-// Only allow installation and updates of extensions using Firefox's built-in certificates by default
-lockPref("extensions.install.requireBuiltInCerts", true);
-lockPref("extensions.update.requireBuiltInCerts", true);
-
-// Prevent automatically granting MV3 extensions optional host permissions by default
-lockPref("extensions.originControls.grantByDefault", false);
-
-// Prevent extensions from opening pop-ups to remote websites
-lockPref("extensions.manifestV2.actionsPopupURLRestricted", true);
-
-// Prevent extensions from opening pop-ups without user interaction
-lockPref("extensions.openPopupWithoutUserGesture.enabled", false);
-
-// Prevent extensions from using the Gecko Profiler
-lockPref("extensions.geckoProfiler.acceptedExtensionIds", ""); 
-
-// Prevent hiding extensions 
-lockPref("devtools.aboutdebugging.showHiddenAddons", true);
-
-// Require resources loaded by MV2 extensions to be specified under web_accessible_resources in the extension's manifest
-lockPref("extensions.content_web_accessible.enabled", true);
-
-// Require secure origins to install add-ons
-lockPref("extensions.install.requireSecureOrigin", true);
-
-// Allow unprivileged extensions to use experimental APIs
-lockPref("extensions.experiments.enabled", true);
-
-// Unbreak installation of add-ons from ATN (`addons.thunderbird.net`) if mozAddonManager is disabled
-lockPref("extensions.InstallTrigger.enabled", true);
-lockPref("extensions.InstallTriggerImpl.enabled", true)
-
-// Update AMO API
-lockPref("extensions.getAddons.get.url", "https://services.addons.thunderbird.net/api/v4/addons/search/?guid=%IDS%&lang=%LOCALE%");
-lockPref("extensions.getAddons.langpacks.url", "https://services.addons.thunderbird.net/api/v4/addons/language-tools/?app=thunderbird&type=language&appversion=%VERSION%");
-
-
-/* -----------------------------------------------------------------------------------
-   019 PDF.js
-   ----------------------------------------------------------------------------------- */
-
-// Disable Automatic Alt Text by default
-lockPref("pdfjs.enableAltTextModelDownload", false);
-
-// Disable automatic hyperlinks
-lockPref("pdfjs.enableAutoLinking", false);
-
-// Disable JavaScript
-lockPref("pdfjs.enableScripting", false);
-
-// Disable XFA
-lockPref("pdfjs.enableXfa", false);
-
-// Enable the ability to add signatures
-lockPref("pdfjs.enableSignatureEditor", true);
-
-// Enable Alt Text
-lockPref("pdfjs.enableAltText", true);
-lockPref("pdfjs.enableAltTextForEnglish", true);
-lockPref("pdfjs.enableGuessAltText", true);
-lockPref("pdfjs.enableNewAltTextWhenAddingImage", true);
-lockPref("pdfjs.enableUpdatedAddImage", true);
-
-// Enforce using the internal font renderer
-lockPref("pdfjs.disableFontFace", true);
-
-// Ensure users can select and interact with text
-lockPref("pdfjs.textLayerMode", 1);
-
-// Force PDFs to be downloaded/viewed locally, and prompt before opening the PDF Viewer
-lockPref("browser.download.open_pdf_attachments_inline", false);
-lockPref("pdfjs.disableRange", true);
-lockPref("pdfjs.disableStream", true);
-
-// Never allow documents to prevent copying text
-lockPref("pdfjs.enablePermissions", false);
-
-// Open external links in new tabs/windows
-lockPref("pdfjs.externalLinkTarget", 2);
-
-// Prevent attempting to load/convert unknown binary files
-lockPref("pdfjs.handleOctetStream", false);
-
-// Show sidebar by default when viewing PDFs
-lockPref("pdfjs.sidebarViewOnLoad", 2);
-
-// Update URL when changing pages
-lockPref("pdfjs.historyUpdateUrl", true);
-
-/* -----------------------------------------------------------------------------------
-   020 SAFE BROWSING
-   ----------------------------------------------------------------------------------- */
-
-// (Attempt to) Unbreak Tracking Protection list downloads
-lockPref("browser..provider.mozilla.updateURL", "https://shavar.services.mozilla.com/downloads?client=navclient-auto-ffox&appver=%VERSION%&pver=2.2");
-
-// By default, when you report a Safe Browsing false positive, it sends the URL to both Mozilla & Google (NOT PROXIED), as well as your locale to Mozilla
-lockPref("browser.safebrowsing.provider.google.reportMalwareMistakeURL", "https://safebrowsing.google.com/safebrowsing/report_error/?tpl=mozilla&url=");
-lockPref("browser.safebrowsing.provider.google.reportPhishMistakeURL", "https://safebrowsing.google.com/safebrowsing/report_error/?tpl=mozilla&url=");
-lockPref("browser.safebrowsing.provider.google4.reportMalwareMistakeURL", "https://safebrowsing.google.com/safebrowsing/report_error/?tpl=mozilla&url=");
-lockPref("browser.safebrowsing.provider.google4.reportPhishMistakeURL", "https://safebrowsing.google.com/safebrowsing/report_error/?tpl=mozilla&url=");
-lockPref("browser.safebrowsing.provider.google5.reportMalwareMistakeURL", "https://safebrowsing.google.com/safebrowsing/report_error/?tpl=mozilla&url=");
-lockPref("browser.safebrowsing.provider.google5.reportPhishMistakeURL", "https://safebrowsing.google.com/safebrowsing/report_error/?tpl=mozilla&url=");
-
-// Similar behavior also appears to happen when you report a URL to Safe Browsing
-lockPref("browser.safebrowsing.reportPhishURL", "https://safebrowsing.google.com/safebrowsing/report_phish/?tpl=mozilla&url=");
-
-// Disable the legacy (v2.2) Safe Browsing API
-lockPref("browser.safebrowsing.provider.google.advisoryName", "Google Safe Browsing (Legacy)");
-lockPref("browser.safebrowsing.provider.google.lists", "disabled");
-lockPref("browser.safebrowsing.provider.google.lists.default", "goog-badbinurl-shavar,goog-downloadwhite-digest256,goog-phish-shavar,googpub-phish-shavar,goog-malware-shavar,goog-unwanted-shavar");
-
-// Enable an additional plug-in blocklist from Mozilla
-lockPref("urlclassifier.blockedTable", "moztest-block-simple,mozplugin-block-digest256");
-
-// Enable the Potentially Harmful Application list (when Safe Browsing is enabled)
-lockPref("urlclassifier.malwareTable", "goog-malware-proto,goog-unwanted-proto,moztest-harmful-simple,moztest-malware-simple,moztest-unwanted-simple,goog-harmful-proto");
-
-// Enable Safe Browsing by default
-lockPref("browser.safebrowsing.blockedURIs.enabled", true);
-lockPref("browser.safebrowsing.downloads.enabled", true);
-lockPref("browser.safebrowsing.id", "navclient-auto-ffox");
-lockPref("browser.safebrowsing.malware.enabled", true);
-lockPref("browser.safebrowsing.phishing.enabled", true);
-lockPref("browser.safebrowsing.provider.google5.advisoryURL", "https://developers.google.com/safe-browsing/v4/advisory");
-lockPref("browser.safebrowsing.provider.google5.enabled", true);
-lockPref("browser.safebrowsing.provider.google5.lists", "goog-phish-proto,googpub-phish-proto,goog-malware-proto,goog-unwanted-proto,goog-harmful-proto");
-lockPref("browser.safebrowsing.provider.mozilla.gethashURL", "https://shavar.services.mozilla.com/gethash?client=navclient-auto-ffox&appver=%MAJOR_VERSION%&pver=2.2");
-lockPref("browser.safebrowsing.update.enabled", true);
-lockPref("urlclassifier.downloadAllowTable", "goog-downloadwhite-proto");
-lockPref("urlclassifier.downloadBlockTable", "goog-badbinurl-proto");
-lockPref("urlclassifier.phishTable", "goog-phish-proto,moztest-phish-simple");
-
-// Ensure users can override Safe Browsing warnings by default
-lockPref("browser.safebrowsing.allowOverride", true);
-
-// Prevent sending metadata of downloaded files to Safe Browsing providers
-lockPref("browser.safebrowsing.downloads.remote.enabled", false);
-
-// Prevent sharing data/telemetry with Safe Browsing providers
-lockPref("browser.safebrowsing.provider.google.dataSharing.enabled", false);
-lockPref("browser.safebrowsing.provider.google.dataSharingURL", "");
-lockPref("browser.safebrowsing.provider.google4.dataSharing.enabled", false);
-lockPref("browser.safebrowsing.provider.google4.dataSharingURL", "");
-lockPref("browser.safebrowsing.provider.google5.dataSharing.enabled", false);
-lockPref("browser.safebrowsing.provider.google5.dataSharingURL", "");
-lockPref("browser.safebrowsing.provider.mozilla.dataSharing.enabled", false);
-lockPref("browser.safebrowsing.provider.mozilla.dataSharingURL", "");
-lockPref("browser.safebrowsing.provider.test.dataSharing.enabled", false);
-lockPref("browser.safebrowsing.provider.test.dataSharingURL", "");
-
-// Unbreak Google's download protection and legacy Safe Browsing provider
-lockPref("browser.safebrowsing.downloads.remote.url", "https://sb-ssl.google.com/safebrowsing/clientreport/download?key=%GOOGLE_SAFEBROWSING_API_KEY%");
-lockPref("browser.safebrowsing.provider.google.gethashURL", "https://safebrowsing.google.com/safebrowsing/gethash?client=navclient-auto-ffox&appver=%MAJOR_VERSION%&pver=2.2");
-lockPref("browser.safebrowsing.provider.google.updateURL", "https://safebrowsing.google.com/safebrowsing/downloads?client=navclient-auto-ffox&appver=%MAJOR_VERSION%&pver=2.2&key=%GOOGLE_SAFEBROWSING_API_KEY%");
-
-// Unclear whether these are actually used or not, but looks like Firefox has some kind of functionality to view a "report" from Safe Browsing about the safety, history, and general status of a site
-lockPref("browser.safebrowsing.provider.google.reportURL", "https://transparencyreport.google.com/safe-browsing/search?url=");
-lockPref("browser.safebrowsing.provider.google4.reportURL", "https://transparencyreport.google.com/safe-browsing/search?url=");
-lockPref("browser.safebrowsing.provider.google5.reportURL", "https://transparencyreport.google.com/safe-browsing/search?url=");
+// Disable Accessibility Services
+lockPref("accessibility.force_disabled", 1);
+lockPref("devtools.accessibility.enabled", false);
 
 /* -----------------------------------------------------------------------------------
    021 MISC. PRIVACY + SECURITY
    ----------------------------------------------------------------------------------- */
 
-// Disable WebGL
-lockPref("webgl.disabled", true);
 
-// Disable Accessibility Services
-lockPref("accessibility.force_disabled", 1);
-lockPref("devtools.accessibility.enabled", false);
 
 // Disable automatic updates for OpenSearch engines
 lockPref("browser.search.update", false);
@@ -1402,14 +755,6 @@ lockPref("security.turn_off_all_security_so_that_viruses_can_take_over_this_comp
    024 MISC.
    ----------------------------------------------------------------------------------- */
 
-// Allow using Thunderbird without a configured email account
-lockPref("app.use_without_mail_account", true);
-
-// Disable `mailto:` warning...
-lockPref("network.protocol-handler.warn-external.mailto", false);
-
-// Disable support for web applications manifests
-lockPref("dom.manifest.enabled", false);
 
 // Native support for Microsoft Exchange Web Services
 lockPref("experimental.mail.ews.enabled", false);
@@ -1500,186 +845,6 @@ defaultPref("rss.display.prefer_plaintext", true);
 
 // Prevent selection of RSS messages from automatically loading the web page
 lockPref("rss.message.loadWebPageOnSelect", 0);
-
-/* -----------------------------------------------------------------------------------
-   025 DEBUGGING
-   ----------------------------------------------------------------------------------- */
-
-// Allow inspecting the browser chrome by default
-lockPref("devtools.chrome.enabled", false);
-
-// Allow inspecting the DOM by default
-lockPref("devtools.dom.enabled", false);
-
-// Allow inspecting/debugging local tabs from `about:debugging` by default
-lockPref("devtools.aboutdebugging.local-tab-debugging", true);
-
-// Always prompt before connecting to Remote Debugging...
-lockPref("devtools.debugger.prompt-connection", true);
-
-// Disable editor onboarding
-lockPref("devtools.webconsole.input.editorOnboarding", false);
-
-// Disable network monitoring by default
-lockPref("devtools.browserconsole.enableNetworkMonitoring", false);
-
-// Disable pausing on debugger statements by default
-lockPref("devtools.debugger.pause-on-debugger-statement", false);
-
-// Disable Remote Debugging by default
-lockPref("devtools.debugger.remote-enabled", false);
-
-// Disable the Remote Debugging Web Socket
-lockPref("devtools.debugger.remote-websocket", false);
-
-// Display Web Console timestamps by default
-lockPref("devtools.webconsole.timestampMessages", true);
-
-// Disable WebDriver BiDi experimental commands and events
-lockPref("remote.experimental.enabled", false);
-
-// Enable the Anti tracking debug panel by default
-lockPref("devtools.anti-tracking.enabled", true);
-
-// Enable the Web Console sidebar toggle
-lockPref("devtools.webconsole.sidebarToggle", true);
-
-// Enforce local debugging only
-lockPref("devtools.debugger.force-local", true);
-lockPref("devtools.inspector.remote", false);
-
-// Enforce system access checks for WebDriver
-lockPref("remote.system-access-check.enabled", true);
-
-// Highlight syntax when viewing the source of webpages (via `view-source:`)
-lockPref("view_source.syntax_highlight", true);
-
-// Pretty print code when debugging by default
-lockPref("devtools.debugger.auto-pretty-print", true);
-
-// Prevent adding global `dump` function to log strings to `stdout`
-lockPref("browser.dom.window.dump.enabled", false);
-
-// Prevent automatically clearing log messages after page reloads/navigation
-lockPref("devtools.netmonitor.persistlog", true);
-lockPref("devtools.webconsole.persistlog", true);
-
-// Prevent console API from writing to `stdout` when used by chrome content
-lockPref("devtools.console.stdout.chrome", false);
-
-// Prevent logging URLs in Reader errors
-lockPref("reader.errors.includeURLs", false);
-
-// Prevent WebDriver from overriding preferences by default
-lockPref("remote.prefs.recommended", false);
-
-// Set Browser/Error Console scope to "Multiprocess" instead of "Parent process only" by default
-lockPref("devtools.browsertoolbox.scope", "everything");
-
-// Show default/browser styles in the Inspector by default
-lockPref("devtools.inspector.showUserAgentStyles", true);
-
-// Unbreak debugging if `localhost` can't be looked up via DNS
-lockPref("devtools.debugger.chrome-debugging-host", "127.0.0.1");
-
-// Wrap lines when debugging by default
-lockPref("devtools.debugger.ui.editor-wrapping", true);
-
-// Wrap lines when viewing the source of webpages (via `view-source:`)
-lockPref("view_source.wrap_long_lines", true);
-
-/* -----------------------------------------------------------------------------------
-   026 PERFORMANCE
-   ----------------------------------------------------------------------------------- */
-
-// Compress cached JavaScript bytecode
-lockPref("browser.cache.jsbc_compression_level", 3);
-
-// Disable certain UI animations by default
-lockPref("ui.panelAnimations", 0);
-lockPref("ui.prefersReducedMotion", 1);
-lockPref("ui.swipeAnimationEnabled", 0);
-lockPref("browser.preferences.animateFadeIn", false);
-
-// Disable CSS error reporting by default
-lockPref("layout.css.report_errors", false);
-
-// Disable extra extension logging by default
-lockPref("extensions.logging.enabled", false);
-
-// Disable pacing requests
-lockPref("network.http.pacing.requests.enabled", false);
-
-// Enable Advanced Vector Extensions (AVX)
-lockPref("javascript.options.wasm_simd_avx", true);
-
-// Enable Branch Hinting
-lockPref("javascript.options.wasm_branch_hinting", true);
-
-// Enable Canvas2D acceleration (if supported)
-lockPref("gfx.canvas.accelerated", true);
-lockPref("gfx.canvas.accelerated.cache-items", 32768);
-lockPref("gfx.canvas.accelerated.cache-size", 4096);
-
-// Enable CSS Masonry Layout
-lockPref("layout.css.grid-template-masonry-value.enabled", true);
-
-// Enable the "fetchpriority" attribute
-lockPref("network.fetchpriority.enabled", true);
-
-// Enable JS GC Parallel Marking
-lockPref("javascript.options.mem.gc_parallel_marking", true);
-
-// Enable SIMD
-lockPref("javascript.options.wasm_relaxed_simd", true);
-
-// Enable the WebRender native compositor (if supported)
-lockPref("gfx.webrender.compositor", true);
-
-// Increase buffering for video playback
-lockPref("media.cache_readahead_limit", 600);
-lockPref("media.cache_readahead_limit.cellular", 600);
-lockPref("media.cache_resume_threshold", 300);
-lockPref("media.cache_resume_threshold.cellular", 300);
-lockPref("media.throttle-cellular-regardless-of-download-rate", false);
-
-// Increase the chunk size for calls to image decoders
-lockPref("image.mem.decode_bytes_at_a_time", 65536);
-
-// Increase DNS caching
-lockPref("network.dnsCacheExpiration", 3600);
-lockPref("network.dnsCacheExpirationGracePeriod", 120);
-lockPref("network.dnsCacheEntries", 10000);
-
-// Increase the file-backed media cache size for cellular connections
-lockPref("media.cache_size.cellular", 512000);
-
-// Increase the image cache size
-lockPref("image.cache.size", 10485760);
-
-// Increase the memory-backed media cache size
-lockPref("media.memory_cache_max_size", 262144);
-lockPref("media.memory_caches_combined_limit_kb", 1048576);
-
-// Increase memory cache
-lockPref("browser.cache.memory.capacity", 131072);
-lockPref("browser.cache.memory.max_entry_size", 20480);
-
-// Increase the skia font cache size (Similar to Chromium)
-lockPref("gfx.content.skia-font-cache-size", 32);
-
-// Increase the maximum number of HTTP connections
-lockPref("network.http.max-connections", 1800);
-lockPref("network.http.max-persistent-connections-per-proxy", 48);
-lockPref("network.http.max-persistent-connections-per-server", 10);
-lockPref("network.http.max-urgent-start-excessive-connections-per-host", 5);
-lockPref("network.http.request.max-start-delay", 5);
-
-// Increase TLS token caching
-lockPref("network.ssl_tokens_cache_capacity", 10240);
-
-// Use higher performance pinch-zoom
-lockPref("gfx.webrender.low-quality-pinch-zoom", true);
 
 /* -----------------------------------------------------------------------------------
    027 Personal Touch
